@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Technologies | Custom Software Development & Digital Marketing</title>
+    <meta name="description" content="Space Technologies is a premium business and commercial tech broker offering enterprise Custom Software Development, Mobile Apps, and SEO-driven Digital Marketing Services.">
+    <meta name="keywords" content="Custom Software Development, Web Applications, Digital Marketing Services, Affiliate Lead Generation, Bulk SMS, Mobile App Development, Space Technologies New Delhi">
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Theme Configuration for Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        },
+                        gold: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .image-card:hover img { transform: scale(1.05); }
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #f59e0b;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after, .nav-link.active-nav::after { width: 100%; }
+        
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        .dropdown-parent:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .spa-page { display: none; animation: fadeIn 0.4s ease-in-out; }
+        .spa-page.active { display: block; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #mobile-menu { display: none; }
+        #mobile-menu.open { display: flex; }
+        .mobile-dropdown-content { display: none; }
+        .mobile-dropdown-content.open { display: block; }
+
+        .globe-bg {
+            background-image: radial-gradient(circle at center, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .globe-bg::before {
+            content: '\f0ac';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            font-size: 40rem;
+            color: rgba(245, 158, 11, 0.05);
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased overflow-x-hidden pt-20 flex flex-col min-h-screen">
+
+    <!-- Header & Navigation -->
+    <header class="bg-navy-900 text-white fixed w-full top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#home" class="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
+                        <i class="fa-solid fa-rocket text-gold-500 text-3xl"></i>
+                        <span>Space<span class="text-gold-500">Technologies</span></span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-6 text-sm font-medium items-center">
+                    <a href="#home" class="nav-link hover:text-gold-500 transition-colors">Home</a>
+                    <a href="#about" class="nav-link hover:text-gold-500 transition-colors">About Us</a>
+                    
+                    <!-- Dropdown: Tech Services -->
+                    <div class="relative dropdown-parent py-6">
+                        <a href="#tech-services" class="nav-link hover:text-gold-500 transition-colors flex items-center gap-1">
+                            Tech Services <i class="fa-solid fa-chevron-down text-xs"></i>
+                        </a>
+                        <div class="dropdown-menu absolute left-0 top-full mt-0 w-56 bg-white text-gray-800 rounded-md shadow-xl border-t-2 border-gold-500 overflow-hidden z-50">
+                            <a href="#software" class="block px-4 py-3 hover:bg-gray-50 hover:text-gold-600 border-b border-gray-100">Software Development</a>
+                            <a href="#mobile" class="block px-4 py-3 hover:bg-gray-50 hover:text-gold-600">Mobile App Development</a>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown: Marketing -->
+                    <div class="relative dropdown-parent py-6">
+                        <a href="#marketing" class="nav-link hover:text-gold-500 transition-colors flex items-center gap-1">
+                            Marketing <i class="fa-solid fa-chevron-down text-xs"></i>
+                        </a>
+                        <div class="dropdown-menu absolute left-0 top-full mt-0 w-64 bg-white text-gray-800 rounded-md shadow-xl border-t-2 border-gold-500 overflow-hidden z-50">
+                            <a href="#digital" class="block px-4 py-3 hover:bg-gray-50 hover:text-gold-600 border-b border-gray-100">Digital Marketing</a>
+                            <a href="#affiliate" class="block px-4 py-3 hover:bg-gray-50 hover:text-gold-600 border-b border-gray-100">Affiliate Lead Generation</a>
+                            <a href="#smm" class="block px-4 py-3 hover:bg-gray-50 hover:text-gold-600">Social Media Marketing</a>
+                        </div>
+                    </div>
+
+                    <a href="#career" class="nav-link hover:text-gold-500 transition-colors">Career</a>
+                    <a href="#contact" class="bg-gold-500 hover:bg-gold-600 text-white px-5 py-2 rounded shadow transition-colors">Contact Us</a>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="md:hidden bg-navy-800 flex-col space-y-1 pb-4 px-4 shadow-inner max-h-[80vh] overflow-y-auto">
+            <a href="#home" class="mobile-link block py-3 text-base font-medium text-white border-b border-navy-700">Home</a>
+            <a href="#about" class="mobile-link block py-3 text-base font-medium text-white border-b border-navy-700">About Us</a>
+            
+            <button class="mobile-dropdown-btn w-full text-left py-3 text-base font-medium text-white border-b border-navy-700 flex justify-between items-center focus:outline-none">
+                Tech Services <i class="fa-solid fa-chevron-down text-sm"></i>
+            </button>
+            <div class="mobile-dropdown-content bg-navy-900 pl-4 py-2">
+                <a href="#tech-services" class="mobile-link block py-2 text-sm text-gold-500 border-b border-navy-800">Overview</a>
+                <a href="#software" class="mobile-link block py-2 text-sm text-gray-300 hover:text-gold-500">Software Development</a>
+                <a href="#mobile" class="mobile-link block py-2 text-sm text-gray-300 hover:text-gold-500">Mobile App Development</a>
+            </div>
+
+            <button class="mobile-dropdown-btn w-full text-left py-3 text-base font-medium text-white border-b border-navy-700 flex justify-between items-center focus:outline-none">
+                Marketing <i class="fa-solid fa-chevron-down text-sm"></i>
+            </button>
+            <div class="mobile-dropdown-content bg-navy-900 pl-4 py-2">
+                <a href="#marketing" class="mobile-link block py-2 text-sm text-gold-500 border-b border-navy-800">Overview</a>
+                <a href="#digital" class="mobile-link block py-2 text-sm text-gray-300 hover:text-gold-500">Digital Marketing</a>
+                <a href="#affiliate" class="mobile-link block py-2 text-sm text-gray-300 hover:text-gold-500">Affiliate Lead Generation</a>
+                <a href="#smm" class="mobile-link block py-2 text-sm text-gray-300 hover:text-gold-500">Social Media Marketing</a>
+            </div>
+
+            <a href="#career" class="mobile-link block py-3 text-base font-medium text-white border-b border-navy-700">Career</a>
+            <a href="#contact" class="mobile-link block py-3 text-base font-medium text-gold-500">Contact Us</a>
+        </div>
+    </header>
+
+    <!-- MAIN SPA CONTAINER -->
+    <main id="spa-container" class="flex-grow">
+
+        <!-- ==================== HOME PAGE ==================== -->
+        <section id="home" class="spa-page active">
+            <div class="relative h-[85vh] flex items-center justify-center">
+                <div class="absolute inset-0 z-0">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1920" alt="Space Technology Background" class="w-full h-full object-cover" />
+                    <div class="absolute inset-0 bg-navy-900 bg-opacity-80"></div>
+                </div>
+                
+                <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-10">
+                    <div class="mb-6 inline-block bg-navy-800 bg-opacity-50 border border-gold-500 px-4 py-1 rounded-full text-gold-500 text-sm font-semibold tracking-wide">
+                        WELCOME TO SPACE TECHNOLOGIES
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                        Innovating the Future with <span class="text-gold-500">Strategic Technology</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-3xl mx-auto">
+                        We are a premier business and commercial tech broker. From enterprise Custom Software Development to SEO-optimized Digital Marketing, we deliver solutions that launch your business into a new orbit.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="#tech-services" class="bg-gold-500 hover:bg-gold-600 text-white font-semibold py-3 px-8 rounded shadow-lg transition-transform transform hover:-translate-y-1">Explore Tech Services</a>
+                        <a href="#marketing" class="bg-transparent border-2 border-white hover:bg-white hover:text-navy-900 text-white font-semibold py-3 px-8 rounded shadow-lg transition-colors">Marketing Solutions</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white py-12 border-b border-gray-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                        <div class="p-4">
+                            <i class="fa-solid fa-code text-4xl text-navy-800 mb-4"></i>
+                            <h2 class="text-xl font-bold mb-2">Custom Software</h2>
+                            <p class="text-gray-600">Tailor-made Web Applications using modern stacks for enterprise-grade performance.</p>
+                        </div>
+                        <div class="p-4 border-t md:border-t-0 md:border-l border-gray-200">
+                            <i class="fa-solid fa-bullseye text-4xl text-navy-800 mb-4"></i>
+                            <h2 class="text-xl font-bold mb-2">Targeted Marketing</h2>
+                            <p class="text-gray-600">Omnichannel campaigns designed to generate high-quality B2B commercial leads.</p>
+                        </div>
+                        <div class="p-4 border-t md:border-t-0 md:border-l border-gray-200">
+                            <i class="fa-solid fa-handshake-angle text-4xl text-navy-800 mb-4"></i>
+                            <h2 class="text-xl font-bold mb-2">Broker Expertise</h2>
+                            <p class="text-gray-600">Operating with the precision of top-tier finance brokers for your tech needs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== ABOUT US PAGE ==================== -->
+        <section id="about" class="spa-page py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <header class="text-center mb-16">
+                    <h1 class="text-4xl font-bold text-navy-900 mb-4">About Space Technologies</h1>
+                    <div class="h-1 w-24 bg-gold-500 mx-auto"></div>
+                </header>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+                    <div class="rounded-lg overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32d7?auto=format&fit=crop&q=80&w=800" alt="Corporate Team Strategy Meeting" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-navy-900 mb-4 border-l-4 border-gold-500 pl-4">Our Vision & Mission</h2>
+                        <p class="text-gray-600 mb-6 leading-relaxed text-lg">
+                            At <strong>Space Technologies</strong>, we act as your trusted commercial tech broker. Based on the rigorous standards of the UK finance sector, we bring structured, results-oriented methodology to the world of software development and digital marketing.
+                        </p>
+                        <p class="text-gray-600 mb-6 leading-relaxed text-lg">
+                            We don't just build apps; we engineer business solutions. Our mission is to propel our clients ahead of the competition by merging raw technical prowess with aggressive, data-driven marketing intelligence.
+                        </p>
+                        <div class="flex gap-4 mt-8">
+                            <div class="bg-white p-4 rounded shadow border-l-2 border-navy-900">
+                                <h3 class="font-bold text-3xl text-gold-500 mb-1">10+</h3>
+                                <p class="text-sm font-semibold text-gray-600">Years Experience</p>
+                            </div>
+                            <div class="bg-white p-4 rounded shadow border-l-2 border-navy-900">
+                                <h3 class="font-bold text-3xl text-gold-500 mb-1">500+</h3>
+                                <p class="text-sm font-semibold text-gray-600">Projects Delivered</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TECH SERVICES (PARENT) ==================== -->
+        <section id="tech-services" class="spa-page bg-white">
+            <div class="relative py-24 bg-navy-900 text-center">
+                <div class="absolute inset-0 opacity-20">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1920" alt="Tech Abstract" class="w-full h-full object-cover">
+                </div>
+                <div class="relative z-10 max-w-4xl mx-auto px-4">
+                    <h1 class="text-5xl font-bold text-white mb-4">Enterprise Technology Services</h1>
+                    <div class="h-1 w-24 bg-gold-500 mx-auto mb-6"></div>
+                    <p class="text-xl text-gray-300">Architecting robust Web Applications and Mobile experiences to digitize and scale your business operations globally.</p>
+                </div>
+            </div>
+            
+            <div class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <a href="#software" class="group block">
+                        <div class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg border border-gray-100 transition-all hover:shadow-2xl hover:-translate-y-2">
+                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800" alt="Custom Software Development" class="w-full h-64 object-cover">
+                            <div class="p-8">
+                                <h2 class="text-3xl font-bold text-navy-900 mb-4 group-hover:text-gold-500 transition-colors">Software Development <i class="fa-solid fa-arrow-right ml-2 text-lg"></i></h2>
+                                <p class="text-gray-600 text-lg">Custom CMS, CRM, and SaaS web applications built with React, Angular, Node, Python, and Java for scalable enterprise performance.</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#mobile" class="group block">
+                        <div class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg border border-gray-100 transition-all hover:shadow-2xl hover:-translate-y-2">
+                            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800" alt="Mobile App Development" class="w-full h-64 object-cover">
+                            <div class="p-8">
+                                <h2 class="text-3xl font-bold text-navy-900 mb-4 group-hover:text-gold-500 transition-colors">Mobile App Development <i class="fa-solid fa-arrow-right ml-2 text-lg"></i></h2>
+                                <p class="text-gray-600 text-lg">High-performance Native (iOS/Android) and Cross-Platform (React Native) mobile applications designed for seamless user engagement.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SOFTWARE DEVELOPMENT PAGE ==================== -->
+        <section id="software" class="spa-page py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <header class="text-center mb-16">
+                    <span class="text-gold-500 font-bold uppercase tracking-wider text-sm">Engineering Excellence</span>
+                    <h1 class="text-4xl font-bold text-navy-900 mt-2 mb-4">Custom Software Development</h1>
+                    <div class="h-1 w-24 bg-gold-500 mx-auto"></div>
+                    <p class="text-gray-600 max-w-3xl mx-auto mt-6 text-lg">
+                        We build robust, scalable, and secure Web Applications using the latest technology stacks. Whether you need a corporate portal, an internal CRM, or a customer-facing SaaS product, Space Technologies delivers SEO-friendly, blazing fast solutions.
+                    </p>
+                </header>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- React -->
+                    <article class="bg-white rounded-xl p-8 shadow-md border border-gray-100 hover:shadow-xl transition-all group">
+                        <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-blue-500 transition-colors shadow">
+                            <i class="fa-brands fa-react text-3xl text-blue-500 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-3">React JS Development</h2>
+                        <p class="text-gray-600 mb-4">We craft highly interactive, SEO-optimized user interfaces. React allows us to build fast, scalable frontends for complex single-page applications.</p>
+                        <ul class="text-sm text-gray-500 space-y-2 font-medium">
+                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Custom Web Dashboards</li>
+                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Next.js for SEO Ranking</li>
+                        </ul>
+                    </article>
+
+                    <!-- Angular -->
+                    <article class="bg-white rounded-xl p-8 shadow-md border border-gray-100 hover:shadow-xl transition-all group">
+                        <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-red-600 transition-colors shadow">
+                            <i class="fa-brands fa-angular text-3xl text-red-600 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-3">Angular Architecture</h2>
+                        <p class="text-gray-600 mb-4">For large-scale enterprise Web Applications, Angular provides a robust structural framework ensuring high performance and maintainability.</p>
+                        <ul class="text-sm text-gray-500 space-y-2 font-medium">
+                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Enterprise Portals</li>
+                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Strict TypeScript Typing</li>
+                        </ul>
+                    </article>
+
+                    <!-- Node.js -->
+                    <article class="bg-white rounded-xl p-8 shadow-md border border-gray-100 hover:shadow-xl transition-all group">
+                        <div class="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-green-600 transition-colors shadow">
+                            <i class="fa-brands fa-node-js text-3xl text-green-600 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-3">Node.js Backends</h2>
+                        <p class="text-gray-600 mb-4">Powering the backend with asynchronous JavaScript. Node is our go-to for building fast REST APIs, GraphQL, and microservices.</p>
+                        <ul class="text-sm text-gray-500 space-y-2 font-medium">
+                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Scalable API Integration</li>
+                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> High Concurrency Systems</li>
+                        </ul>
+                    </article>
+
+                    <!-- Python -->
+                    <article class="bg-white rounded-xl p-8 shadow-md border border-gray-100 hover:shadow-xl transition-all group">
+                        <div class="w-16 h-16 bg-yellow-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-yellow-500 transition-colors shadow">
+                            <i class="fa-brands fa-python text-3xl text-yellow-600 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-3">Python & AI</h2>
+                        <p class="text-gray-600 mb-4">From robust Django web backends to advanced Data Analysis and AI integrations, Python empowers our data-heavy Custom Software solutions.</p>
+                        <ul class="text-sm text-gray-500 space-y-2 font-medium">
+                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Machine Learning Models</li>
+                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Secure Django Frameworks</li>
+                        </ul>
+                    </article>
+
+                    <!-- Java -->
+                    <article class="bg-white rounded-xl p-8 shadow-md border border-gray-100 hover:shadow-xl transition-all group">
+                        <div class="w-16 h-16 bg-orange-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-orange-600 transition-colors shadow">
+                            <i class="fa-brands fa-java text-3xl text-orange-600 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-3">Java (Spring Boot)</h2>
+                        <p class="text-gray-600 mb-4">When banking-grade reliability is paramount, our developers deliver bulletproof Spring Boot architectures for the financial broker sector.</p>
+                        <ul class="text-sm text-gray-500 space-y-2 font-medium">
+                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Banking & Finance Software</li>
+                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Legacy System Migration</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== MOBILE APP DEV PAGE ==================== -->
+        <section id="mobile" class="spa-page py-20 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <header class="mb-12">
+                    <h1 class="text-4xl font-bold text-navy-900 mb-4">Mobile Application Development</h1>
+                    <div class="h-1 w-24 bg-gold-500 mx-auto mb-6"></div>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Transforming ideas into powerful, App Store optimized mobile experiences for iOS and Android platforms.</p>
+                </header>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-left">
+                    <article class="bg-gray-50 p-8 rounded-xl shadow-lg border border-gray-100 hover:-translate-y-1 transition-transform">
+                        <i class="fa-brands fa-apple text-5xl text-gray-800 mb-4 drop-shadow"></i>
+                        <h2 class="text-2xl font-bold mb-3">iOS App Development</h2>
+                        <p class="text-gray-600 mb-4">Native applications built with Swift and Objective-C, designed for the premium Apple ecosystem ensuring high performance, strict security, and UI guidelines compliance.</p>
+                    </article>
+                    <article class="bg-gray-50 p-8 rounded-xl shadow-lg border border-gray-100 hover:-translate-y-1 transition-transform">
+                        <i class="fa-brands fa-android text-5xl text-green-500 mb-4 drop-shadow"></i>
+                        <h2 class="text-2xl font-bold mb-3">Android App Development</h2>
+                        <p class="text-gray-600 mb-4">Robust native apps built with Kotlin and Java, optimized to run flawlessly across the vast, diverse array of Android smartphones and tablets worldwide.</p>
+                    </article>
+                    <article class="bg-navy-900 text-white p-10 rounded-xl shadow-2xl md:col-span-2 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
+                        <div class="absolute -right-10 -bottom-10 opacity-10">
+                            <i class="fa-solid fa-layer-group text-9xl"></i>
+                        </div>
+                        <div class="flex-shrink-0 relative z-10">
+                            <div class="w-20 h-20 bg-gold-500 rounded-full flex items-center justify-center text-4xl shadow-lg">
+                                <i class="fa-brands fa-react"></i>
+                            </div>
+                        </div>
+                        <div class="relative z-10">
+                            <h2 class="text-3xl font-bold mb-3">Cross-Platform (React Native / Flutter)</h2>
+                            <p class="text-gray-300 text-lg">Need a faster time to market? We build cross-platform applications that share a single codebase but deliver near-native performance on both iOS and Android, saving you time and development costs while maximizing SEO and App Store presence.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== MARKETING (PARENT) ==================== -->
+        <section id="marketing" class="spa-page bg-gray-50">
+            <div class="relative py-24 bg-white text-center border-b border-gray-200">
+                <div class="relative z-10 max-w-4xl mx-auto px-4">
+                    <i class="fa-solid fa-bullhorn text-6xl text-gold-500 mb-6 drop-shadow-md"></i>
+                    <h1 class="text-5xl font-bold text-navy-900 mb-4">Integrated Marketing Solutions</h1>
+                    <div class="h-1 w-24 bg-gold-500 mx-auto mb-6"></div>
+                    <p class="text-xl text-gray-600">Amplify your brand's reach with SEO-driven Digital Marketing, High-Intent Affiliate Lead Generation, and dominating Social Media strategies.</p>
+                </div>
+            </div>
+            
+            <div class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <a href="#digital" class="group block h-full">
+                        <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 h-full flex flex-col transition-all hover:shadow-2xl hover:-translate-y-2">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600" alt="Data Driven Marketing" class="w-full h-48 object-cover">
+                            <div class="p-6 flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h2 class="text-2xl font-bold text-navy-900 mb-3 group-hover:text-gold-500">Digital Marketing <i class="fa-solid fa-arrow-right ml-1 text-sm"></i></h2>
+                                    <p class="text-gray-600">Direct outreach via Bulk SMS, Email, WhatsApp, and premium B2B Mobile/Email Databases.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#affiliate" class="group block h-full">
+                        <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 h-full flex flex-col transition-all hover:shadow-2xl hover:-translate-y-2">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600" alt="Lead Generation" class="w-full h-48 object-cover">
+                            <div class="p-6 flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h2 class="text-2xl font-bold text-navy-900 mb-3 group-hover:text-gold-500">Affiliate Lead Generation <i class="fa-solid fa-arrow-right ml-1 text-sm"></i></h2>
+                                    <p class="text-gray-600">High-intent CPL & CPA campaigns for finance and real estate. Pay for performance.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#smm" class="group block h-full">
+                        <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 h-full flex flex-col transition-all hover:shadow-2xl hover:-translate-y-2">
+                            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=600" alt="Social Media" class="w-full h-48 object-cover">
+                            <div class="p-6 flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h2 class="text-2xl font-bold text-navy-900 mb-3 group-hover:text-gold-500">Social Media Marketing <i class="fa-solid fa-arrow-right ml-1 text-sm"></i></h2>
+                                    <p class="text-gray-600">Dominant brand presence across LinkedIn B2B, Facebook, and Instagram to boost SEO signals.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== DIGITAL MARKETING PAGE ==================== -->
+        <section id="digital" class="spa-page py-20 bg-navy-900 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <header class="text-center mb-16">
+                    <span class="text-gold-500 font-bold uppercase tracking-wider text-sm">Audience Reach Optimization</span>
+                    <h1 class="text-4xl font-bold mb-4 mt-2">SEO-Optimized Digital Marketing Services</h1>
+                    <div class="h-1 w-24 bg-gold-500 mx-auto"></div>
+                    <p class="text-gray-300 max-w-3xl mx-auto mt-6 text-lg">
+                        We push your business to the masses. Amplify your corporate reach with our targeted communication tools, API integrations, and curated B2B/B2C databases to maximize conversion rates.
+                    </p>
+                </header>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Bulk SMS -->
+                    <article class="bg-navy-800 rounded-lg overflow-hidden shadow-xl image-card border border-navy-700 flex flex-col">
+                        <div class="h-48 overflow-hidden relative flex-shrink-0">
+                            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=800" alt="Bulk SMS Marketing Services" class="w-full h-full object-cover transition-transform duration-500">
+                            <div class="absolute inset-0 bg-navy-900 bg-opacity-60 flex items-center justify-center">
+                                <i class="fa-solid fa-comment-sms text-5xl text-gold-500 drop-shadow"></i>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-grow">
+                            <h2 class="text-2xl font-bold text-white mb-2">Bulk SMS</h2>
+                            <p class="text-gray-400 text-sm mb-4">Reach thousands instantly with our high-delivery transactional and promotional SMS gateway. Seamless CRM integration via robust APIs.</p>
+                            <ul class="text-xs text-gray-300 space-y-1 font-semibold">
+                                <li>&bull; Full DLT Registration Support</li>
+                                <li>&bull; Real-time Analytics Dashboard</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- Bulk Email -->
+                    <article class="bg-navy-800 rounded-lg overflow-hidden shadow-xl image-card border border-navy-700 flex flex-col">
+                        <div class="h-48 overflow-hidden relative flex-shrink-0">
+                            <img src="https://images.unsplash.com/photo-1596524430615-b46475ddff6e?auto=format&fit=crop&q=80&w=800" alt="Bulk Email Marketing" class="w-full h-full object-cover transition-transform duration-500">
+                            <div class="absolute inset-0 bg-navy-900 bg-opacity-60 flex items-center justify-center">
+                                <i class="fa-solid fa-envelope-open-text text-5xl text-gold-500 drop-shadow"></i>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-grow">
+                            <h2 class="text-2xl font-bold text-white mb-2">Bulk Email</h2>
+                            <p class="text-gray-400 text-sm mb-4">Execute comprehensive email marketing campaigns using dedicated IPs, beautiful HTML templates, and advanced tracking to bypass spam filters.</p>
+                            <ul class="text-xs text-gray-300 space-y-1 font-semibold">
+                                <li>&bull; 99% Inbox Delivery Rate</li>
+                                <li>&bull; Open/Click/Bounce Tracking</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- Bulk WhatsApp -->
+                    <article class="bg-navy-800 rounded-lg overflow-hidden shadow-xl image-card border border-navy-700 flex flex-col">
+                        <div class="h-48 overflow-hidden relative flex-shrink-0">
+                            <img src="https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?auto=format&fit=crop&q=80&w=800" alt="Bulk WhatsApp API Services" class="w-full h-full object-cover transition-transform duration-500">
+                            <div class="absolute inset-0 bg-navy-900 bg-opacity-60 flex items-center justify-center">
+                                <i class="fa-brands fa-whatsapp text-5xl text-gold-500 drop-shadow"></i>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-grow">
+                            <h2 class="text-2xl font-bold text-white mb-2">Bulk WhatsApp</h2>
+                            <p class="text-gray-400 text-sm mb-4">Engage securely via official WhatsApp Business APIs. Send multimedia (PDFs, Images, Videos) and interactive reply buttons directly to consumers.</p>
+                            <ul class="text-xs text-gray-300 space-y-1 font-semibold">
+                                <li>&bull; Official Meta API Integration</li>
+                                <li>&bull; Automated AI Chatbots</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- Mobile Number Database -->
+                    <article class="bg-navy-800 rounded-lg overflow-hidden shadow-xl image-card border border-navy-700 flex flex-col">
+                        <div class="h-48 overflow-hidden relative flex-shrink-0">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="B2B Mobile Number Database" class="w-full h-full object-cover transition-transform duration-500">
+                            <div class="absolute inset-0 bg-navy-900 bg-opacity-60 flex items-center justify-center">
+                                <i class="fa-solid fa-database text-5xl text-gold-500 drop-shadow"></i>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-grow">
+                            <h2 class="text-2xl font-bold text-white mb-2">Mobile Number Database</h2>
+                            <p class="text-gray-400 text-sm mb-4">Access segmented, opt-in databases. Fuel your telemarketing campaigns with region, income, and profession-specific demographic data.</p>
+                            <ul class="text-xs text-gray-300 space-y-1 font-semibold">
+                                <li>&bull; 100% Scrubbed & Verified Data</li>
+                                <li>&bull; HNI & Corporate Demographics</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- Email Database -->
+                    <article class="bg-navy-800 rounded-lg overflow-hidden shadow-xl image-card border border-navy-700 flex flex-col">
+                        <div class="h-48 overflow-hidden relative flex-shrink-0">
+                            <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80&w=800" alt="Corporate Email Database Providers" class="w-full h-full object-cover transition-transform duration-500">
+                            <div class="absolute inset-0 bg-navy-900 bg-opacity-60 flex items-center justify-center">
+                                <i class="fa-solid fa-server text-5xl text-gold-500 drop-shadow"></i>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-grow">
+                            <h2 class="text-2xl font-bold text-white mb-2">Email Database</h2>
+                            <p class="text-gray-400 text-sm mb-4">Target key decision-makers. Authentic B2B and B2C email databases globally categorized by industry (IT, Finance, Real Estate).</p>
+                            <ul class="text-xs text-gray-300 space-y-1 font-semibold">
+                                <li>&bull; C-Level Executive Lists</li>
+                                <li>&bull; SMTP Handshake Verified</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- Toll Free Numbers -->
+                    <article class="bg-navy-800 rounded-lg overflow-hidden shadow-xl image-card border border-navy-700 flex flex-col">
+                        <div class="h-48 overflow-hidden relative flex-shrink-0">
+                            <img src="https://images.unsplash.com/photo-1549923746-c502d488b3ea?auto=format&fit=crop&q=80&w=800" alt="Toll Free Numbers IVR Systems" class="w-full h-full object-cover transition-transform duration-500">
+                            <div class="absolute inset-0 bg-navy-900 bg-opacity-60 flex items-center justify-center">
+                                <i class="fa-solid fa-headset text-5xl text-gold-500 drop-shadow"></i>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-grow">
+                            <h2 class="text-2xl font-bold text-white mb-2">Toll-free Numbers & IVR</h2>
+                            <p class="text-gray-400 text-sm mb-4">Enhance corporate credibility with 1800 numbers. Includes cloud-based IVR, call recording, and intelligent routing for support centers.</p>
+                            <ul class="text-xs text-gray-300 space-y-1 font-semibold">
+                                <li>&bull; Multi-level Custom IVR Setup</li>
+                                <li>&bull; Missed Call Solutions Included</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== AFFILIATE LEAD GEN PAGE ==================== -->
+        <section id="affiliate" class="spa-page py-20 bg-gray-50">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <i class="fa-solid fa-users-rays text-6xl text-gold-500 mb-6 drop-shadow"></i>
+                <h1 class="text-4xl font-bold text-navy-900 mb-4">B2B & B2C Affiliate Lead Generation</h1>
+                <div class="h-1 w-24 bg-gold-500 mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 mb-8 font-medium">Pay for actual performance, not just impressions.</p>
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200" alt="Affiliate Marketing Analytics and B2B Leads" class="w-full h-72 object-cover rounded-2xl shadow-xl mb-10 border-2 border-white">
+                
+                <div class="bg-white p-8 rounded-xl shadow-lg text-left border border-gray-100">
+                    <h2 class="text-2xl font-bold text-navy-900 mb-4">Strategic Lead Acquisition</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed text-lg">
+                        Space Technologies maintains a vast network of premium publishers and affiliates. We execute highly targeted <strong>CPL (Cost Per Lead)</strong> and <strong>CPA (Cost Per Acquisition)</strong> campaigns specifically tailored for the Finance, Real Estate, and IT sectors. We generate high-intent, conversion-ready prospects passed directly to your sales CRM in real-time, maximizing your SEO footprint indirectly through widespread publisher content.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                        <div class="bg-gray-50 p-6 rounded shadow-sm border-t-4 border-navy-900">
+                            <h3 class="font-bold text-lg mb-2">Exclusive Landing Pages</h3>
+                            <p class="text-gray-600 text-sm">We design high-converting, SEO-optimized, A/B tested landing pages dedicated entirely to capturing user intent securely.</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded shadow-sm border-t-4 border-gold-500">
+                            <h3 class="font-bold text-lg mb-2">Fraud Protection Algorithms</h3>
+                            <p class="text-gray-600 text-sm">Advanced OTP verification and AI-based lead scrubbers ensure you only pay for genuine, reachable human leads.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SMM PAGE ==================== -->
+        <section id="smm" class="spa-page py-20 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <div class="lg:w-1/2">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-gold-500 rounded-2xl transform translate-x-4 translate-y-4 opacity-50"></div>
+                            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800" alt="Social Media Marketing Agency" class="w-full rounded-2xl shadow-2xl relative z-10 border-4 border-white">
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2">
+                        <h1 class="text-4xl font-bold text-navy-900 mb-4">Social Media Marketing Services</h1>
+                        <div class="h-1 w-20 bg-gold-500 mb-6"></div>
+                        <p class="text-gray-600 mb-8 text-lg leading-relaxed">
+                            Build a commanding corporate brand presence across platforms that dictate modern business. From professional B2B outreach to viral visual storytelling, our Social Media Optimization (SMO) builds brand trust and drives organic SEO traffic.
+                        </p>
+                        <div class="space-y-6">
+                            <article class="flex items-start bg-gray-50 p-4 rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                                <i class="fa-brands fa-linkedin text-3xl text-blue-700 mr-5 mt-1"></i>
+                                <div>
+                                    <h2 class="font-bold text-gray-900 text-lg">LinkedIn Lead Gen (B2B)</h2>
+                                    <p class="text-sm text-gray-600 mt-1">Targeted InMail campaigns, CEO profiling, and thought-leadership content designed for C-level executives.</p>
+                                </div>
+                            </article>
+                            <article class="flex items-start bg-gray-50 p-4 rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                                <i class="fa-brands fa-facebook text-3xl text-blue-600 mr-5 mt-1"></i>
+                                <div>
+                                    <h2 class="font-bold text-gray-900 text-lg">Facebook & Instagram Ads</h2>
+                                    <p class="text-sm text-gray-600 mt-1">Highly segmented demographic targeting, retargeting pixels, and engaging ad creatives for consumer products.</p>
+                                </div>
+                            </article>
+                            <article class="flex items-start bg-gray-50 p-4 rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                                <i class="fa-solid fa-pen-nib text-3xl text-gold-500 mr-5 mt-1"></i>
+                                <div>
+                                    <h2 class="font-bold text-gray-900 text-lg">In-house Content Creation</h2>
+                                    <p class="text-sm text-gray-600 mt-1">Professional graphic design, short-form video reels, and SEO-rich copywriting handled entirely by our creative team.</p>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== CAREER PAGE ==================== -->
+        <section id="career" class="spa-page py-20 bg-navy-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+                    <div class="md:w-1/2">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" alt="Career at Space Technologies" class="w-full h-full object-cover">
+                    </div>
+                    <div class="md:w-1/2 p-10 lg:p-16 flex flex-col justify-center">
+                        <h1 class="text-3xl font-bold text-navy-900 mb-4">Join Our Orbit</h1>
+                        <p class="text-gray-600 mb-8">Space Technologies is expanding rapidly. We are looking for visionary software developers, data-driven digital marketers, and aggressive IT sales brokers. If you thrive in a fast-paced environment, we want you on board.</p>
+                        
+                        <div class="space-y-6 mb-8">
+                            <div class="border-l-4 border-gold-500 pl-4">
+                                <h2 class="font-bold text-gray-800 text-lg">Senior Full-Stack Developer</h2>
+                                <p class="text-sm text-gray-500 font-medium">Node.js, React, MongoDB • New Delhi / Remote</p>
+                            </div>
+                            <div class="border-l-4 border-gold-500 pl-4">
+                                <h2 class="font-bold text-gray-800 text-lg">Digital Marketing Manager (SEO Expert)</h2>
+                                <p class="text-sm text-gray-500 font-medium">PPC, Affiliate Lead Gen, SEO • New Delhi</p>
+                            </div>
+                            <div class="border-l-4 border-gold-500 pl-4">
+                                <h2 class="font-bold text-gray-800 text-lg">B2B IT Sales Executive</h2>
+                                <p class="text-sm text-gray-500 font-medium">Corporate Tech Sales • New Delhi / Hybrid</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <a href="#contact" class="inline-block bg-navy-900 text-white font-bold py-3 px-8 rounded shadow-lg hover:bg-gold-500 transition-colors">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== CONTACT US PAGE ==================== -->
+        <section id="contact" class="spa-page py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <header class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-navy-900 mb-4">Contact Space Technologies</h1>
+                    <div class="h-1 w-24 bg-gold-500 mx-auto mt-2"></div>
+                    <p class="text-gray-600 mt-6 text-lg">Initiate a connection. Let our experts architect a solution for your business.</p>
+                </header>
+
+                <!-- GLOBAL PRESENCE BLOCK -->
+                <div class="mb-16 rounded-2xl globe-bg text-white shadow-2xl border-2 border-navy-800">
+                    <div class="relative z-10 p-10 lg:p-12">
+                        <div class="text-center mb-10">
+                            <span class="text-gold-500 font-bold tracking-widest uppercase text-sm border-b border-gold-500 pb-1">International Reach</span>
+                            <h2 class="text-3xl font-bold mt-4">Global & National Presence</h2>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            <div class="bg-navy-900 bg-opacity-70 p-6 rounded-xl border border-navy-700 backdrop-blur-sm shadow-inner">
+                                <div class="flex items-center gap-3 mb-4 border-b border-navy-600 pb-3">
+                                    <i class="fa-solid fa-flag text-gold-500 text-2xl"></i>
+                                    <h3 class="text-xl font-bold">India</h3>
+                                </div>
+                                <div class="space-y-4 text-sm text-gray-300">
+                                    <div>
+                                        <p class="text-gold-500 font-semibold mb-1"><i class="fa-solid fa-building mr-1"></i> Headquarters</p>
+                                        <p class="font-medium text-white">New Delhi</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gold-500 font-semibold mb-1"><i class="fa-solid fa-map-location-dot mr-1"></i> Regional Hubs</p>
+                                        <p class="leading-relaxed">Bangalore, Mysore, Chennai, Bhopal, Mumbai, Kocchi, Jaipur, Lucknow, Shimla, Chandigarh</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-navy-900 bg-opacity-70 p-6 rounded-xl border border-navy-700 backdrop-blur-sm shadow-inner">
+                                <div class="flex items-center gap-3 mb-4 border-b border-navy-600 pb-3">
+                                    <i class="fa-solid fa-city text-gold-500 text-2xl"></i>
+                                    <h3 class="text-xl font-bold">UAE</h3>
+                                </div>
+                                <p class="text-sm text-gray-300 mb-2">Middle East Operations</p>
+                                <p class="font-semibold text-white text-lg">Dubai</p>
+                            </div>
+
+                            <div class="bg-navy-900 bg-opacity-70 p-6 rounded-xl border border-navy-700 backdrop-blur-sm shadow-inner">
+                                <div class="flex items-center gap-3 mb-4 border-b border-navy-600 pb-3">
+                                    <i class="fa-solid fa-monument text-gold-500 text-2xl"></i>
+                                    <h3 class="text-xl font-bold">USA</h3>
+                                </div>
+                                <p class="text-sm text-gray-300 mb-2">North American Branch</p>
+                                <p class="font-semibold text-white text-lg">Washington DC</p>
+                            </div>
+
+                            <div class="bg-navy-900 bg-opacity-70 p-6 rounded-xl border border-navy-700 backdrop-blur-sm shadow-inner">
+                                <div class="flex items-center gap-3 mb-4 border-b border-navy-600 pb-3">
+                                    <i class="fa-brands fa-canadian-maple-leaf text-gold-500 text-2xl"></i>
+                                    <h3 class="text-xl font-bold">Canada</h3>
+                                </div>
+                                <p class="text-sm text-gray-300 mb-2">Northern Operations</p>
+                                <p class="font-semibold text-white text-lg">Canberra <span class="text-xs font-normal text-gray-400 italic">(ANZ Partner)</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Contact Info -->
+                    <div class="space-y-8 bg-gray-50 p-8 rounded-xl border border-gray-100 h-full">
+                        <h2 class="text-2xl font-bold text-navy-900 mb-6 border-b pb-4">Direct Contact</h2>
+                        <div class="flex items-start group">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-12 h-12 bg-navy-900 rounded-full flex items-center justify-center text-gold-500 shadow-md group-hover:bg-gold-500 group-hover:text-white transition-colors">
+                                    <i class="fa-solid fa-rocket text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-bold text-gray-900">Global Headquarters</h3>
+                                <address class="text-gray-600 mt-1 not-italic font-medium">303 B, 3rd floor, westend mall,<br>janakpuri west, new delhi 110058</address>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start group">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-12 h-12 bg-navy-900 rounded-full flex items-center justify-center text-gold-500 shadow-md group-hover:bg-gold-500 group-hover:text-white transition-colors">
+                                    <i class="fa-solid fa-phone text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-bold text-gray-900">Telecommunications</h3>
+                                <p class="text-gray-600 mt-1 font-medium">Direct: <a href="tel:+918800927010" class="hover:text-gold-600">+91-8800927010</a></p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start group">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-12 h-12 bg-navy-900 rounded-full flex items-center justify-center text-gold-500 shadow-md group-hover:bg-gold-500 group-hover:text-white transition-colors">
+                                    <i class="fa-solid fa-envelope text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-bold text-gray-900">Electronic Mail</h3>
+                                <p class="text-gray-600 mt-1 font-medium">
+                                    <a href="mailto:chandrakar@spacetechnology.com" class="hover:text-gold-600 block">chandrakar@spacetechnology.com</a>
+                                    <a href="mailto:vipul@spacetechnology.com" class="hover:text-gold-600 block mt-1">vipul@spacetechnology.com</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="bg-white p-8 rounded-xl shadow-xl border-t-4 border-gold-500">
+                        <h2 class="text-2xl font-bold text-navy-900 mb-6">Send an Inquiry</h2>
+                        <form action="#" method="POST" onsubmit="event.preventDefault(); document.getElementById('success-msg').style.display='block';">
+                            <div class="mb-4">
+                                <label for="name" class="block text-sm font-bold text-gray-700 mb-1">Corporate/Full Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-navy-900 focus:border-navy-900 outline-none transition-shadow focus:shadow-md" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-sm font-bold text-gray-700 mb-1">Business Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-navy-900 focus:border-navy-900 outline-none transition-shadow focus:shadow-md" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="service" class="block text-sm font-bold text-gray-700 mb-1">Primary Interest</label>
+                                <select id="service" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-navy-900 focus:border-navy-900 outline-none transition-shadow focus:shadow-md">
+                                    <option>Custom Software Development</option>
+                                    <option>Mobile App Development</option>
+                                    <option>Digital Marketing (SMS/Email/WhatsApp)</option>
+                                    <option>Affiliate Lead Generation / Database</option>
+                                    <option>Social Media Marketing</option>
+                                    <option>Other / General</option>
+                                </select>
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-sm font-bold text-gray-700 mb-1">Project Details</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-navy-900 focus:border-navy-900 outline-none transition-shadow focus:shadow-md" required></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-navy-900 hover:bg-gold-500 text-white font-bold py-3 px-4 rounded transition-colors shadow-lg">
+                                Submit Request
+                            </button>
+                            <div id="success-msg" class="bg-green-50 text-green-700 p-3 rounded mt-4 text-center hidden font-medium border border-green-200">
+                                <i class="fa-solid fa-circle-check mr-2"></i> Mission control received your message. We'll be in touch soon.
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 text-white pt-12 pb-6 border-t-4 border-gold-500 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-1 md:col-span-1">
+                    <a href="#home" class="text-2xl font-bold tracking-tight text-white flex items-center gap-2 mb-4">
+                        <i class="fa-solid fa-rocket text-gold-500 text-2xl"></i>
+                        <span>Space<span class="text-gold-500">Tech</span></span>
+                    </a>
+                    <p class="text-gray-400 text-sm mb-4 leading-relaxed">Your enterprise partner for high-performance software architecture and SEO-driven digital marketing strategies.</p>
+                    <div class="text-gray-400 text-sm space-y-3">
+                        <p class="flex items-start"><i class="fa-solid fa-location-dot mt-1 mr-2 text-gold-500"></i> New Delhi, India 110058</p>
+                        <p class="flex items-center"><i class="fa-solid fa-phone mr-2 text-gold-500"></i> +91-8800927010</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h2 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2 inline-block">Navigation</h2>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#home" class="hover:text-gold-500 transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-gold-500 transition-colors">About Us</a></li>
+                        <li><a href="#career" class="hover:text-gold-500 transition-colors">Careers</a></li>
+                        <li><a href="#contact" class="hover:text-gold-500 transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2 inline-block">Core Services</h2>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#software" class="hover:text-gold-500 transition-colors">Software Engineering</a></li>
+                        <li><a href="#mobile" class="hover:text-gold-500 transition-colors">Mobile Applications</a></li>
+                        <li><a href="#digital" class="hover:text-gold-500 transition-colors">Digital Marketing</a></li>
+                        <li><a href="#affiliate" class="hover:text-gold-500 transition-colors">Lead Generation</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2 inline-block">Connect Globally</h2>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-navy-800 flex items-center justify-center hover:bg-gold-500 hover:text-white transition-colors shadow-lg" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-navy-800 flex items-center justify-center hover:bg-gold-500 hover:text-white transition-colors shadow-lg" aria-label="Twitter">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-navy-800 flex items-center justify-center hover:bg-gold-500 hover:text-white transition-colors shadow-lg" aria-label="Github">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-navy-800 pt-6 text-center text-sm text-gray-500">
+                <p>&copy; 2026 Space Technologies Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Vanilla JS for SPA Routing & UI Interactions -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- SPA ROUTING LOGIC ---
+            const pages = document.querySelectorAll('.spa-page');
+            const navLinks = document.querySelectorAll('.nav-link, .mobile-link');
+            
+            function router() {
+                // Get hash from URL, default to 'home'
+                let hash = window.location.hash.substring(1);
+                if (!hash) hash = 'home';
+                
+                // Hide all pages
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Show requested page
+                const targetPage = document.getElementById(hash);
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                } else {
+                    document.getElementById('home').classList.add('active');
+                }
+
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // Close mobile menu if open
+                const menu = document.getElementById('mobile-menu');
+                if(menu) menu.classList.remove('open');
+            }
+
+            // Listen for hash changes
+            window.addEventListener('hashchange', router);
+            // Initial load routing
+            router();
+
+            // --- MOBILE MENU LOGIC ---
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const mobileDropdownBtns = document.querySelectorAll('.mobile-dropdown-btn');
+
+            if(btn && menu) {
+                btn.addEventListener('click', () => {
+                    menu.classList.toggle('open');
+                });
+            }
+
+            mobileDropdownBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const content = btn.nextElementSibling;
+                    content.classList.toggle('open');
+                    
+                    const icon = btn.querySelector('i');
+                    if (content.classList.contains('open')) {
+                        icon.style.transform = 'rotate(180deg)';
+                    } else {
+                        icon.style.transform = 'rotate(0deg)';
+                    }
+                    icon.style.transition = 'transform 0.3s ease';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
