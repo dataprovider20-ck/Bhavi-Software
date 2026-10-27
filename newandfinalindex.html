@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Space Technologies | Software Development & Digital Marketing</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap">
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+:root{--bg:#f8fafc;--ink:#0b2545;--muted:#475569;--line:#e2e8f0;--a:#0284c7;--b:#f5b301}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 "Plus Jakarta Sans",system-ui,-apple-system,sans-serif}
+a{color:inherit}img{max-width:100%;display:block;height:auto}ul{list-style:none;padding:0;margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}.narrow{max-width:720px}
+
+/* Header & Logo */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);box-shadow:0 4px 20px -10px rgba(2,132,199,0.1)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:14px;height:76px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo svg{flex-shrink:0;filter:drop-shadow(0 4px 6px rgba(2,132,199,0.2))}
+.logo-text{display:flex;flex-direction:column;line-height:1.1}
+.logo-text strong{font-size:22px;font-weight:800;color:#0b2545;letter-spacing:-0.02em}
+.logo-text em{font-size:13.5px;font-style:normal;font-weight:800;background:linear-gradient(90deg,#0284c7,#d99a00);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* Navigation */
+nav>ul{display:flex;gap:4px;align-items:center}
+nav li{position:relative}
+nav a{text-decoration:none}
+nav>ul>li>a{display:flex;align-items:center;gap:4px;padding:8px 12px;border-radius:8px;font-size:14px;font-weight:800;color:#1e293b;transition:0.2s}
+nav>ul>li>a:hover,nav>ul>li>a.on{background:#e0f2fe;color:var(--a)}
+.car{display:none;background:none;border:0;font-size:16px;cursor:pointer;color:var(--muted)}
+
+/* Dropdowns */
+.dd>ul{display:none;position:absolute;top:100%;left:0;min-width:260px;padding:8px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 20px 40px -10px rgba(15,23,42,0.1)}
+.dd:hover>ul,.dd:focus-within>ul{display:block}
+.dd:nth-last-child(-n+2)>ul{left:auto;right:0}
+.dd>ul a{display:block;padding:10px 14px;border-radius:8px;font-size:14px;color:#334155;font-weight:700}
+.dd>ul a:hover{background:#e0f2fe;color:var(--a)}
+
+/* Mobile Menu */
+#mb{display:none;background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 14px;font:inherit;font-weight:800;cursor:pointer;color:var(--a)}
+@media(max-width:1200px){
+  #mb{display:block}
+  nav{display:none;position:absolute;left:0;right:0;top:76px;background:#fff;border-bottom:1px solid var(--line);padding:10px 20px 20px;max-height:calc(100vh - 76px);overflow-y:auto;box-shadow:0 20px 40px rgba(0,0,0,0.1)}
+  nav.open{display:block}
+  nav>ul{flex-direction:column;align-items:stretch}
+  .dd{display:flex;flex-wrap:wrap;align-items:center}
+  .dd>a{flex:1}
+  .car{display:block;padding:10px 16px}
+  .dd>ul{position:static;width:100%;box-shadow:none;border:0;padding:0 0 10px 14px;border-left:2px solid #e0f2fe;margin-left:10px;border-radius:0}
+  .dd:hover>ul,.dd:focus-within>ul{display:none}
+  .dd.open>ul{display:block!important}
+}
+
+/* Layout & Typography */
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:44px;align-items:center;padding-top:60px;padding-bottom:40px}
+@media(max-width:860px){.hero{grid-template-columns:1fr;padding-top:30px}}
+.eyebrow{display:inline-flex;align-items:center;background:#fff;border:1px solid #fde68a;color:#9a6b00;font-weight:800;font-size:13px;padding:6px 16px;border-radius:99px;margin-bottom:20px}
+.eyebrow::before{content:"";display:block;width:8px;height:8px;border-radius:50%;background:#f5b301;margin-right:8px}
+h1{font-size:clamp(36px,5vw,58px);line-height:1.05;letter-spacing:-.03em;margin:0 0 16px;font-weight:800;color:#0b2545}
+h2{font-size:clamp(26px,3.5vw,38px);line-height:1.1;letter-spacing:-.02em;margin:0 0 12px;font-weight:800;color:#0b2545}
+h2::after{content:"";display:block;width:54px;height:4px;border-radius:4px;background:linear-gradient(90deg,#f5b301,#fcd34d);margin-top:12px}
+.band h2::after{display:none}
+.g{background:linear-gradient(90deg,#0369a1,#0ea5e9 60%,#38bdf8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hc p,.lead{font-size:18px;color:var(--muted);max-width:58ch;margin:0 0 28px}
+.himg{border-radius:26px;box-shadow:0 30px 60px -22px #0284c755;border:1px solid var(--line);width:100%}
+@media(prefers-reduced-motion:no-preference){ .himg{animation:fl 7s ease-in-out infinite} }
+@keyframes fl{0%,100%{transform:perspective(1100px) rotateY(-5deg) rotateX(2deg)}50%{transform:perspective(1100px) rotateY(-2deg) rotateX(1deg) translateY(-10px)}}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#fcd34d,#f5b301 55%,#e09f00);color:#3b2a00;padding:14px 28px;border-radius:99px;text-decoration:none;font-weight:800;font-size:15px;border:0;cursor:pointer;box-shadow:0 12px 26px -10px #e09f00;transition:0.2s}
+.btn::after{content:" \2192";margin-left:6px;transition:0.2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 32px -10px #e09f00}
+.btn:hover::after{transform:translateX(4px)}
+.btn.alt{background:#fff;color:#0369a1;border:1px solid #bae6fd;box-shadow:none;margin-left:12px}
+.btn.alt::after{display:none}
+.btn.alt:hover{border-color:var(--a);background:#f0f9ff}
+.btns{display:flex;flex-wrap:wrap;gap:12px}.btns .btn.alt{margin-left:0}
+
+/* Sections & Cards */
+.sec{padding-top:40px;padding-bottom:40px}
+.split{display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:center}
+.split img{border-radius:26px;border:1px solid #bae6fd;box-shadow:0 30px 50px -28px #0284c788;width:100%}
+.split p{color:var(--muted);font-size:17px;margin:0 0 16px}
+@media(max-width:860px){.split{grid-template-columns:1fr}}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-top:24px}
+.card{background:#ffffff;border:1px solid var(--line);border-radius:24px;padding:14px 14px 24px;text-decoration:none;transition:.3s;display:block}
+.card:hover{transform:translateY(-6px);border-color:#f5b301;box-shadow:0 26px 44px -22px rgba(2,132,199,0.3)}
+.card img{border-radius:16px;aspect-ratio:16/10;object-fit:cover;width:100%}
+.card h3{margin:18px 10px 6px;font-size:20px;font-weight:800;color:#0b2545}
+.card p{margin:0 10px;color:var(--muted);font-size:15px;line-height:1.6}
+
+.pt{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 24px 20px 58px;position:relative;font-weight:700;font-size:16px;color:#0b2545}
+.pt::before{content:"\2713";position:absolute;left:20px;top:20px;width:26px;height:26px;border-radius:50%;background:#fef3c7;color:#b45309;text-align:center;line-height:26px;font-size:14px;font-weight:800}
+
+/* Trust, Steps & Why */
+.trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;background:linear-gradient(120deg,#fff,#f0f9ff);border:1px solid #bae6fd;border-radius:26px;padding:30px;margin-top:20px}
+.tb{display:flex;gap:16px;align-items:center}.tb b{display:block;font-size:16px;color:#0b2545}.tb span{color:var(--muted);font-size:14px;line-height:1.5;display:block}
+.tb img{width:48px;height:48px}
+
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:24px}
+.steps li{counter-increment:s;background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#fcd34d,#f5b301);color:#3b2a00;font-weight:800;font-size:16px;margin-bottom:14px}
+.steps b{display:block;font-size:18px;color:#0b2545;margin-bottom:6px}.steps span{color:var(--muted);font-size:15px;line-height:1.6}
+
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:24px}
+.wc{border-radius:24px;padding:26px;border:1px solid transparent;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,#bae6fd,#fde68a) border-box}
+.wc img{width:56px;height:56px;margin-bottom:12px}
+.wc h3{margin:0 0 6px;font-size:18px;font-weight:800;color:#0b2545}
+.wc p{margin:0;color:var(--muted);font-size:15px;line-height:1.6}
+
+/* Chips & Forms */
+.chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.chips a,.chips span{background:#fff;border:1px solid var(--line);padding:10px 20px;border-radius:99px;text-decoration:none;font-size:14px;font-weight:700;color:#334155;transition:0.2s}
+.chips a:hover{border-color:#f5b301;color:#b45309;background:#fef3c7}
+.chips span{background:#f8fafc;border-color:#e2e8f0;color:#64748b}
+
+.band{background:linear-gradient(120deg,#e0f2fe,#fff7d6);border:1px solid #bae6fd;border-radius:28px;padding:40px;margin:40px 0;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
+.band h2{margin:0;border:0}
+.band h2::after{display:none}
+.band p{margin:8px 0 0;color:var(--muted);font-size:17px}
+
+.faq{max-width:860px;margin-top:24px}
+details{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 24px;margin-bottom:14px;transition:0.2s}
+details:hover{border-color:#bae6fd}
+summary{cursor:pointer;font-weight:800;font-size:17px;color:#0b2545;list-style:none;outline:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";float:right;color:#b45309;font-size:24px;line-height:1}
+details[open] summary::after{content:"\2212"}
+details p{margin:14px 0 0;color:var(--muted);line-height:1.6;font-size:15px}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+@media(max-width:860px){.two{grid-template-columns:1fr}}
+.enq{display:grid;gap:16px;background:#fff;border:1px solid var(--line);border-radius:24px;padding:30px;box-shadow:0 24px 50px -30px rgba(2,132,199,0.15)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:560px){.row{grid-template-columns:1fr}}
+input,select,textarea{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#f8fafc;color:var(--ink);font:inherit;font-size:15px;transition:0.2s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--a);background:#fff;box-shadow:0 0 0 3px #e0f2fe}
+.msg{margin:0;color:#059669;font-weight:700;display:none}
+.msg.show{display:block}
+
+.stat{display:flex;align-items:baseline;gap:14px;margin-bottom:16px}
+.stat b{font-size:86px;line-height:1;background:linear-gradient(90deg,#0284c7,#f5b301);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900}
+.stat span{font-size:22px;font-weight:800;color:#0b2545}
+
+/* Footer */
+footer{background:linear-gradient(180deg,#fff,#e0f2fe);border-top:1px solid var(--line);margin-top:60px;padding:60px 0 30px}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+@media(max-width:700px){.fg{grid-template-columns:1fr}}
+footer p{color:var(--muted);font-size:15px;line-height:1.6;max-width:320px;margin-top:16px}
+footer b{display:block;font-size:17px;font-weight:800;color:#0b2545;margin-bottom:16px}
+footer li{padding:6px 0}
+footer li a{text-decoration:none;color:#475569;font-size:15px;font-weight:600;transition:0.2s}
+footer li a:hover{color:#b45309}
+.copy{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #bae6fd;color:var(--muted);font-size:14px;font-weight:600}
+
+.fab{position:fixed;right:24px;bottom:24px;z-index:40;background:linear-gradient(135deg,#fcd34d,#f5b301);color:#3b2a00;text-decoration:none;font-weight:800;padding:14px 26px;border-radius:99px;box-shadow:0 14px 30px -10px #e09f00;transition:0.2s}
+.fab:hover{transform:translateY(-3px);box-shadow:0 18px 36px -10px #e09f00}
+
+/* Background Details */
+body{background:radial-gradient(900px 500px at 85% -5%,rgba(186,230,253,0.3),transparent 60%),radial-gradient(700px 420px at -5% 18%,rgba(253,230,138,0.25),transparent 55%),var(--bg);background-attachment:fixed}
+
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <!-- SVG Logo inlined to ensure it always renders -->
+    <a class="logo" href="#home">
+      <svg width="42" height="42" viewBox="0 0 48 48">
+        <radialGradient id="rg" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#bae6fd"/><stop offset=".45" stop-color="#0ea5e9"/><stop offset="1" stop-color="#075985"/></radialGradient>
+        <linearGradient id="lg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fcd34d"/><stop offset="1" stop-color="#d97706"/></linearGradient>
+        <ellipse cx="24" cy="44" rx="13" ry="2.6" fill="#0b2545" opacity=".18"/>
+        <g transform="rotate(-24 24 23)"><path d="M3 23A21 7.5 0 0 1 45 23" fill="none" stroke="url(#lg)" stroke-width="3.2" stroke-linecap="round" opacity=".55"/></g>
+        <circle cx="24" cy="23" r="13.5" fill="url(#rg)"/>
+        <ellipse cx="19" cy="16.5" rx="6" ry="3.4" fill="#fff" opacity=".45" transform="rotate(-30 19 16.5)"/>
+        <g transform="rotate(-24 24 23)"><path d="M3 23A21 7.5 0 0 0 45 23" fill="none" stroke="url(#lg)" stroke-width="3.6" stroke-linecap="round"/></g>
+      </svg>
+      <div class="logo-text"><strong>Space</strong><em>Technologies</em></div>
+    </a>
+    
+    <button id="mb" aria-expanded="false" aria-controls="nv">Menu ▾</button>
+    <nav id="nv" aria-label="Main">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        
+        <li class="dd"><a href="#software-development" data-group="software-development">Software Development ▾</a>
+          <button class="car" aria-expanded="false">▾</button>
+          <ul>
+            <li><a href="#software-development-react">React.js</a></li>
+            <li><a href="#software-development-angular">Angular</a></li>
+            <li><a href="#software-development-nodejs">Node.js</a></li>
+            <li><a href="#software-development-python">Python</a></li>
+            <li><a href="#software-development-java">Java</a></li>
+            <li><a href="#software-development-dotnet">.NET</a></li>
+            <li><a href="#software-development-php-laravel">PHP / Laravel</a></li>
+            <li><a href="#software-development-wordpress">WordPress</a></li>
+          </ul>
+        </li>
+        
+        <li class="dd"><a href="#application-development" data-group="application-development">App Development ▾</a>
+          <button class="car" aria-expanded="false">▾</button>
+          <ul>
+            <li><a href="#application-development-android">Android Apps</a></li>
+            <li><a href="#application-development-ios">iOS Apps</a></li>
+            <li><a href="#application-development-cross-platform">Cross-Platform Apps</a></li>
+            <li><a href="#application-development-web-apps">Web Applications</a></li>
+            <li><a href="#application-development-enterprise-apps">Enterprise Apps</a></li>
+          </ul>
+        </li>
+        
+        <li class="dd"><a href="#consulting" data-group="consulting">Consulting ▾</a>
+          <button class="car" aria-expanded="false">▾</button>
+          <ul>
+            <li><a href="#consulting-it-strategy">IT Strategy</a></li>
+            <li><a href="#consulting-cloud-devops">Cloud &amp; DevOps</a></li>
+            <li><a href="#consulting-architecture-review">Architecture Review</a></li>
+            <li><a href="#consulting-digital-transformation">Digital Transformation</a></li>
+          </ul>
+        </li>
+        
+        <li class="dd"><a href="#outsourcing" data-group="outsourcing">Outsourcing ▾</a>
+          <button class="car" aria-expanded="false">▾</button>
+          <ul>
+            <li><a href="#outsourcing-dedicated-developers">Dedicated Developers</a></li>
+            <li><a href="#outsourcing-part-time">Part-Time / Hourly</a></li>
+            <li><a href="#outsourcing-project-based">Project-Based</a></li>
+            <li><a href="#outsourcing-team-extension">Team Extension</a></li>
+          </ul>
+        </li>
+        
+        <li class="dd"><a href="#digital-marketing" data-group="digital-marketing">Digital Marketing ▾</a>
+          <button class="car" aria-expanded="false">▾</button>
+          <ul>
+            <li><a href="#digital-marketing-seo">SEO</a></li>
+            <li><a href="#digital-marketing-paid-ads">Paid Ads (PPC)</a></li>
+            <li><a href="#digital-marketing-social-media">Social Media</a></li>
+            <li><a href="#digital-marketing-content-email">Content &amp; Email</a></li>
+          </ul>
+        </li>
+        
+        <li class="dd"><a href="#careers" data-group="careers">Careers ▾</a>
+          <button class="car" aria-expanded="false">▾</button>
+          <ul>
+            <li><a href="#careers-open-positions">Open Positions</a></li>
+            <li><a href="#careers-life-at-space">Life at Space</a></li>
+            <li><a href="#careers-internships">Internships</a></li>
+          </ul>
+        </li>
+        
+        <li><a href="#contact" data-group="contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Dynamic Content Renders Here -->
+<main id="m"></main>
+
+<footer>
+  <div class="wrap fg">
+    <div>
+      <a class="logo" href="#home">
+        <svg width="36" height="36" viewBox="0 0 48 48">
+          <ellipse cx="24" cy="44" rx="13" ry="2.6" fill="#0b2545" opacity=".18"/>
+          <g transform="rotate(-24 24 23)"><path d="M3 23A21 7.5 0 0 1 45 23" fill="none" stroke="url(#lg)" stroke-width="3.2" stroke-linecap="round" opacity=".55"/></g>
+          <circle cx="24" cy="23" r="13.5" fill="url(#rg)"/>
+          <ellipse cx="19" cy="16.5" rx="6" ry="3.4" fill="#fff" opacity=".45" transform="rotate(-30 19 16.5)"/>
+          <g transform="rotate(-24 24 23)"><path d="M3 23A21 7.5 0 0 0 45 23" fill="none" stroke="url(#lg)" stroke-width="3.6" stroke-linecap="round"/></g>
+        </svg>
+        <div class="logo-text"><strong>Space</strong><em>Technologies</em></div>
+      </a>
+      <p>Building reliable enterprise software, mobile applications, and scaling businesses with data-driven digital marketing.</p>
+      
+      <div style="margin-top:20px;">
+        <p style="margin:4px 0; color:#0b2545;"><strong><span style="color:#0284c7;">📍</span> Head Office:</strong> 303 B, 3rd floor, Westend Mall, Janakpuri West, New Delhi 110058</p>
+        <p style="margin:4px 0; color:#0b2545;"><strong><span style="color:#0284c7;">📞</span> Phone:</strong> +91-8800927010</p>
+        <p style="margin:4px 0; color:#0b2545;"><strong><span style="color:#0284c7;">✉️</span> Email:</strong> chandrakar@spacetechnology.com</p>
+      </div>
+    </div>
+    <div>
+      <b>Services</b>
+      <ul>
+        <li><a href="#software-development">Software Development</a></li>
+        <li><a href="#application-development">App Development</a></li>
+        <li><a href="#consulting">Consulting Services</a></li>
+        <li><a href="#outsourcing">Outsourcing / Part Time</a></li>
+        <li><a href="#digital-marketing">Digital Marketing</a></li>
+      </ul>
+    </div>
+    <div>
+      <b>Company</b>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#how-we-work">How We Work</a></li>
+        <li><a href="#careers">Careers</a></li>
+        <li><a href="#contact-locations">Global Presence</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap">
+      <p class="copy">&copy; Space Technologies. All rights reserved.</p>
+  </div>
+</footer>
+
+<a class="fab" href="#contact-enquiry">Get Quote</a>
+
+<script>
+// Base64 SVGs for fast rendering without external requests
+const IMG = {
+  "trust-shield": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImIiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMwMjg0YzciLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmNWIzMDEiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48Y2lyY2xlIGN4PSI2MCIgY3k9IjYwIiByPSI1NiIgZmlsbD0idXJsKCNiKSIvPjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjUwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1vcGFjaXR5PSIuNSIgc3Ryb2tlLWRhc2hhcnJheT0iMyA1Ii8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjQgMjQpIHNjYWxlKC42KSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTYwIDE0bDM4IDE0djI4YzAgMjYtMTggNDItMzggNTBDNDAgOTggMjIgODIgMjIgNTZWMjh6Ii8+PHBvbHlsaW5lIHBvaW50cz0iNDIsNjAgNTYsNzQgODAsNDYiLz48L2c+PC9zdmc+",
+  "trust-clock": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImIiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMwZWE1ZTkiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmNWIzMDEiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48Y2lyY2xlIGN4PSI2MCIgY3k9IjYwIiByPSI1NiIgZmlsbD0idXJsKCNiKSIvPjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjUwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1vcGFjaXR5PSIuNSIgc3Ryb2tlLWRhc2hhcnJheT0iMyA1Ii8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjQgMjQpIHNjYWxlKC42KSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PGNpcmNsZSBjeD0iNjAiIGN5PSI2MCIgcj0iNDAiLz48cG9seWxpbmUgcG9pbnRzPSI2MCwzNCA2MCw2MCA4MCw3MCIvPjwvZz48L3N2Zz4=",
+  "trust-team": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImIiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMwMzY5YTEiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmNWIzMDEiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48Y2lyY2xlIGN4PSI2MCIgY3k9IjYwIiByPSI1NiIgZmlsbD0idXJsKCNiKSIvPjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjUwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1vcGFjaXR5PSIuNSIgc3Ryb2tlLWRhc2hhcnJheT0iMyA1Ii8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjQgMjQpIHNjYWxlKC42KSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PGNpcmNsZSBjeD0iNjAiIGN5PSIzOCIgcj0iMTQiLz48cGF0aCBkPSJNMzIgOThhMjggMjggMCAwIDEgNTYgMCIvPjxjaXJjbGUgY3g9IjIyIiBjeT0iNTQiIHI9IjkiLz48Y2lyY2xlIGN4PSI5OCIgY3k9IjU0IiByPSI5Ii8+PC9nPjwvc3ZnPg==",
+  "trust-chat": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImIiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMzOGJkZjgiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmNWIzMDEiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48Y2lyY2xlIGN4PSI2MCIgY3k9IjYwIiByPSI1NiIgZmlsbD0idXJsKCNiKSIvPjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjUwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1vcGFjaXR5PSIuNSIgc3Ryb2tlLWRhc2hhcnJheT0iMyA1Ii8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjQgMjQpIHNjYWxlKC42KSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTE4IDI4aDg0djUySDU0bC0yMiAxOFY4MEgxOHoiLz48L2c+PC9zdmc+",
+  "ic-code": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTBmMmZlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmN2Q2Ii8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMzhiZGY4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDM2OWExIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnMiIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZjZDM0ZCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2UwOWYwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxlbGxpcHNlIGN4PSI2MCIgY3k9IjEwNi4wOCIgcng9IjQyLjAiIHJ5PSI3LjU2IiBmaWxsPSIjMGIyNTQ1IiBvcGFjaXR5PSIuMTQiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjIwLjIzMiIgd2lkdGg9Ijg0IiBoZWlnaHQ9Ijg0IiByeD0iMjEuODQiIGZpbGw9IiMwYzRhNmUiLz48cmVjdCB4PSIxOC4wIiB5PSIxMi4wIiB3aWR0aD0iODQiIGhlaWdodD0iODQiIHJ4PSIyMS44NCIgZmlsbD0idXJsKCN0ZykiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjE2LjIiIHdpZHRoPSI3Mi4yNCIgaGVpZ2h0PSIzMC4yNCIgcng9IjE3LjQ3MiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjIiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyOS43NiAyMy43Nikgc2NhbGUoMC41MDQpIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNi43IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwb2x5bGluZSBwb2ludHM9IjQyLDM4IDIwLDYwIDQyLDgyIi8+PHBvbHlsaW5lIHBvaW50cz0iNzgsMzggMTAwLDYwIDc4LDgyIi8+PGxpbmUgeDE9IjY4IiB5MT0iMzAiIHgyPSI1MiIgeTI9IjkwIi8+PC9nPjwvc3ZnPg==",
+  "ic-shield": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTBmMmZlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmN2Q2Ii8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMzhiZGY4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDM2OWExIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnMiIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZjZDM0ZCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2UwOWYwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxlbGxpcHNlIGN4PSI2MCIgY3k9IjEwNi4wOCIgcng9IjQyLjAiIHJ5PSI3LjU2IiBmaWxsPSIjMGIyNTQ1IiBvcGFjaXR5PSIuMTQiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjIwLjIzMiIgd2lkdGg9Ijg0IiBoZWlnaHQ9Ijg0IiByeD0iMjEuODQiIGZpbGw9IiMwYzRhNmUiLz48cmVjdCB4PSIxOC4wIiB5PSIxMi4wIiB3aWR0aD0iODQiIGhlaWdodD0iODQiIHJ4PSIyMS44NCIgZmlsbD0idXJsKCN0ZykiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjE2LjIiIHdpZHRoPSI3Mi4yNCIgaGVpZ2h0PSIzMC4yNCIgcng9IjE3LjQ3MiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjIiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyOS43NiAyMy43Nikgc2NhbGUoMC41MDQpIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNi43IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik02MCAxNGwzOCAxNHYyOGMwIDI2LTE4IDQyLTM4IDUwQzQwIDk4IDIyIDgyIDIyIDU2VjI4eiIvPjxwb2x5bGluZSBwb2ludHM9IjQyLDYwIDU2LDc0IDgwLDQ2Ii8+PC9nPjwvc3ZnPg==",
+  "ic-clock": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTBmMmZlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmN2Q2Ii8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMzhiZGY4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDM2OWExIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnMiIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZjZDM0ZCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2UwOWYwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxlbGxpcHNlIGN4PSI2MCIgY3k9IjEwNi4wOCIgcng9IjQyLjAiIHJ5PSI3LjU2IiBmaWxsPSIjMGIyNTQ1IiBvcGFjaXR5PSIuMTQiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjIwLjIzMiIgd2lkdGg9Ijg0IiBoZWlnaHQ9Ijg0IiByeD0iMjEuODQiIGZpbGw9IiMwYzRhNmUiLz48cmVjdCB4PSIxOC4wIiB5PSIxMi4wIiB3aWR0aD0iODQiIGhlaWdodD0iODQiIHJ4PSIyMS44NCIgZmlsbD0idXJsKCN0ZykiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjE2LjIiIHdpZHRoPSI3Mi4yNCIgaGVpZ2h0PSIzMC4yNCIgcng9IjE3LjQ3MiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjIiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyOS43NiAyMy43Nikgc2NhbGUoMC41MDQpIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNi43IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxjaXJjbGUgY3g9IjYwIiBjeT0iNj0iIHI9IjQwIi8+PHBvbHlsaW5lIHBvaW50cz0iNjAsMzQgNjAsNjAgODAsNzAiLz48L2c+PC9zdmc+",
+  "ic-chat": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTBmMmZlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmN2Q2Ii8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMzhiZGY4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDM2OWExIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnMiIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZjZDM0ZCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2UwOWYwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxlbGxpcHNlIGN4PSI2MCIgY3k9IjEwNi4wOCIgcng9IjQyLjAiIHJ5PSI3LjU2IiBmaWxsPSIjMGIyNTQ1IiBvcGFjaXR5PSIuMTQiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjIwLjIzMiIgd2lkdGg9Ijg0IiBoZWlnaHQ9Ijg0IiByeD0iMjEuODQiIGZpbGw9IiMwYzRhNmUiLz48cmVjdCB4PSIxOC4wIiB5PSIxMi4wIiB3aWR0aD0iODQiIGhlaWdodD0iODQiIHJ4PSIyMS44NCIgZmlsbD0idXJsKCN0ZykiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjE2LjIiIHdpZHRoPSI3Mi4yNCIgaGVpZ2h0PSIzMC4yNCIgcng9IjE3LjQ3MiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjIiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyOS43NiAyMy43Nikgc2NhbGUoMC41MDQpIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNi43IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0xOCAyOGg4NHY1Mkg1NGwtMjIgMThWODBIMTh6Ii8+PC9nPjwvc3ZnPg==",
+  "ic-team": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTBmMmZlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmN2Q2Ii8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMzhiZGY4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDM2OWExIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnMiIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZjZDM0ZCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2UwOWYwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxlbGxpcHNlIGN4PSI2MCIgY3k9IjEwNi4wOCIgcng9IjQyLjAiIHJ5PSI3LjU2IiBmaWxsPSIjMGIyNTQ1IiBvcGFjaXR5PSIuMTQiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjIwLjIzMiIgd2lkdGg9Ijg0IiBoZWlnaHQ9Ijg0IiByeD0iMjEuODQiIGZpbGw9IiMwYzRhNmUiLz48cmVjdCB4PSIxOC4wIiB5PSIxMi4wIiB3aWR0aD0iODQiIGhlaWdodD0iODQiIHJ4PSIyMS44NCIgZmlsbD0idXJsKCN0ZykiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjE2LjIiIHdpZHRoPSI3Mi4yNCIgaGVpZ2h0PSIzMC4yNCIgcng9IjE3LjQ3MiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjIiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyOS43NiAyMy43Nikgc2NhbGUoMC41MDQpIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNi43IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxjaXJjbGUgY3g9IjYwIiBjeT0iMzgiIHI9IjE0Ii8+PHBhdGggZD0iTTMyIDk4YTI4IDI4IDAgMCAxIDU2IDAiLz48Y2lyY2xlIGN4PSIyMiIgY3k9IjU0IiByPSI5Ii8+PGNpcmNsZSBjeD0iOTgiIGN5PSI1NCIgcj0iOSIvPjwvZz48L3N2Zz4=",
+  "ic-phone": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTBmMmZlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmN2Q2Ii8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMzhiZGY4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDM2OWExIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnMiIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZjZDM0ZCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2UwOWYwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxlbGxpcHNlIGN4PSI2MCIgY3k9IjEwNi4wOCIgcng9IjQyLjAiIHJ5PSI3LjU2IiBmaWxsPSIjMGIyNTQ1IiBvcGFjaXR5PSIuMTQiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjIwLjIzMiIgd2lkdGg9Ijg0IiBoZWlnaHQ9Ijg0IiByeD0iMjEuODQiIGZpbGw9IiMwYzRhNmUiLz48cmVjdCB4PSIxOC4wIiB5PSIxMi4wIiB3aWR0aD0iODQiIGhlaWdodD0iODQiIHJ4PSIyMS44NCIgZmlsbD0idXJsKCN0ZykiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjE2LjIiIHdpZHRoPSI3Mi4yNCIgaGVpZ2h0PSIzMC4yNCIgcng9IjE3LjQ3MiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjIiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyOS43NiAyMy43Nikgc2NhbGUoMC41MDQpIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNi43IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxyZWN0IHg9IjM4IiB5PSIxNCIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjkyIiByeD0iMTAiLz48bGluZSB4MT0iNTQiIHkxPSI5NCIgeDI9IjY2IiB5Mj0iOTQiLz48L2c+PC9zdmc+",
+  "ic-browser": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTBmMmZlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmN2Q2Ii8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMzhiZGY4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDM2OWExIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnMiIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZjZDM0ZCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2UwOWYwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxlbGxpcHNlIGN4PSI2MCIgY3k9IjEwNi4wOCIgcng9IjQyLjAiIHJ5PSI3LjU2IiBmaWxsPSIjMGIyNTQ1IiBvcGFjaXR5PSIuMTQiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjIwLjIzMiIgd2lkdGg9Ijg0IiBoZWlnaHQ9Ijg0IiByeD0iMjEuODQiIGZpbGw9IiMwYzRhNmUiLz48cmVjdCB4PSIxOC4wIiB5PSIxMi4wIiB3aWR0aD0iODQiIGhlaWdodD0iODQiIHJ4PSIyMS44NCIgZmlsbD0idXJsKCN0ZykiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjE2LjIiIHdpZHRoPSI3Mi4yNCIgaGVpZ2h0PSIzMC4yNCIgcng9IjE3LjQ3MiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjIiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyOS43NiAyMy43Nikgc2NhbGUoMC41MDQpIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNi43IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxyZWN0IHg9IjE0IiB5PSIyNiIgd2lkdGg9IjkyIiBoZWlnaHQ9IjY4IiByeD0iOCIvPjxsaW5lIHgxPSIxNCIgeTE9IjQ0IiB4Mj0iMTA2IiB5Mj0iNDQiLz48L2c+PC9zdmc+",
+  "ic-cloud": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTBmMmZlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmN2Q2Ii8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMzhiZGY4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDM2OWExIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnMiIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZjZDM0ZCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2UwOWYwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxlbGxpcHNlIGN4PSI2MCIgY3k9IjEwNi4wOCIgcng9IjQyLjAiIHJ5PSI3LjU2IiBmaWxsPSIjMGIyNTQ1IiBvcGFjaXR5PSIuMTQiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjIwLjIzMiIgd2lkdGg9Ijg0IiBoZWlnaHQ9Ijg0IiByeD0iMjEuODQiIGZpbGw9IiMwYzRhNmUiLz48cmVjdCB4PSIxOC4wIiB5PSIxMi4wIiB3aWR0aD0iODQiIGhlaWdodD0iODQiIHJ4PSIyMS44NCIgZmlsbD0idXJsKCN0ZykiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjE2LjIiIHdpZHRoPSI3Mi4yNCIgaGVpZ2h0PSIzMC4yNCIgcng9IjE3LjQ3MiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjIiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyOS43NiAyMy43Nikgc2NhbGUoMC41MDQpIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNi43IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0zNCA4OGg1NGEyMCAyMCAwIDAgMCAyLTQwIDI4IDI4IDAgMCAwLTU0IDYgMTcgMTcgMCAwIDAtMiAzNHoiLz48L2c+PC9zdmc+",
+  "ic-rocket": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTBmMmZlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmN2Q2Ii8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMzhiZGY4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDM2OWExIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnMiIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZjZDM0ZCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2UwOWYwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxlbGxpcHNlIGN4PSI2MCIgY3k9IjEwNi4wOCIgcng9IjQyLjAiIHJ5PSI3LjU2IiBmaWxsPSIjMGIyNTQ1IiBvcGFjaXR5PSIuMTQiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjIwLjIzMiIgd2lkdGg9Ijg0IiBoZWlnaHQ9Ijg0IiByeD0iMjEuODQiIGZpbGw9IiMwYzRhNmUiLz48cmVjdCB4PSIxOC4wIiB5PSIxMi4wIiB3aWR0aD0iODQiIGhlaWdodD0iODQiIHJ4PSIyMS44NCIgZmlsbD0idXJsKCN0ZykiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjE2LjIiIHdpZHRoPSI3Mi4yNCIgaGVpZ2h0PSIzMC4yNCIgcng9IjE3LjQ3MiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjIiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyOS43NiAyMy43Nikgc2NhbGUoMC41MDQpIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNi43IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik02MCAxNGMyMCAxNCAyNiA0NCAxNCA3Mkg0NkMzNCA1OCA0MCAyOCA2MCAxNHoiLz48Y2lyY2xlIGN4PSI2MCIgY3k9IjQ2IiByPSI4Ii8+PHBhdGggZD0iTTQ2IDcwTDI4IDkwbDQtMjZNNzQgNzBsMTggMjAtNC0yNiIvPjwvZz48L3N2Zz4=",
+  "ic-search": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTBmMmZlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmN2Q2Ii8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMzhiZGY4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDM2OWExIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnMiIgeDE9AiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZjZDM0ZCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2UwOWYwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxlbGxpcHNlIGN4PSI2MCIgY3k9IjEwNi4wOCIgcng9IjQyLjAiIHJ5PSI3LjU2IiBmaWxsPSIjMGIyNTQ1IiBvcGFjaXR5PSIuMTQiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjIwLjIzMiIgd2lkdGg9Ijg0IiBoZWlnaHQ9Ijg0IiByeD0iMjEuODQiIGZpbGw9IiMwYzRhNmUiLz48cmVjdCB4PSIxOC4wIiB5PSIxMi4wIiB3aWR0aD0iODQiIGhlaWdodD0iODQiIHJ4PSIyMS44NCIgZmlsbD0idXJsKCN0ZykiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjE2LjIiIHdpZHRoPSI3Mi4yNCIgaGVpZ2h0PSIzMC4yNCIgcng9IjE3LjQ3MiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjIiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyOS43NiAyMy43Nikgc2NhbGUoMC41MDQpIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNi43IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxjaXJjbGUgY3g9IjUyIiBjeT0iNTIiIHI9IjI4Ii8+PGxpbmUgeDE9IjczIiB5MT0iNzMiIHgyPSIxMDAiIHkyPSIxMDAiLz48L2c+PC9zdmc+",
+  "ic-megaphone": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTBmMmZlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmN2Q2Ii8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMzhiZGY4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDM2OWExIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnMiIgeDE9AiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZjZDM0ZCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2UwOWYwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxlbGxpcHNlIGN4PSI2MCIgY3k9IjEwNi4wOCIgcng9IjQyLjAiIHJ5PSI3LjU2IiBmaWxsPSIjMGIyNTQ1IiBvcGFjaXR5PSIuMTQiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjIwLjIzMiIgd2lkdGg9Ijg0IiBoZWlnaHQ9Ijg0IiByeD0iMjEuODQiIGZpbGw9IiMwYzRhNmUiLz48cmVjdCB4PSIxOC4wIiB5PSIxMi4wIiB3aWR0aD0iODQiIGhlaWdodD0iODQiIHJ4PSIyMS44NCIgZmlsbD0idXJsKCN0ZykiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjE2LjIiIHdpZHRoPSI3Mi4yNCIgaGVpZ2h0PSIzMC4yNCIgcng9IjE3LjQ3MiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjIiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyOS43NiAyMy43Nikgc2NhbGUoMC41MDQpIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNi43IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0yMiA1MHYyMmgxNmwzNiAyMFYzMEwzOCA1MHoiLz48cGF0aCBkPSJNOTAgNDZhMTggMTggMCAwIDEgMCAzMCIvPjwvZz48L3N2Zz4=",
+  "ic-growth": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTBmMmZlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmN2Q2Ii8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMzhiZGY4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDM2OWExIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnMiIgeDE9AiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZjZDM0ZCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2UwOWYwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxlbGxpcHNlIGN4PSI2MCIgY3k9IjEwNi4wOCIgcng9IjQyLjAiIHJ5PSI3LjU2IiBmaWxsPSIjMGIyNTQ1IiBvcGFjaXR5PSIuMTQiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjIwLjIzMiIgd2lkdGg9Ijg0IiBoZWlnaHQ9Ijg0IiByeD0iMjEuODQiIGZpbGw9IiMwYzRhNmUiLz48cmVjdCB4PSIxOC4wIiB5PSIxMi4wIiB3aWR0aD0iODQiIGhlaWdodD0iODQiIHJ4PSIyMS44NCIgZmlsbD0idXJsKCN0ZykiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjE2LjIiIHdpZHRoPSI3Mi4yNCIgaGVpZ2h0PSIzMC4yNCIgcng9IjE3LjQ3MiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjIiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyOS43NiAyMy43Nikgc2NhbGUoMC41MDQpIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNi43IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwb2x5bGluZSBwb2ludHM9IjE2LDkyIDQ0LDYyIDY0LDc2IDEwNCwzMCIvPjxwb2x5bGluZSBwb2ludHM9IjgyLDMwIDEwNCwzMCAxMDQsNTIiLz48L2c+PC9zdmc+",
+  "ic-doc": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTBmMmZlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmN2Q2Ii8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMzhiZGY4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDM2OWExIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnMiIgeDE9AiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZjZDM0ZCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2UwOWYwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxlbGxpcHNlIGN4PSI2MCIgY3k9IjEwNi4wOCIgcng9IjQyLjAiIHJ5PSI3LjU2IiBmaWxsPSIjMGIyNTQ1IiBvcGFjaXR5PSIuMTQiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjIwLjIzMiIgd2lkdGg9Ijg0IiBoZWlnaHQ9Ijg0IiByeD0iMjEuODQiIGZpbGw9IiMwYzRhNmUiLz48cmVjdCB4PSIxOC4wIiB5PSIxMi4wIiB3aWR0aD0iODQiIGhlaWdodD0iODQiIHJ4PSIyMS44NCIgZmlsbD0idXJsKCN0ZykiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjE2LjIiIHdpZHRoPSI3Mi4yNCIgaGVpZ2h0PSIzMC4yNCIgcng9IjE3LjQ3MiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjIiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyOS43NiAyMy43Nikgc2NhbGUoMC41MDQpIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNi43IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0zNCAxNmgzNmwyMCAyMHY2OEgzNHoiLz48bGluZSB4MT0iNDYiIHkxPSI2MiIgeDI9Ijc4IiB5Mj0iNjIiLz48bGluZSB4MT0iNDYiIHkxPSI4MCIgeDI9Ijc4IiB5Mj0iODAiLz48L2c+PC9zdmc+",
+  "ic-cap": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTBmMmZlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmN2Q2Ii8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMzhiZGY4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDM2OWExIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnMiIgeDE9AiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZjZDM0ZCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2UwOWYwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxlbGxpcHNlIGN4PSI2MCIgY3k9IjEwNi4wOCIgcng9IjQyLjAiIHJ5PSI3LjU2IiBmaWxsPSIjMGIyNTQ1IiBvcGFjaXR5PSIuMTQiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjIwLjIzMiIgd2lkdGg9Ijg0IiBoZWlnaHQ9Ijg0IiByeD0iMjEuODQiIGZpbGw9IiMwYzRhNmUiLz48cmVjdCB4PSIxOC4wIiB5PSIxMi4wIiB3aWR0aD0iODQiIGhlaWdodD0iODQiIHJ4PSIyMS44NCIgZmlsbD0idXJsKCN0ZykiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjE2LjIiIHdpZHRoPSI3Mi4yNCIgaGVpZ2h0PSIzMC4yNCIgcng9IjE3LjQ3MiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjIiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyOS43NiAyMy43Nikgc2NhbGUoMC41MDQpIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNi43IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwb2x5Z29uIHBvaW50cz0iNjAsMjYgMTQsNDggNjAsNzAgMTA2LDQ4Ii8+PHBhdGggZD0iTTM0IDYwdjIyYzE2IDEyIDM2IDEyIDUyIDBWNjAiLz48L2c+PC9zdmc+",
+  "ic-blocks": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTBmMmZlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmN2Q2Ii8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMzhiZGY4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDM2OWExIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnMiIgeDE9AiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZjZDM0ZCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2UwOWYwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxlbGxpcHNlIGN4PSI2MCIgY3k9IjEwNi4wOCIgcng9IjQyLjAiIHJ5PSI3LjU2IiBmaWxsPSIjMGIyNTQ1IiBvcGFjaXR5PSIuMTQiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjIwLjIzMiIgd2lkdGg9Ijg0IiBoZWlnaHQ9Ijg0IiByeD0iMjEuODQiIGZpbGw9IiMwYzRhNmUiLz48cmVjdCB4PSIxOC4wIiB5PSIxMi4wIiB3aWR0aD0iODQiIGhlaWdodD0iODQiIHJ4PSIyMS44NCIgZmlsbD0idXJsKCN0ZykiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjE2LjIiIHdpZHRoPSI3Mi4yNCIgaGVpZ2h0PSIzMC4yNCIgcng9IjE3LjQ3MiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjIiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyOS43NiAyMy43Nikgc2NhbGUoMC41MDQpIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNi43IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxyZWN0IHg9IjE4IiB5PSI2MiIgd2lkdGg9IjM4IiBoZWlnaHQ9IjM4Ii8+PHJlY3QgeD0iNjQiIHk9IjYyIiB3aWR0aD0iMzgiIGhlaWdodD0iMzgiLz48cmVjdCB4PSI0MSIgeT0iMTgiIHdpZHRoPSIzOCIgaGVpZ2h0PSIzOCIvPjwvZz48L3N2Zz4=",
+  "ic-gear": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTBmMmZlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmN2Q2Ii8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMzhiZGY4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDM2OWExIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnMiIgeDE9AiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZjZDM0ZCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2UwOWYwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxlbGxpcHNlIGN4PSI2MCIgY3k9IjEwNi4wOCIgcng9IjQyLjAiIHJ5PSI3LjU2IiBmaWxsPSIjMGIyNTQ1IiBvcGFjaXR5PSIuMTQiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjIwLjIzMiIgd2lkdGg9Ijg0IiBoZWlnaHQ9Ijg0IiByeD0iMjEuODQiIGZpbGw9IiMwYzRhNmUiLz48cmVjdCB4PSIxOC4wIiB5PSIxMi4wIiB3aWR0aD0iODQiIGhlaWdodD0iODQiIHJ4PSIyMS44NCIgZmlsbD0idXJsKCN0ZykiLz48cmVjdCB4PSIyMy44ODAwMDAwMDAwMDAwMDMiIHk9IjE2LjIiIHdpZHRoPSI3Mi4yNCIgaGVpZ2h0PSIzMC4yNCIgcng9IjE3LjQ3MiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjIiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyOS43NiAyMy43Nikgc2NhbGUoMC41MDQpIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNi43IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjE2Ii8+PGNpcmNsZSBjeD0iNjAiIGN5PSI2MCIgcj0iMzgiIHN0cm9rZS1kYXNoYXJyYXk9IjE0IDkiLz48L2c+PC9zdmc+",
+
+  // Reusable Template Data keys
+  "home-hero": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNDAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkJ1aWxkLiBMYXVuY2guIEdyb3cuIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTBmMmZlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmN2Q2Ii8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMzhiZGY4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDM2OWExIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnMiIgeDE9AiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZjZDM0ZCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2UwOWYwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSI2NDAiIGhlaWdodD0iNDAwIiBmaWxsPSJ1cmwoI2JnKSIvPjxjaXJjbGUgY3g9IjU3MCIgY3k9IjUwIiByPSI5NSIgZmlsbD0iIzM4YmRmOCIgb3BhY2l0eT0iLjE0Ii8+PGNpcmNsZSBjeD0iNDAiIGN5PSIzNjAiIHI9IjgwIiBmaWxsPSIjZjViMzAxIiBvcGFjaXR5PSIuMjQiLz48cmVjdCB4PSI0MCIgeT0iNTYiIHdpZHRoPSIzMDAiIGhlaWdodD0iMjMyIiByeD0iMjAiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2Q2ZTZmNSIvPjxjaXJjbGUgY3g9IjY2IiBjeT0iODIiIHI9IjUiIGZpbGw9IiNmODcxNzEiLz48Y2lyY2xlIGN4PSI4NCIgY3k9IjgyIiByPSI1IiBmaWxsPSIjZmJiZjI0Ii8+PGNpcmNsZSBjeD0iMTAyIiBjeT0iODIiIHI9IjUiIGZpbGw9IiMzNGQzOTkiLz48cmVjdCB4PSI2NiIgeT0iMTEwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjEwIiByeD0iNSIgZmlsbD0iIzBlYTVlOSIvPjxyZWN0IHg9IjY2IiB5PSIxMzYiIHdpZHRoPSIyMzAiIGhlaWdodD0iOSIgcng9IjQuNSIgZmlsbD0iI2NiZDVlMSIvPjxyZWN0IHg9IjY2IiB5PSIxNTgiIHdpZHRoPSIyMDAiIGhlaWdodD0iOSIgcng9IjQuNSIgZmlsbD0iI2NiZDVlMSIvPjxyZWN0IHg9IjY2IiB5PSIxODAiIHdpZHRoPSIyMTQiIGhlaWdodD0iOSIgcng9IjQuNSIgZmlsbD0iI2UyZThmMCIvPjxyZWN0IHg9IjY2IiB5PSIyMTQiIHdpZHRoPSIxMDAiIGhlaWdodD0iMzIiIHJ4PSIxNiIgZmlsbD0iI2Y1YjMwMSIvPjxlbGxpcHNlIGN4PSI0NzAiIGN5PSIyNzUuNCIgcng9Ijg1LjAiIHJ5PSIxNS4yOTk5OTk5OTk5OTk5OTkiIGZpbGw9IiMwYjI1NDUiIG9wYWNpdHk9Ii4xNCIvPjxyZWN0IHg9IjM5Ni45IiB5PSIxMDEuNjYiIHdpZHRoPSIxNzAiIGhlaWdodD0iMTcwIiByeD0iNDQuMiIgZmlsbD0iIzBjNGE2ZSIvPjxyZWN0IHg9IjM4NS4wIiB5PSI4NS4wIiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjE3MCIgcng9IjQ0LjIiIGZpbGw9InVybCgjdGcpIi8+PHJlY3QgeD0iMzk2LjkiIHk9IjkzLjUiIHdpZHRoPSIxNDYuMiIgaGVpZ2h0PSI2MS4xOTk5OTk5OTk5OTk5OTYiIHJ4PSIzNS4zNjAwMDAwMDAwMDAwMSIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjIiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MDguOCAxMDguODAwMDAwMDAwMDAwMDEpIHNjYWxlKDEuMDIpIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNNjAgMTRjMjAgMTQgMjYgNDQgMTQgNzJINDZDMzQgNTggNDAgMjggNjAgMTR6Ii8+PGNpcmNsZSBjeD0iNjAiIGN5PSI0NiIgcj0iOCIvPjxwYXRoIGQ9Ik00NiA3MEwyOCA5MGw0LTI2TTc0IDcwbDE4IDIwLTQtMjYiLz48L2c+PHJlY3QgeD0iNDAiIHk9IjMyMiIgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MiIgcng9IjIxIiBmaWxsPSIjZmZmIiBzdHJva2U9IiNkNmU2ZjUiLz48Y2lyY2xlIGN4PSI2NCIgY3k9IjM0MyIgcj0iNyIgZmlsbD0iI2Y1YjMwMSIvPjx0ZXh0IHg9IjgwIiB5PSIzNDkiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzBiMjU0NSI+QnVpbGQuIExhdW5jaC4gR3Jvdy48L3RleHQ+PC9zdmc+",
+  "s-software-development": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNDAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlNvZnR3YXJlIERldmVsb3BtZW50Ij48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTBmMmZlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmN2Q2Ii8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMzhiZGY4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDM2OWExIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InRnMiIgeDE9AiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZjZDM0ZCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2UwOWYwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSI2NDAiIGhlaWdodD0iNDAwIiBmaWxsPSJ1cmwoI2JnKSIvPjxjaXJjbGUgY3g9IjU3MCIgY3k9IjUwIiByPSI5NSIgZmlsbD0iIzM4YmRmOCIgb3BhY2l0eT0iLjE0Ii8+PGNpcmNsZSBjeD0iNDAiIGN5PSIzNjAiIHI9IjgwIiBmaWxsPSIjZjViMzAxIiBvcGFjaXR5PSIuMjQiLz48cmVjdCB4PSI0MCIgeT0iNTYiIHdpZHRoPSIzMDAiIGhlaWdodD0iMjMyIiByeD0iMjAiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2Q2ZTZmNSIvPjxjaXJjbGUgY3g9IjY2IiBjeT0iODIiIHI9IjUiIGZpbGw9IiNmODcxNzEiLz48Y2lyY2xlIGN4PSI4NCIgY3k9IjgyIiByPSI1IiBmaWxsPSIjZmJiZjI0Ii8+PGNpcmNsZSBjeD0iMTAyIiBjeT0iODIiIHI9IjUiIGZpbGw9IiMzNGQzOTkiLz48cmVjdCB4PSI2NiIgeT0iMTEwIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjkiIHJ4PSI0LjUiIGZpbGw9IiMwZWE1ZTkiIG9wYWNpdHk9Ii44NSIvPjxyZWN0IHg9Ijg2IiB5PSIxMzIiIHdpZHRoPSIxNzAiIGhlaWdodD0iOSIgcng9IjQuNSIgZmlsbD0iI2Y1YjMwMSIgb3BhY2l0eT0iLjg1Ii8+PHJlY3QgeD0iODYiIHk9IxU0IiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjkiIHJ4PSI0LjUiIGZpbGw9IiM5NGEzYjgiIG9wYWNpdHk9Ii44NSIvPjxyZWN0IHg9IjEwNiIgeT0iMTc2IiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjkiIHJ4PSI0LjUiIGZpbGw9IiMwZWE1ZTkiIG9wYWNpdHk9Ii44NSIvPjxyZWN0IHg9IjEwNiIgeT0iMTk4IiB3aWR0aD0iOTAiIGhlaWdodD0iOSIgcng9IjQuNSIgZmlsbD0iI2Y1YjMwMSIgb3BhY2l0eT0iLjg1Ii8+PHJlY3QgeD0iODYiIHk9IjIyMCIgd2lkdGg9IjEzMCIgaGVpZ2h0PSI5IiByeD0iNC41IiBmaWxsPSIjOTRhM2I4IiBvcGFjaXR5PSIuODUiLz48cmVjdCB4PSI2NiIgeT0iMjQyIiB3aWR0aD0iNjAiIGhlaWdodD0iOSIgcng9IjQuNSIgZmlsbD0iIzBlYTVlOSIgb3BhY2l0eT0iLjg1Ii8+PGVsbGlwc2UgY3g9IjQ3MCIgY3k9IjI3NS40IiByeD0iODUuMCIgcnk9IjE1LjI5OTk5OTk5OTk5OTk5OSIgZmlsbD0iIzBiMjU0NSIgb3BhY2l0eT0iLjE0Ii8+PHJlY3QgeD0iMzk2LjkiIHk9IjEwMS42NiIgd2lkdGg9IjE3MCIgaGVpZ2h0PSIxNzAiIHJ4PSI0NC4yIiBmaWxsPSIjMGM0YTZlIi8+PHJlY3QgeD0iMzg1LjAiIHk9Ijg1LjAiIHdpZHRoPSIxNzAiIGhlaWdodD0iMTcwIiByeD0iNDQuMiIgZmlsbD0idXJsKCN0ZykiLz48cmVjdCB4PSIzOTYuOSIgeT0iOTMuNSIgd2lkdGg9IjE0Ni4yIiBoZWlnaHQ9IjYxLjE5OTk5OTk5OTk5OTk5NiIgcng9IjM1LjM2MDAwMDAwMDAwMDAxIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuMiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQwOC44IDEwOC44MDAwMDAwMDAwMDAwMSkgc2NhbGUoMS4wMikiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwb2x5bGluZSBwb2ludHM9IjQyLDM4IDIwLDYwIDQyLDgyIi8+PHBvbHlsaW5lIHBvaW50cz0iNzgsMzggMTAwLDYwIDc4LDgyIi8+PGxpbmUgeDE9IjY4IiB5MT0iMzAiIHgyPSI1MiIgeTI9IjkwIi8+PC9nPjxyZWN0IHg9IjQwIiB5PSIzMjIiIHdpZHRoPSIyNDAiIGhlaWdodD0iNDIiIHJ4PSIyMSIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjZDZlNmY1Ii8+PGNpcmNsZSBjeD0iNjQiIGN5PSIzNDMiIHI9IjciIGZpbGw9IiNmNWIzMDEiLz48dGV4dCB4PSI4MCIgeT0iMzQ5IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTciIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMwYjI1NDUiPlNvZnR3YXJlIERldmVsb3BtZW50PC90ZXh0Pjwvc3ZnPg=="
+};
+
+// Complete Content Map Generator to prevent JSON parsing issues
+const P = {};
+
+function addPage(id, tab, subTab, title, desc, iconKey, contentText, benefitsList) {
+  let isHome = id === "home";
+  
+  let headerHtml = `
+    <section class="hero wrap">
+      <div class="hc">
+        <span class="eyebrow">${tab}</span>
+        <h1>${title}</h1>
+        <p>${desc}</p>
+        <div class="btns">
+          <a class="btn" href="#contact-enquiry">Get a quote</a>
+        </div>
+      </div>
+      <img class="himg" data-k="${iconKey}" alt="${title}">
+    </section>
+  `;
+
+  if (isHome) {
+    headerHtml = `
+      <section class="hero wrap">
+        <div class="hc">
+          <span class="eyebrow">Enterprise Solutions</span>
+          <h1>Software that takes your business <span class="g">further</span></h1>
+          <p>Space Technologies builds web and mobile software, advises on technology, supplies skilled developers and grows your business online.</p>
+          <div class="btns"><a class="btn" href="#contact-enquiry">Get a free quote</a><a class="btn alt" href="#software-development">Our services</a></div>
+        </div>
+        <img class="himg" data-k="home-hero" alt="Software services">
+      </section>
+    `;
+  }
+
+  let benefitsHtml = '';
+  if (benefitsList && benefitsList.length > 0) {
+    benefitsHtml = `
+      <section class="sec wrap">
+        <h2>What you get</h2>
+        <div class="grid">
+          ${benefitsList.map(b => `<div class="pt">${b}</div>`).join('')}
+        </div>
+      </section>
+    `;
+  } else if(isHome) {
+    benefitsHtml = `
+      <section class="wrap">
+        <div class="trust">
+          <div class="tb"><img data-k="trust-shield"><div><b>Secure & confidential</b><span>Your ideas and data stay protected</span></div></div>
+          <div class="tb"><img data-k="trust-clock"><div><b>On-time delivery</b><span>Clear milestones and regular updates</span></div></div>
+          <div class="tb"><img data-k="trust-team"><div><b>Dedicated experts</b><span>Skilled engineers on every project</span></div></div>
+          <div class="tb"><img data-k="trust-chat"><div><b>Responsive support</b><span>Quick replies and care after launch</span></div></div>
+        </div>
+      </section>
+    `;
+  }
+
+  let splitHtml = `
+    <section class="sec wrap split">
+      <div>
+        <h2>About ${title}</h2>
+        <p>${contentText}</p>
+        <p>From initial design to production systems, we handle the technical heavy lifting so your team can focus entirely on business growth.</p>
+      </div>
+      <img data-k="${iconKey}" alt="${title}">
+    </section>
+  `;
+
+  let extraHtml = `
+    <section class="sec wrap">
+      <h2>Why choose Space Technologies</h2>
+      <div class="why">
+        <div class="wc"><img data-k="ic-code"><h3>Clean code</h3><p>Reviews and standards keep software easy to extend.</p></div>
+        <div class="wc"><img data-k="ic-shield"><h3>Security first</h3><p>Secure logins, data protection and regular updates.</p></div>
+        <div class="wc"><img data-k="ic-cloud"><h3>Scalable</h3><p>Built to grow from your first users to many thousands.</p></div>
+        <div class="wc"><img data-k="ic-clock"><h3>Transparent</h3><p>Weekly demos, shared boards and honest estimates.</p></div>
+      </div>
+    </section>
+  `;
+
+  let contactBand = `
+    <section class="wrap">
+      <div class="band">
+        <div>
+          <h2>Ready to start your project?</h2>
+          <p>Tell us what you need and we will reply with a plan and a quote.</p>
+        </div>
+        <a class="btn" href="#contact-enquiry">Send an enquiry</a>
+      </div>
+    </section>
+  `;
+
+  P[id] = {
+    t: `${title} | Space Technologies`,
+    s: tab.toLowerCase().replace(/ /g, '-').replace('app-development', 'application-development'),
+    h: headerHtml + (isHome ? benefitsHtml : splitHtml + benefitsHtml + extraHtml) + contactBand
+  };
+}
+
+// Populate content
+const defaultText = "Space Technologies is a software services company that builds web and mobile applications, advises on technology, supplies skilled developers and runs digital marketing, all under one roof. We work with startups and established businesses, combining senior engineering, clear communication and a simple process so every project ships on time and keeps improving after launch.";
+
+addPage("home", "Home", "", "Space Technologies", "", "home-hero", defaultText, []);
+addPage("about", "Home", "", "About Us", "Who we are and how we work with clients", "s-software-development", defaultText, ["Software and marketing under one roof", "Senior-led delivery on every project", "Global presence across 3 countries"]);
+addPage("how-we-work", "Home", "", "How We Work", "A simple process from idea to launch", "s-software-development", defaultText, ["Free discovery call", "Fixed milestones with regular demos", "Launch support and long-term maintenance"]);
+
+// Software Dev
+addPage("software-development", "Software Development", "", "Software Development", "Custom software built on the right technology for your product.", "s-software-development", defaultText, ["React.js, Angular, Vue for Frontend", "Node.js, Python, Java, .NET for Backend", "Cloud Architecture & DB Design"]);
+addPage("software-development-react", "Software Development", "", "React.js", "Fast, interactive web apps", "c-software-development-react", defaultText, ["Single-page apps and dashboards", "Reusable component libraries", "Next.js for SEO-friendly sites"]);
+addPage("software-development-angular", "Software Development", "", "Angular", "Structured apps for large teams", "c-software-development-angular", defaultText, ["Enterprise portals and admin panels", "TypeScript-first, maintainable code", "Scalable module architecture"]);
+addPage("software-development-nodejs", "Software Development", "", "Node.js", "Quick, scalable backends", "c-software-development-nodejs", defaultText, ["REST and GraphQL APIs", "Real-time apps with WebSockets", "Microservices and integrations"]);
+addPage("software-development-python", "Software Development", "", "Python", "From web apps to data and AI", "c-software-development-python", defaultText, ["Django and Flask web applications", "Automation and data pipelines", "AI and machine learning features"]);
+addPage("software-development-java", "Software Development", "", "Java", "Reliable enterprise software", "c-software-development-java", defaultText, ["Spring Boot services", "Banking, ERP and large-scale systems", "Secure, high-performance back ends"]);
+addPage("software-development-dotnet", "Software Development", "", ".NET", "Microsoft-stack business software", "c-software-development-dotnet", defaultText, ["ASP.NET Core apps and APIs", "Azure and Windows integrations", "Line-of-business applications"]);
+addPage("software-development-php-laravel", "Software Development", "", "PHP / Laravel", "Practical, cost-effective web builds", "c-software-development-php-laravel", defaultText, ["Laravel custom applications", "Ecommerce and booking platforms", "Fast delivery on proven tools"]);
+addPage("software-development-wordpress", "Software Development", "", "WordPress", "Content sites you can manage yourself", "c-software-development-wordpress", defaultText, ["Custom themes and plugins", "SEO-friendly business websites", "WooCommerce online stores"]);
+
+// App Dev
+addPage("application-development", "Application Development", "", "Application Development", "Mobile application development for Android and iOS.", "s-application-development", defaultText, ["Native Android & iOS", "Cross-Platform with Flutter", "Secure APIs & Admin Panels"]);
+addPage("application-development-android", "Application Development", "", "Android App Development", "Native apps for phones and tablets", "c-application-development-android", defaultText, ["Kotlin and Jetpack Compose", "Play Store publishing and updates", "Offline mode and push notifications"]);
+addPage("application-development-ios", "Application Development", "", "iOS App Development", "Native apps for iPhone and iPad", "c-application-development-ios", defaultText, ["Swift and SwiftUI", "App Store review and release support", "Apple Pay, notifications and widgets"]);
+addPage("application-development-cross-platform", "Application Development", "", "Cross-Platform Apps", "One codebase for Android and iOS", "c-application-development-cross-platform", defaultText, ["Flutter and React Native", "Faster delivery and lower cost", "Consistent look on both platforms"]);
+addPage("application-development-web-apps", "Application Development", "", "Web Applications", "Portals, dashboards and SaaS products", "c-application-development-web-apps", defaultText, ["Responsive, installable web apps", "Role-based dashboards", "Secure logins and payments"]);
+addPage("application-development-enterprise-apps", "Application Development", "", "Enterprise Applications", "ERP, CRM and workflow software", "c-application-development-enterprise-apps", defaultText, ["Custom ERP and CRM modules", "Workflow automation and approvals", "Integration with existing systems"]);
+
+// Consulting
+addPage("consulting", "Consulting", "", "Consulting Services", "Practical technology advice, so you build the right thing the first time.", "s-consulting", defaultText, ["IT Strategy & Roadmaps", "Cloud Migration", "Architecture & Security Reviews"]);
+addPage("consulting-it-strategy", "Consulting", "", "IT Strategy", "Roadmaps and technology choices aligned to your goals", "c-consulting-it-strategy", defaultText, ["Technology audit and roadmap", "Build vs buy decisions", "Budget and team planning"]);
+addPage("consulting-cloud-devops", "Consulting", "", "Cloud & DevOps", "Move to the cloud and automate releases", "c-consulting-cloud-devops", defaultText, ["AWS, Azure and Google Cloud", "CI/CD pipelines", "Monitoring and cost control"]);
+addPage("consulting-architecture-review", "Consulting", "", "Architecture Review", "Find performance and security risks early", "c-consulting-architecture-review", defaultText, ["Code and architecture assessment", "Security and scalability checks", "Prioritised fix list"]);
+addPage("consulting-digital-transformation", "Consulting", "", "Digital Transformation", "Replace manual work with reliable software", "c-consulting-digital-transformation", defaultText, ["Process mapping and automation", "Legacy system modernisation", "Change support for your team"]);
+
+// Outsourcing
+addPage("outsourcing", "Outsourcing", "", "Outsourcing / Part Time", "Add skilled developers to your team.", "s-outsourcing", defaultText, ["Dedicated Developers", "Hourly Contracts", "Complete Team Extension"]);
+addPage("outsourcing-dedicated-developers", "Outsourcing", "", "Dedicated Developers", "Full-time engineers working as part of your team", "c-outsourcing-dedicated-developers", defaultText, ["Hand-picked, pre-vetted developers", "Work in your tools and time zone", "Monthly engagement, no long lock-in"]);
+addPage("outsourcing-part-time", "Outsourcing", "", "Part-Time / Hourly", "Pay only for the hours you need", "c-outsourcing-part-time", defaultText, ["Flexible weekly hours", "Ideal for maintenance and small features", "Transparent time reports"]);
+addPage("outsourcing-project-based", "Outsourcing", "", "Project-Based", "Fixed scope, fixed timeline, one accountable team", "c-outsourcing-project-based", defaultText, ["Clear scope and milestones", "Fixed price quotes", "Project manager included"]);
+addPage("outsourcing-team-extension", "Outsourcing", "", "Team Extension", "Scale up for a release, then scale back", "c-outsourcing-team-extension", defaultText, ["Add developers within days", "Mix of frontend, backend and QA", "Smooth hand-over of knowledge"]);
+
+// Marketing
+addPage("digital-marketing", "Digital Marketing", "", "Digital Marketing", "Get found, get clicks and turn visitors into customers.", "s-digital-marketing", defaultText, ["SEO & Content Strategy", "Paid Ads (Google, Meta)", "Social Media Management"]);
+addPage("digital-marketing-seo", "Digital Marketing", "", "SEO", "Steady organic growth from search", "c-digital-marketing-seo", defaultText, ["Technical and on-page SEO", "Keyword and content strategy", "Monthly ranking and traffic reports"]);
+addPage("digital-marketing-paid-ads", "Digital Marketing", "", "Paid Ads (PPC)", "Google and Meta campaigns tracked to leads", "c-digital-marketing-paid-ads", defaultText, ["Search, display and social ads", "Conversion tracking and landing pages", "Budget optimisation"]);
+addPage("digital-marketing-social-media", "Digital Marketing", "", "Social Media", "Consistent content that builds your brand", "c-digital-marketing-social-media", defaultText, ["LinkedIn, Instagram and Facebook", "Content calendar and creatives", "Community management"]);
+addPage("digital-marketing-content-email", "Digital Marketing", "", "Content & Email", "Blogs, case studies and email campaigns", "c-digital-marketing-content-email", defaultText, ["Blog and case-study writing", "Email newsletters and automation", "Lead nurturing sequences"]);
+
+// Careers
+addPage("careers", "Careers", "", "Careers", "Join Space Technologies and build software people use every day.", "s-careers", defaultText, ["Frontend & Backend Roles", "Mobile App Development", "Digital Marketing Executives"]);
+addPage("careers-open-positions", "Careers", "", "Open Positions", "Current roles across engineering and marketing", "c-careers-open-positions", defaultText, ["Frontend Developer", "Backend Developer", "Mobile App Developer (Android / iOS)", "Digital Marketing Executive"]);
+addPage("careers-life-at-space", "Careers", "", "Life at Space", "How we work and grow together", "c-careers-life-at-space", defaultText, ["Learning time and mentoring", "Friendly, collaborative teams", "Clear career growth"]);
+addPage("careers-internships", "Careers", "", "Internships", "Start your career with real projects", "c-careers-internships", defaultText, ["Hands-on project work", "Mentoring from senior engineers", "Chance to join full time"]);
+
+// Contact overrides
+P["contact"] = {
+  t: "Contact Us | Space Technologies",
+  s: "contact",
+  h: `<section class="hero wrap"><div class="hc"><span class="eyebrow">Contact</span><h1>Let's talk about your project</h1><p>Tell us about your project. We usually reply within one working day.</p></div><img class="himg" data-k="s-contact" alt="Contact"></section>
+  
+  <section class="wrap">
+      <div style="background:#0b2545; color:white; padding:40px; border-radius:24px; margin-top:30px; position:relative; overflow:hidden;">
+          <h2 style="color:white; font-size:32px; margin-top:0;">Global Presence</h2>
+          <p style="color:#bae6fd; font-size:18px;">Delivering enterprise solutions across 4 Countries and 12 States.</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:30px;">
+              <div style="background:rgba(255,255,255,0.1); padding:20px; border-radius:12px;">
+                  <h4 style="color:#f5b301; margin:0 0 5px 0;">Headquarters</h4>
+                  <p style="margin:0;">New Delhi, India</p>
+              </div>
+              <div style="background:rgba(255,255,255,0.1); padding:20px; border-radius:12px;">
+                  <h4 style="color:#f5b301; margin:0 0 5px 0;">Countries</h4>
+                  <p style="margin:0;">India, UAE, USA, Canada</p>
+              </div>
+              <div style="background:rgba(255,255,255,0.1); padding:20px; border-radius:12px; grid-column:1/-1;">
+                  <h4 style="color:#f5b301; margin:0 0 5px 0;">Regional Hubs</h4>
+                  <p style="margin:0;">Washington DC, Dubai, Canberra, Bangalore, Mysore, Chennai, Bhopal, Mumbai, Kochi, Jaipur, Lucknow, Shimla, Chandigarh</p>
+              </div>
+          </div>
+      </div>
+  </section>
+  <section class="sec wrap narrow"><form class="enq" data-form><div class="row"><input name="name" required placeholder="Full name"><input name="phone" placeholder="Phone number"></div><input name="email" type="email" required placeholder="Work email"><select name="service"><option>Software Development</option><option>Application Development</option><option>Consulting Services</option><option>Outsourcing / Part Time</option><option>Digital Marketing</option></select><textarea name="message" required rows="4" placeholder="Tell us about your requirement"></textarea><button class="btn" type="submit">Send enquiry</button><p class="msg" role="status"></p></form></section>`
+};
+P["contact-locations"] = {
+  t: "Global Presence | Space Technologies",
+  s: "contact",
+  h: P["contact"].h
+};
+P["contact-enquiry"] = {
+  t: "Enquiry Form | Space Technologies",
+  s: "contact",
+  h: P["contact"].h
+};
+
+// Router
+function show() {
+  var id = location.hash.slice(1);
+  if (!P[id]) id = "home";
+  var p = P[id];
+  
+  document.getElementById("m").innerHTML = p.h;
+  document.title = p.t;
+  
+  // Load Images safely
+  document.querySelectorAll("img[data-k]").forEach(function(i) {
+    if(IMG[i.dataset.k]) i.src = IMG[i.dataset.k];
+    else i.src = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='; // Fallback empty pixel
+  });
+  
+  // Update Nav highlighting
+  document.querySelectorAll("nav>ul>li>a").forEach(function(a) {
+    a.classList.toggle("on", a.dataset.group === p.s);
+  });
+  
+  // Close mobile menus
+  document.getElementById("nv").classList.remove("open");
+  document.querySelectorAll(".dd.open").forEach(function(x) { x.classList.remove("open") });
+  
+  window.scrollTo(0, 0);
+  
+  // Animations Observer
+  var io = new IntersectionObserver(function(es) {
+    es.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add("in");
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: .12 });
+  
+  document.querySelectorAll(".card,.pt,.steps li,.tb,.band,.enq,.stat").forEach(function(x) {
+    x.classList.add("rv");
+    io.observe(x);
+  });
+}
+
+// Mobile Menu toggles
+var mb = document.getElementById("mb"), nv = document.getElementById("nv");
+mb.addEventListener("click", function() {
+  var o = nv.classList.toggle("open");
+  mb.setAttribute("aria-expanded", o);
+});
+
+document.querySelectorAll(".car").forEach(function(b) {
+  b.addEventListener("click", function() {
+    var li = b.parentNode, o = li.classList.toggle("open");
+    b.setAttribute("aria-expanded", o);
+  });
+});
+
+// Form submission handler
+document.addEventListener("submit", function(e) {
+  var f = e.target;
+  if (!f.matches("[data-form]")) return;
+  e.preventDefault();
+  var msg = f.querySelector(".msg");
+  msg.textContent = "Thank you! We will get back to you shortly.";
+  msg.classList.add("show");
+  f.reset();
+});
+
+// Start router
+window.addEventListener("hashchange", show);
+show();
+</script>
+</body>
+</html>
