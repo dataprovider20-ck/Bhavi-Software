@@ -60,7 +60,7 @@
         .card h3 { font-size: 1.5rem; margin: 15px 0 10px; color: var(--ink); }
         .card p { color: #64748b; }
         
-        /* Detail Sections (Text + Image) */
+        /* Detail Sections */
         .detail-row { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 50px; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid #e2e8f0;}
         .detail-row.reverse { grid-template-columns: 1fr 1fr; direction: rtl; }
         .detail-row.reverse > * { direction: ltr; }
@@ -77,12 +77,25 @@
         .loc-card h3 { color: white; position: relative; z-index: 2; font-size: 1.5rem; margin: 0; }
         .loc-card p { color: #cbd5e1; position: relative; z-index: 2; margin: 0; font-size: 0.9rem; }
 
+        /* FAQ ACCORDION STYLES */
+        .faq-container { max-width: 900px; margin: 0 auto; }
+        .faq-item { background: white; border: 1px solid #e2e8f0; border-radius: 12px; margin-bottom: 15px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: 0.3s; }
+        .faq-question { padding: 20px; font-weight: 800; font-size: 1.1rem; color: var(--ink); display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: #ffffff; }
+        .faq-question:hover { background: #f8fafc; color: var(--primary); }
+        .faq-icon { font-size: 1.4rem; font-weight: 900; color: var(--primary); transition: transform 0.3s ease; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding 0.3s ease; padding: 0 20px; color: #475569; background: #ffffff; font-size: 1rem; }
+        .faq-item.active .faq-answer { max-height: 400px; padding: 0 20px 20px 20px; }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+
+        /* POPUP MODAL STYLES */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(5px); z-index: 1000; display: none; align-items: center; justify-content: center; animation: fadeIn 0.3s ease; }
+        .modal-box { background: white; width: 90%; max-width: 500px; padding: 30px; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); position: relative; }
+        .modal-close { position: absolute; top: 15px; right: 20px; font-size: 24px; font-weight: 800; color: #64748b; cursor: pointer; }
+        .modal-close:hover { color: var(--ink); }
+
         /* Banners */
         .ai-banner { background: linear-gradient(135deg, #0f172a, #1e293b); color: white; padding: 60px 40px; border-radius: 24px; text-align: center; margin-bottom: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
         .ai-banner h1 { font-size: 3.5rem; background: linear-gradient(to right, #38bdf8, #fcd34d); -webkit-background-clip: text; color: transparent; margin-bottom: 20px; }
-        
-        .content-banner { background: #ffffff; padding: 40px; border-radius: 20px; border: 1px solid #e2e8f0; margin-bottom: 30px; }
-        .content-banner h2 { color: var(--primary); margin-bottom: 15px; }
 
         /* Pages */
         .page { display: none; animation: fadeIn 0.4s ease-in-out; }
@@ -109,7 +122,34 @@
 </head>
 <body>
 
-    <!-- MEGA NAVIGATION HEADER -->
+    <!-- 10-SECOND POPUP MODAL -->
+    <div id="servicePopup" class="modal-overlay">
+        <div class="modal-box">
+            <span class="modal-close" onclick="closePopup()">&times;</span>
+            <h2 style="color: var(--primary); margin-bottom: 10px;">Need any service? Enquiry Now</h2>
+            <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 20px;">Fill out the form below and our team will get back to you within 6 working hours.</p>
+            
+            <form action="https://formsubmit.co/chandrakar@zenalphasolution.com" method="POST" onsubmit="handlePopupSubmit(event)" style="display: flex; flex-direction: column; gap: 12px;">
+                <input type="hidden" name="_subject" value="Popup Quick Enquiry from Zen Alpha!">
+                <input type="hidden" name="_captcha" value="false">
+                
+                <input type="text" name="name" placeholder="Your Name" required style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;">
+                <input type="tel" name="phone" placeholder="Mobile Number" required style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;">
+                <input type="email" name="email" placeholder="Email Address" required style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;">
+                <input type="text" name="reason" placeholder="Reason for Query (e.g. AI, Software, SEO)" required style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;">
+                <input type="text" name="calling_time" placeholder="Suitable Time for Calling (e.g. 3 PM - 5 PM)" required style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;">
+                <textarea name="comment" placeholder="Additional Comments or Details" rows="3" style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;"></textarea>
+                
+                <button type="submit" class="btn" style="width: 100%;">Submit Enquiry</button>
+            </form>
+            <div id="popupThankYou" style="display: none; text-align: center; padding: 20px 0;">
+                <h3 style="color: #10b981; margin-bottom: 10px;">Thank You!</h3>
+                <p style="color: var(--ink);">Our team will call you within 6 working hours.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER -->
     <header>
         <div class="logo-box" onclick="navigate('home')">
             <div class="logo-icon">Z</div>
@@ -138,7 +178,6 @@
                 </div>
             </div>
             
-            <!-- NEW DIGITAL MARKETING DROPDOWN -->
             <div class="dropdown">
                 <div class="dropbtn">Digital Marketing ▾</div>
                 <div class="dropdown-content">
@@ -150,7 +189,6 @@
                 </div>
             </div>
 
-            <!-- NEW OUTSOURCING DROPDOWN -->
             <div class="dropdown">
                 <div class="dropbtn">Outsourcing ▾</div>
                 <div class="dropdown-content">
@@ -167,43 +205,62 @@
 
     <main class="container">
 
-        <!-- 1. HOME PAGE -->
+        <!-- 1. HOME PAGE WITH ALL 9 CORE SOLUTIONS -->
         <div id="home" class="page active-page">
             <div class="hero">
                 <div>
                     <h1>Transforming Vision into <span>Digital Reality</span></h1>
                     <p>Zen Alpha is a premium global agency delivering cutting-edge Artificial Intelligence, Custom Software, IT Consulting, Outsourcing, and Data-Driven Marketing solutions.</p>
                     <button class="btn" onclick="navigate('contact')">Get a Free Quote</button>
-                    <button class="btn" style="background: white; color: var(--ink); border: 2px solid #e2e8f0; margin-left: 10px;" onclick="navigate('marketing-seo')">Grow Your Business</button>
+                    <button class="btn" style="background: white; color: var(--ink); border: 2px solid #e2e8f0; margin-left: 10px;" onclick="openPopup()">Quick Enquiry</button>
                 </div>
                 <div>
                     <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&auto=format&fit=crop&q=80" alt="Zen Alpha Office" style="box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
                 </div>
             </div>
 
-            <h2>Our Core Solutions</h2>
+            <h2>Our Core Solutions (All Services)</h2>
             <div class="grid-3">
                 <div class="card" onclick="navigate('ai')" style="cursor:pointer;">
-                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500&auto=format&fit=crop" alt="AI">
                     <h3>Artificial Intelligence</h3>
                     <p>Next-gen LLMs, Custom AI Agents, and Machine Learning models.</p>
                 </div>
                 <div class="card" onclick="navigate('software')" style="cursor:pointer;">
-                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&auto=format&fit=crop" alt="Software">
                     <h3>Software & Apps</h3>
-                    <p>Enterprise-grade web and mobile applications (React, Node, iOS, Android).</p>
+                    <p>Enterprise web & mobile applications (React, Node, iOS, Android).</p>
+                </div>
+                <div class="card" onclick="navigate('consulting')" style="cursor:pointer;">
+                    <h3>IT Consulting & vCTO</h3>
+                    <p>Strategic tech guidance, security audits, and cloud migration.</p>
+                </div>
+                <div class="card" onclick="navigate('marketing-sms')" style="cursor:pointer;">
+                    <h3>Bulk SMS Services</h3>
+                    <p>Lightning-fast transactional and promotional SMS with DLT support.</p>
+                </div>
+                <div class="card" onclick="navigate('marketing-email')" style="cursor:pointer;">
+                    <h3>Bulk Email Campaigns</h3>
+                    <p>High inbox delivery rates with verified responsive templates.</p>
+                </div>
+                <div class="card" onclick="navigate('marketing-whatsapp')" style="cursor:pointer;">
+                    <h3>Bulk WhatsApp API</h3>
+                    <p>Official Meta WhatsApp API integration with green tick support.</p>
+                </div>
+                <div class="card" onclick="navigate('marketing-web')" style="cursor:pointer;">
+                    <h3>Website Development</h3>
+                    <p>Custom corporate portfolios and e-commerce platforms.</p>
                 </div>
                 <div class="card" onclick="navigate('marketing-seo')" style="cursor:pointer;">
-                    <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=500&auto=format&fit=crop" alt="Marketing">
-                    <h3>Digital Marketing</h3>
-                    <p>High-conversion SEO, WhatsApp APIs, Bulk SMS, and Email Campaigns.</p>
+                    <h3>SEO / SMO / PPC</h3>
+                    <p>Dominate search engines and social media platforms for high ROI.</p>
+                </div>
+                <div class="card" onclick="navigate('outsourcing-jobs')" style="cursor:pointer;">
+                    <h3>Staff Outsourcing</h3>
+                    <p>Hire top 1% vetted developers, marketers, and BPO support teams.</p>
                 </div>
             </div>
         </div>
 
-
-        <!-- ======================= COMPANY SECTION ======================= -->
-        
+        <!-- COMPANY PAGES -->
         <div id="about" class="page">
             <div style="text-align:center; margin-bottom: 40px;">
                 <h1>About Zen Alpha</h1>
@@ -212,8 +269,7 @@
             <div class="detail-row">
                 <div>
                     <h2>Our Mission & Vision</h2>
-                    <p>At Zen Alpha Solutions, our mission is to democratize cutting-edge technology for businesses of all sizes. We strive to bridge the gap between traditional operations and future-ready digital transformations. Whether it's through a robust custom software application or an intelligent AI agent, our goal is to drive unprecedented growth and efficiency for our clients.</p>
-                    <p>We envision a world where technology is a seamless extension of human capability. Zen Alpha aims to be the top global leader in IT consulting and digital infrastructure, setting industry benchmarks for quality, innovation, and ethical AI deployment.</p>
+                    <p>At Zen Alpha Solutions, our mission is to democratize cutting-edge technology for businesses of all sizes. We strive to bridge the gap between traditional operations and future-ready digital transformations.</p>
                 </div>
                 <div>
                     <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&auto=format&fit=crop" alt="Zen Alpha Team">
@@ -221,54 +277,78 @@
             </div>
         </div>
 
+        <!-- CAREERS PAGE WITH 12 JOB OPENINGS & MULTI-ATTACHMENT FORM -->
         <div id="careers" class="page">
             <div style="text-align:center; margin-bottom: 40px;">
                 <h1>Careers at Zen Alpha</h1>
-                <p>Join a culture of innovation, growth, and excellence.</p>
+                <p>Join a culture of innovation, growth, and excellence. Explore our 12 open tech positions below.</p>
             </div>
-            <h2 style="margin-bottom: 20px;">Current Openings</h2>
-            <div class="grid-3">
-                <div class="card" style="border-left: 4px solid var(--primary);">
-                    <h3>Full Stack Developer (MERN)</h3>
-                    <p><strong>Experience:</strong> 2-5 Years</p>
-                    <p><strong>Location:</strong> New Delhi / Remote</p>
-                    <button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="navigate('contact')">Apply Now</button>
-                </div>
-                <div class="card" style="border-left: 4px solid var(--accent);">
-                    <h3>AI Prompt Engineer</h3>
-                    <p><strong>Experience:</strong> 1-3 Years</p>
-                    <p><strong>Location:</strong> Hybrid</p>
-                    <button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="navigate('contact')">Apply Now</button>
-                </div>
-                <div class="card" style="border-left: 4px solid #10b981;">
-                    <h3>Digital Marketing Executive</h3>
-                    <p><strong>Experience:</strong> 1-4 Years</p>
-                    <p><strong>Location:</strong> New Delhi HQ</p>
-                    <button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="navigate('contact')">Apply Now</button>
-                </div>
+
+            <div class="grid-3" id="jobListings">
+                <div class="card"><h3>1. Front-End Developer</h3><p>React, Vue, Tailwind CSS</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('Front-End Developer')">Apply Now</button></div>
+                <div class="card"><h3>2. Back-End Developer</h3><p>Node.js, Express, Microservices</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('Back-End Developer')">Apply Now</button></div>
+                <div class="card"><h3>3. Python Developer</h3><p>Django, FastAPI, AI pipelines</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('Python Developer')">Apply Now</button></div>
+                <div class="card"><h3>4. System Architect</h3><p>Cloud infrastructure, Scalability</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('System Architect')">Apply Now</button></div>
+                <div class="card"><h3>5. DevOps Engineer</h3><p>AWS, Azure, Docker, Kubernetes</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('DevOps Engineer')">Apply Now</button></div>
+                <div class="card"><h3>6. Full Stack Engineer</h3><p>MERN Stack, Next.js</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('Full Stack Engineer')">Apply Now</button></div>
+                <div class="card"><h3>7. UI/UX Designer</h3>p>Figma, User Research, Wireframing</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('UI/UX Designer')">Apply Now</button></div>
+                <div class="card"><h3>8. AI / ML Engineer</h3><p>LLMs, GPT integration, Python</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('AI / ML Engineer')">Apply Now</button></div>
+                <div class="card"><h3>9. Mobile App Developer</h3><p>Flutter, React Native, iOS/Android</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('Mobile App Developer')">Apply Now</button></div>
+                <div class="card"><h3>10. Digital Marketing Head</h3><p>SEO, PPC, Growth Strategies</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('Digital Marketing Head')">Apply Now</button></div>
+                <div class="card"><h3>11. QA & Testing Engineer</h3><p>Automated & Manual Testing</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('QA & Testing Engineer')">Apply Now</button></div>
+                <div class="card"><h3>12. Business Development Exec</h3><p>B2B Tech Sales & Client Outreach</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('Business Development Executive')">Apply Now</button></div>
+            </div>
+        </div>
+
+        <!-- JOB APPLICATION MODAL WITH 2 ATTACHMENTS -->
+        <div id="jobModal" class="modal-overlay">
+            <div class="modal-box">
+                <span class="modal-close" onclick="closeJobForm()">&times;</span>
+                <h2 id="jobTitle" style="color: var(--primary); margin-bottom: 15px;">Apply for Job</h2>
+                
+                <form action="https://formsubmit.co/chandrakar@zenalphasolution.com" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 12px;">
+                    <input type="hidden" name="_subject" value="New Job Application - Zen Alpha!">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" id="appliedRoleInput" name="Applied_Role" value="">
+                    
+                    <input type="text" name="name" placeholder="Full Name" required style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;">
+                    <input type="email" name="email" placeholder="Email Address" required style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;">
+                    <input type="tel" name="phone" placeholder="Phone Number" required style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;">
+                    
+                    <label style="font-size: 0.9rem; font-weight: 600; color: #475569;">Upload CV / Resume (PDF/Doc):</label>
+                    <input type="file" name="CV_Attachment" required style="padding: 5px; border: 1px solid #cbd5e1; border-radius: 8px;">
+                    
+                    <label style="font-size: 0.9rem; font-weight: 600; color: #475569;">Upload Additional Document / ID:</label>
+                    <input type="file" name="Supporting_Document" required style="padding: 5px; border: 1px solid #cbd5e1; border-radius: 8px;">
+                    
+                    <textarea name="cover_letter" placeholder="Brief Cover Letter or Experience Summary" rows="3" style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;"></textarea>
+                    
+                    <button type="submit" class="btn" style="width: 100%;">Submit Application</button>
+                </form>
             </div>
         </div>
 
 
-        <!-- ======================= TECH SERVICES ======================= -->
+        <!-- ======================= TECH SERVICES (EXPANDED HEAVY CONTENT) ======================= -->
 
         <div id="ai" class="page">
             <div class="ai-banner">
-                <h1>The Future is Autonomous.</h1>
-                <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">At Zen Alpha, we don't just use AI; we build intelligence. From Generative AI to predictive Machine Learning, we deploy high-impact tech that gives your enterprise an unfair advantage.</p>
+                <h1>Artificial Intelligence Solutions</h1>
+                <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">Pioneering the future of automation with enterprise-grade LLMs, custom neural networks, and autonomous multi-agent systems.</p>
             </div>
             <div class="detail-row">
                 <div>
-                    <h2>Custom Autonomous AI Agents</h2>
-                    <p>Why hire manual labor for repetitive tasks when an AI Agent can do it 24/7 without fatigue? We build smart, autonomous agents that can think, act, and execute workflows on your behalf.</p>
+                    <h2>Transforming Enterprise Operations with Advanced AI</h2>
+                    <p>At Zen Alpha, Artificial Intelligence is not just a buzzword; it is the core engine driving modern business efficiency. We architect sophisticated machine learning models, natural language processing frameworks, and autonomous agents designed to handle complex decision-making workflows without human fatigue.</p>
+                    <p>Our engineering teams specialize in fine-tuning proprietary Large Language Models (LLMs) on your secure corporate databases. Whether you want to automate customer service touchpoints, build predictive financial models, or deploy computer vision systems for automated quality control, we deliver robust solutions customized to your industry vertical.</p>
                     <ul>
-                        <li>Automated Customer Support bots that resolve 80% of queries instantly.</li>
-                        <li>Sales pipeline agents that automatically qualify leads and book meetings.</li>
-                        <li>Data analysis agents that read your PDFs and generate summary reports.</li>
+                        <li><strong>Autonomous AI Agents:</strong> 24/7 intelligent agents executing multi-step tasks.</li>
+                        <li><strong>Private LLM Training:</strong> Secure, on-premise or cloud fine-tuning ensuring zero data leakage.</li>
+                        <li><strong>Predictive Analytics:</strong> High-precision forecasting models for sales, inventory, and churn.</li>
                     </ul>
                 </div>
                 <div>
-                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&auto=format&fit=crop" alt="AI Agents">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&auto=format&fit=crop" alt="Artificial Intelligence">
                 </div>
             </div>
         </div>
@@ -276,245 +356,94 @@
         <div id="software" class="page">
             <div style="text-align:center; margin-bottom: 40px;">
                 <h1>Custom Software & App Development</h1>
-                <p>Robust, scalable, and secure engineering for modern enterprises.</p>
+                <p>Engineered for extreme performance, security, and scalability.</p>
             </div>
-            <div class="detail-row">
+            <div class="detail-row reverse">
                 <div>
-                    <h2>Scalable Product Engineering</h2>
-                    <p>We build secure, high-performance web and mobile applications capable of handling millions of requests. From complex database architectures to microservices deployed on the cloud, we ensure your data is safe and operations run smoothly.</p>
+                    <h2>End-to-End Full Stack & Mobile Engineering</h2>
+                    <p>In today's digital economy, your software is your storefront. Zen Alpha delivers enterprise-grade web applications and high-performance mobile platforms that scale seamlessly as your user base expands into millions.</p>
+                    <p>We leverage modern component-driven architectures like React.js and Next.js for lightning-fast frontend experiences, backed by resilient microservices built on Node.js, Python, and Java. For mobile ecosystems, we craft native iOS (Swift) and Android (Kotlin) apps alongside efficient cross-platform solutions using Flutter.</p>
                     <ul>
-                        <li><strong>Frontend:</strong> React.js, Angular, Vue.js, Next.js.</li>
-                        <li><strong>Backend:</strong> Node.js, Python (Django/FastAPI), Java (Spring Boot).</li>
-                        <li><strong>Mobile:</strong> Native iOS (Swift), Android (Kotlin), Flutter, React Native.</li>
+                        <li><strong>Scalable Microservices:</strong> Decoupled architectures ensuring high availability.</li>
+                        <li><strong>Robust API Development:</strong> Secure RESTful and GraphQL endpoints.</li>
+                        <li><strong>Cloud-Native Deployment:</strong> Automated CI/CD pipelines on AWS and Microsoft Azure.</li>
                     </ul>
                 </div>
                 <div>
-                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&auto=format&fit=crop" alt="Software Engineering">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&auto=format&fit=crop" alt="Software Development">
                 </div>
             </div>
         </div>
 
         <div id="consulting" class="page">
             <div style="text-align:center; margin-bottom: 40px;">
-                <h1>IT Consulting Services</h1>
-                <p>Strategic technology guidance to scale your operations securely.</p>
+                <h1>IT Consulting & Virtual CTO Services</h1>
+                <p>Guiding your digital roadmap with executive-level technical leadership.</p>
             </div>
             <div class="detail-row">
                 <div>
-                    <h2>Virtual CTO & Tech Audits</h2>
-                    <p>Don't have an in-house technical co-founder? Zen Alpha provides Virtual Chief Technology Officer (vCTO) services. We oversee your architecture, tech stack selection, and manage your dev teams to ensure your product aligns with business goals.</p>
-                    <p>We also conduct comprehensive vulnerability assessments, penetration testing, and code audits to secure your digital assets before you scale.</p>
-                </div>
-                <div>
-                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&auto=format&fit=crop" alt="IT Consulting">
-                </div>
-            </div>
-        </div>
-
-
-        <!-- ======================= DIGITAL MARKETING (DEDICATED PAGES) ======================= -->
-
-        <div id="marketing-sms" class="page">
-            <div style="text-align:center; margin-bottom: 40px;">
-                <h1>Bulk SMS Services</h1>
-                <p>Reach millions instantly with high-delivery SMS gateways.</p>
-            </div>
-            <div class="detail-row">
-                <div>
-                    <h2>Transactional & Promotional SMS</h2>
-                    <p>Zen Alpha provides lightning-fast bulk SMS services with a 99.9% uptime SLA. Perfect for OTPs, alerts, and marketing campaigns. We ensure your messages hit the inbox, not the spam folder.</p>
+                    <h2>Strategic Technology Governance & Security Audits</h2>
+                    <p>Navigating the complex tech landscape requires strategic clarity. Zen Alpha provides Virtual Chief Technology Officer (vCTO) advisory services to help startups and traditional enterprises select the right tech stack, manage internal development teams, and align engineering milestones with financial goals.</p>
+                    <p>Furthermore, our cyber security experts conduct rigorous vulnerability assessments and penetration testing (VAPT) to uncover weaknesses in your infrastructure before malicious actors can exploit them.</p>
                     <ul>
-                        <li><strong>DLT Registration Support:</strong> Full assistance with TRAI DLT template and sender ID approvals in India.</li>
-                        <li><strong>API Integration:</strong> Easily integrate our SMS API directly into your CRM, app, or website.</li>
-                        <li><strong>Real-time Analytics:</strong> Track delivery reports and campaign success live.</li>
-                    </ul>
-                    <button class="btn" onclick="navigate('contact')">Get SMS Pricing</button>
-                </div>
-                <div>
-                    <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=600&auto=format&fit=crop" alt="Bulk SMS">
-                </div>
-            </div>
-        </div>
-
-        <div id="marketing-email" class="page">
-            <div style="text-align:center; margin-bottom: 40px;">
-                <h1>Bulk Email Services</h1>
-                <p>Targeted email campaigns that drive conversions.</p>
-            </div>
-            <div class="detail-row reverse">
-                <div>
-                    <h2>High Inbox Delivery Rates</h2>
-                    <p>Stop landing in the spam folder. Our bulk email infrastructure uses warmed-up IPs and strict authentication protocols (SPF, DKIM, DMARC) to ensure your promotional and transactional emails reach your customers directly.</p>
-                    <ul>
-                        <li><strong>Custom HTML Templates:</strong> Beautiful, responsive email designs that look great on any device.</li>
-                        <li><strong>Database Segmentation:</strong> Target specific demographics with personalized content.</li>
-                        <li><strong>A/B Testing:</strong> Test subject lines and content to maximize open rates.</li>
+                        <li><strong>vCTO Advisory:</strong> Executive roadmap planning and architecture reviews.</li>
+                        <li><strong>Legacy Modernization:</strong> Transitioning outdated monoliths into agile cloud architectures.</li>
+                        <li><strong>Security & Penetration Testing:</strong> Comprehensive audits to protect sensitive assets.</li>
                     </ul>
                 </div>
                 <div>
-                    <img src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=600&auto=format&fit=crop" alt="Bulk Email">
-                </div>
-            </div>
-        </div>
-
-        <div id="marketing-whatsapp" class="page">
-            <div style="text-align:center; margin-bottom: 40px;">
-                <h1>Bulk WhatsApp Services (Official API)</h1>
-                <p>Engage your customers where they spend the most time.</p>
-            </div>
-            <div class="detail-row">
-                <div>
-                    <h2>Verified WhatsApp Business API</h2>
-                    <p>Leverage the power of the official Meta WhatsApp API. Send rich media, interactive buttons, and automated replies safely without the risk of your number getting banned.</p>
-                    <ul>
-                        <li><strong>Green Tick Verification:</strong> Establish brand trust with an official verified business profile.</li>
-                        <li><strong>Chatbots & Automation:</strong> Automate FAQs and customer support directly on WhatsApp.</li>
-                        <li><strong>Broadcast Lists:</strong> Send promotional offers to thousands of opted-in customers instantly.</li>
-                    </ul>
-                </div>
-                <div>
-                    <img src="https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=600&auto=format&fit=crop" alt="WhatsApp Marketing">
-                </div>
-            </div>
-        </div>
-
-        <div id="marketing-web" class="page">
-            <div style="text-align:center; margin-bottom: 40px;">
-                <h1>Website Development</h1>
-                <p>Your digital storefront, engineered for success.</p>
-            </div>
-            <div class="detail-row reverse">
-                <div>
-                    <h2>Corporate & E-Commerce Websites</h2>
-                    <p>We don't just build websites; we build lead-generation machines. From sleek corporate portfolios to complex multi-vendor e-commerce platforms, Zen Alpha delivers SEO-friendly, blazing-fast websites.</p>
-                    <ul>
-                        <li><strong>Custom UI/UX Design:</strong> Unique designs tailored to your brand identity.</li>
-                        <li><strong>CMS Integration:</strong> WordPress, Shopify, or custom dashboards for easy content management.</li>
-                        <li><strong>Mobile Responsive:</strong> Flawless experience on smartphones, tablets, and desktops.</li>
-                    </ul>
-                </div>
-                <div>
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format&fit=crop" alt="Website Development">
-                </div>
-            </div>
-        </div>
-
-        <div id="marketing-seo" class="page">
-            <div style="text-align:center; margin-bottom: 40px;">
-                <h1>SEO / SMO / PPC Services</h1>
-                <p>Dominate search engines and social media platforms.</p>
-            </div>
-            <div class="detail-row">
-                <div>
-                    <h2>Complete Digital Dominance</h2>
-                    <p>Achieve top rankings on Google and maximize your ROI with our data-driven marketing strategies.</p>
-                    <ul>
-                        <li><strong>Search Engine Optimization (SEO):</strong> On-page, Off-page, Technical SEO, and authoritative link building.</li>
-                        <li><strong>Social Media Optimization (SMO):</strong> Brand building on LinkedIn, Instagram, Facebook, and Twitter.</li>
-                        <li><strong>Pay-Per-Click (PPC):</strong> Highly optimized Google Ads and Meta Ads campaigns designed to minimize Cost Per Click (CPC) and maximize conversions.</li>
-                    </ul>
-                </div>
-                <div>
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format&fit=crop" alt="SEO SMO PPC">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format&fit=crop" alt="IT Consulting">
                 </div>
             </div>
         </div>
 
 
-        <!-- ======================= OUTSOURCING (DEDICATED PAGES) ======================= -->
+        <!-- DIGITAL MARKETING PAGES -->
+        <div id="marketing-sms" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Bulk SMS Services</h1><p>High-delivery SMS gateways with 99.9% uptime.</p></div></div>
+        <div id="marketing-email" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Bulk Email Services</h1><p>Targeted campaigns with high inbox placement rates.</p></div></div>
+        <div id="marketing-whatsapp" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Bulk WhatsApp Services</h1><p>Official Meta API integration with green tick support.</p></div></div>
+        <div id="marketing-web" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Website Development</h1><p>Corporate portfolios and e-commerce platforms.</p></div></div>
+        <div id="marketing-seo" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>SEO / SMO / PPC Services</h1><p>Dominate search engines and paid ads for maximum ROI.</p></div></div>
 
-        <div id="outsourcing-jobs" class="page">
-            <div class="ai-banner" style="background: linear-gradient(135deg, #0369a1, #0f172a);">
-                <h1>Full Time / Part Time Hiring</h1>
-                <p style="font-size: 1.2rem;">Scale your team instantly with vetted professionals.</p>
-            </div>
-            <div class="detail-row">
-                <div>
-                    <h2>Hire Dedicated Tech & Marketing Talent</h2>
-                    <p>Skip the hassle of recruitment, payroll, and HR management. Zen Alpha provides top 1% talent on flexible models (Full-time or Part-time) tailored to your business needs.</p>
-                    <ul>
-                        <li><strong>Software Engineers:</strong> React, Node.js, Python, iOS, and Android developers.</li>
-                        <li><strong>Digital Marketers:</strong> SEO experts, ad buyers, and content creators.</li>
-                        <li><strong>Cost Effective:</strong> Save up to 60% on operational and infrastructure costs.</li>
-                    </ul>
-                </div>
-                <div>
-                    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&auto=format&fit=crop" alt="Hiring Dedicated Teams">
-                </div>
-            </div>
-        </div>
-
-        <div id="outsourcing-freelance" class="page">
-            <div style="text-align:center; margin-bottom: 40px;">
-                <h1>Freelancing & Fixed-Cost Projects</h1>
-                <p>Got a specific project? We deliver it on time, on budget.</p>
-            </div>
-            <div class="detail-row reverse">
-                <div>
-                    <h2>End-to-End Project Outsourcing</h2>
-                    <p>If you prefer not to hire a full team, you can outsource your entire project to us on a fixed-cost or hourly freelancing basis. We handle the project management, QA, and delivery.</p>
-                    <ul>
-                        <li><strong>Agile Delivery:</strong> Regular sprint updates and transparent progress tracking.</li>
-                        <li><strong>Quality Assurance:</strong> Rigorous testing before deployment.</li>
-                        <li><strong>Maintenance:</strong> Post-launch support and bug fixes included.</li>
-                    </ul>
-                </div>
-                <div>
-                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&auto=format&fit=crop" alt="Freelance Projects">
-                </div>
-            </div>
-        </div>
-
-        <div id="outsourcing-consultancy" class="page">
-            <div style="text-align:center; margin-bottom: 40px;">
-                <h1>Consultancy & BPO Services</h1>
-                <p>Expert advice and robust support operations.</p>
-            </div>
-            <div class="detail-row">
-                <div>
-                    <h2>Business Process Outsourcing (BPO)</h2>
-                    <p>Beyond IT, we help businesses scale their operations through dedicated remote support teams.</p>
-                    <ul>
-                        <li><strong>Customer Support:</strong> 24/7 omnichannel support (chat, email, voice).</li>
-                        <li><strong>Telecalling & Sales:</strong> Lead generation, cold calling, and appointment setting.</li>
-                        <li><strong>Data Entry & Management:</strong> Accurate and secure back-office operations.</li>
-                    </ul>
-                    <button class="btn" onclick="navigate('contact')">Consult with us</button>
-                </div>
-                <div>
-                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&auto=format&fit=crop" alt="BPO Consultancy">
-                </div>
-            </div>
-        </div>
+        <!-- OUTSOURCING PAGES -->
+        <div id="outsourcing-jobs" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Full Time / Part Time Hiring</h1><p>Staff augmentation with top 1% vetted tech professionals.</p></div></div>
+        <div id="outsourcing-freelance" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Freelancing Projects</h1><p>Fixed-cost end-to-end project execution.</p></div></div>
+        <div id="outsourcing-consultancy" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Consultancy & BPO Services</h1><p>24/7 customer support and back-office operations.</p></div></div>
 
 
-        <!-- ======================= FAQ ======================= -->
-        
+        <!-- ======================= MEGA FAQ SECTION (ACCORDION) ======================= -->
         <div id="faq" class="page">
             <div style="text-align:center; margin-bottom: 40px;">
                 <h1>Frequently Asked Questions</h1>
+                <p>Everything you need to know about Zen Alpha services, pricing, and execution.</p>
             </div>
-            <div class="card" style="margin-bottom: 15px;">
-                <h3 style="margin-top:0;">1. What makes Zen Alpha different?</h3>
-                <p>We blend traditional software engineering with advanced AI. We build intelligent systems that automate workflows, giving you a competitive edge.</p>
-            </div>
-            <div class="card" style="margin-bottom: 15px;">
-                <h3 style="margin-top:0;">2. How does the email and SMS gateway work?</h3>
-                <p>We integrate official APIs directly into your CRM. We assist with DLT registration in India to ensure your messages deliver instantly without getting blocked.</p>
-            </div>
-            <div class="card" style="margin-bottom: 15px;">
-                <h3 style="margin-top:0;">3. Do you provide offshore developer hiring?</h3>
-                <p>Yes, our Staff Augmentation model lets you hire dedicated tech teams directly from our talent pool for any duration.</p>
-            </div>
-            <div class="card" style="margin-bottom: 15px;">
-                <h3 style="margin-top:0;">4. Can you handle large scale SEO campaigns?</h3>
-                <p>Absolutely. We manage enterprise-level SEO and PPC campaigns, ensuring top Google rankings and high ROI for your ad spend.</p>
+            
+            <div class="faq-container" id="faqAccordion">
+                <div class="faq-item active">
+                    <div class="faq-question" onclick="toggleFaq(this)"><span>1. What makes Zen Alpha different from other tech agencies?</span><span class="faq-icon">+</span></div>
+                    <div class="faq-answer">We blend traditional full-stack software engineering with advanced Artificial Intelligence. We don't just build static websites or apps; we build intelligent, automated systems that give your business an unfair competitive advantage.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)"><span>2. Where is Zen Alpha headquartered?</span><span class="faq-icon">+</span></div>
+                    <div class="faq-answer">Our main corporate headquarters is located at 303 B, 3rd floor, Westend Mall, Janakpuri West, New Delhi 110058, India. We also operate across UAE, USA, and Canada.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)"><span>3. How can I contact Zen Alpha for business inquiries?</span><span class="faq-icon">+</span></div>
+                    <div class="faq-answer">You can reach us via email at chandrakar@zenalphasolution.com or vipul@zenalphasolution.com, or call us at +91-8800927010.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)"><span>4. What AI services do you provide?</span><span class="faq-icon">+</span></div>
+                    <div class="faq-answer">We build custom autonomous AI agents, fine-tune private LLMs on your company data, implement predictive analytics, and build computer vision pipelines.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)"><span>5. How do Custom AI Agents help my business?</span><span class="faq-icon">+</span></div>
+                    <div class="faq-answer">AI agents can handle 24/7 customer support, qualify sales leads in real time, and automate repetitive workflows, saving up to 70% in operational overhead.</div>
+                </div>
             </div>
         </div>
 
 
         <!-- ======================= CONTACT ======================= -->
-        
         <div id="contact" class="page">
             <div class="hero">
                 <div>
@@ -530,7 +459,6 @@
                 <div>
                     <div class="card">
                         <h3>Enquiry / Request Quote</h3>
-                        <!-- FormSubmit setup: Mails go directly to chandrakar@zenalphasolution.com -->
                         <form action="https://formsubmit.co/chandrakar@zenalphasolution.com" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
                             <input type="hidden" name="_subject" value="New Enquiry from Zen Alpha Website!">
                             <input type="hidden" name="_captcha" value="false">
@@ -547,40 +475,15 @@
                 </div>
             </div>
 
-            <!-- PREMIUM GLOBAL PRESENCE SECTION -->
+            <!-- GLOBAL PRESENCE -->
             <div style="margin-top: 80px; text-align: center;">
                 <h1>Our Global Presence</h1>
                 <p style="color: #64748b; font-size: 1.1rem;">Delivering excellence across 4 Countries and 12 Regional Hubs.</p>
-                
                 <div class="location-grid">
-                    <!-- India -->
-                    <div class="loc-card" style="background-image: url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&auto=format&fit=crop');">
-                        <div>
-                            <h3>India (HQ)</h3>
-                            <p>New Delhi, Bangalore, Mumbai</p>
-                        </div>
-                    </div>
-                    <!-- UAE -->
-                    <div class="loc-card" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&auto=format&fit=crop');">
-                        <div>
-                            <h3>UAE</h3>
-                            <p>Dubai Silicon Oasis</p>
-                        </div>
-                    </div>
-                    <!-- USA -->
-                    <div class="loc-card" style="background-image: url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=600&auto=format&fit=crop');">
-                        <div>
-                            <h3>USA</h3>
-                            <p>Washington DC</p>
-                        </div>
-                    </div>
-                    <!-- Canada -->
-                    <div class="loc-card" style="background-image: url('https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=600&auto=format&fit=crop');">
-                        <div>
-                            <h3>Canada</h3>
-                            <p>Toronto tech hub</p>
-                        </div>
-                    </div>
+                    <div class="loc-card" style="background-image: url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&auto=format&fit=crop');"><div><h3>India (HQ)</h3><p>New Delhi, Bangalore, Mumbai</p></div></div>
+                    <div class="loc-card" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&auto=format&fit=crop');"><div><h3>UAE</h3><p>Dubai Silicon Oasis</p></div></div>
+                    <div class="loc-card" style="background-image: url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=600&auto=format&fit=crop');"><div><h3>USA</h3><p>Washington DC</p></div></div>
+                    <div class="loc-card" style="background-image: url('https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=600&auto=format&fit=crop');"><div><h3>Canada</h3><p>Toronto tech hub</p></div></div>
                 </div>
             </div>
         </div>
@@ -629,8 +532,55 @@
         </div>
     </footer>
 
-    <!-- BULLETPROOF ROUTER SCRIPT -->
+    <!-- SCRIPT FOR POPUP, JOB FORM, ACCORDION & ROUTING -->
     <script>
+        // 1. 10-Second Popup Logic
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                var popup = document.getElementById('servicePopup');
+                if(popup) popup.style.display = 'flex';
+            }, 10000); // 10000ms = 10 seconds
+        });
+
+        function closePopup() {
+            document.getElementById('servicePopup').style.display = 'none';
+        }
+
+        function openPopup() {
+            document.getElementById('servicePopup').style.display = 'flex';
+        }
+
+        function handlePopupSubmit(event) {
+            // Let formsubmit handle the post, but show thank you message inline first if desired
+            // FormSubmit will redirect or post, so we let default action proceed after a brief alert
+            alert("Thank you! Our team will call you within 6 working hours.");
+        }
+
+        // 2. Job Application Modal Logic
+        function openJobForm(roleName) {
+            document.getElementById('jobTitle').innerText = "Apply for: " + roleName;
+            document.getElementById('appliedRoleInput').value = roleName;
+            document.getElementById('jobModal').style.display = 'flex';
+        }
+
+        function closeJobForm() {
+            document.getElementById('jobModal').style.display = 'none';
+        }
+
+        // 3. Smart Accordion FAQ Logic
+        function toggleFaq(element) {
+            var item = element.parentElement;
+            var isActive = item.classList.contains('active');
+            var allItems = document.querySelectorAll('.faq-item');
+            for(var i = 0; i < allItems.length; i++) {
+                allItems[i].classList.remove('active');
+            }
+            if(!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // 4. Router Logic
         function navigate(pageId) {
             try {
                 var pages = document.querySelectorAll('.page');
