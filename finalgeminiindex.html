@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Space Technologies | Custom Software, Mobile Apps & Digital Marketing</title>
+<meta name="description" content="Space Technologies offers premium Software Development, Android & iOS Apps, Consulting, Outsourcing, Bulk SMS, WhatsApp and Digital Marketing services in India and globally.">
+<meta name="keywords" content="Software Development, Mobile App Development, Digital Marketing, Bulk SMS provider, WhatsApp Business API, Bulk Email, IT Consulting, Hire Developers, Space Technologies Delhi">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+/* Modern CSS Reset & Variables */
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --ink: #0f172a;
+  --muted: #475569;
+  --line: #e2e8f0;
+  --primary: #0284c7;
+  --primary-hover: #0369a1;
+  --accent: #f5b301;
+  --accent-hover: #d97706;
+  --radius: 16px;
+  --shadow: 0 10px 40px -10px rgba(2,132,199,0.15);
+  --shadow-hover: 0 20px 40px -10px rgba(2,132,199,0.25);
+  --font: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font: 400 16px/1.7 var(--font); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; height: auto; border-radius: var(--radius); }
+ul { list-style: none; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+.narrow { max-width: 800px; }
+
+/* Header & Navigation */
+header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+.bar { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+.logo { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 22px; letter-spacing: -0.02em; color: var(--ink); }
+.logo svg { width: 44px; height: 44px; filter: drop-shadow(0 4px 6px rgba(2,132,199,0.2)); }
+.logo span { display: flex; flex-direction: column; line-height: 1.1; }
+.logo em { font-size: 13px; font-style: normal; font-weight: 700; background: linear-gradient(90deg, var(--primary), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: 0.02em; }
+
+nav > ul { display: flex; gap: 4px; align-items: center; }
+nav li { position: relative; }
+nav > ul > li > a { display: flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px; font-size: 14.5px; font-weight: 700; color: #334155; transition: 0.2s; }
+nav > ul > li > a:hover, nav > ul > li > a.on { background: #f0f9ff; color: var(--primary); }
+.car { display: none; background: none; border: 0; font-size: 18px; cursor: pointer; color: var(--muted); padding: 4px 8px; }
+
+/* Desktop Dropdowns */
+.dd > ul { display: none; position: absolute; top: 100%; left: 0; min-width: 280px; padding: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); opacity: 0; transform: translateY(10px); transition: all 0.3s ease; pointer-events: none; }
+.dd:hover > ul, .dd:focus-within > ul { display: block; opacity: 1; transform: translateY(0); pointer-events: auto; }
+.dd:nth-last-child(-n+3) > ul { left: auto; right: 0; }
+.dd > ul a { display: block; padding: 10px 14px; border-radius: 8px; font-size: 14px; color: #475569; font-weight: 600; transition: 0.2s; }
+.dd > ul a:hover { background: #f0f9ff; color: var(--primary); padding-left: 18px; }
+
+/* Mobile Menu Toggle */
+#mb { display: none; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 16px; font: inherit; font-weight: 700; cursor: pointer; color: var(--primary); }
+@media (max-width: 1200px) {
+  #mb { display: block; }
+  nav { display: none; position: absolute; left: 0; right: 0; top: 80px; background: var(--surface); border-bottom: 1px solid var(--line); padding: 10px 24px 24px; max-height: calc(100vh - 80px); overflow-y: auto; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+  nav.open { display: block; }
+  nav > ul { flex-direction: column; align-items: stretch; }
+  .dd { display: flex; flex-wrap: wrap; align-items: center; border-bottom: 1px solid #f1f5f9; }
+  .dd > a { flex: 1; padding: 14px 0; }
+  .car { display: block; }
+  .dd > ul { position: static; width: 100%; box-shadow: none; border: 0; padding: 0 0 16px 16px; border-left: 2px solid #e2e8f0; margin-left: 8px; border-radius: 0; opacity: 1; transform: none; display: none; }
+  .dd:hover > ul, .dd:focus-within > ul { display: none; }
+  .dd.open > ul { display: block !important; }
+}
+
+/* Hero Section */
+.hero { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding-top: 80px; padding-bottom: 60px; }
+@media (max-width: 900px) { .hero { grid-template-columns: 1fr; padding-top: 40px; gap: 40px; text-align: center; } }
+.eyebrow { display: inline-flex; align-items: center; background: #fffbeb; border: 1px solid #fde68a; color: #b45309; font-weight: 700; font-size: 13px; padding: 6px 16px; border-radius: 99px; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.05em; }
+h1 { font-size: clamp(36px, 5vw, 64px); line-height: 1.1; letter-spacing: -0.03em; margin: 0 0 20px; font-weight: 800; color: var(--ink); }
+h2 { font-size: clamp(28px, 4vw, 42px); line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 16px; font-weight: 800; color: var(--ink); }
+.g { background: linear-gradient(90deg, var(--primary), #0ea5e9); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lead { font-size: 18px; color: var(--muted); max-width: 60ch; margin: 0 0 32px; font-weight: 500; }
+@media (max-width: 900px) { .lead { margin: 0 auto 32px; } }
+.himg { box-shadow: var(--shadow); border: 1px solid var(--line); width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; background: var(--primary); color: #fff; padding: 14px 32px; border-radius: 99px; font-weight: 700; font-size: 16px; transition: all 0.3s ease; box-shadow: 0 4px 14px rgba(2,132,199,0.3); border: 1px solid transparent; cursor: pointer; }
+.btn:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(2,132,199,0.4); }
+.btn.alt { background: var(--surface); color: var(--ink); border-color: var(--line); box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-left: 16px; }
+.btn.alt:hover { border-color: var(--primary); color: var(--primary); background: #f8fafc; }
+.btns { display: flex; flex-wrap: wrap; gap: 16px; }
+@media (max-width: 900px) { .btns { justify-content: center; } .btn.alt { margin-left: 0; } }
+
+/* Sections & Grids */
+.sec { padding-top: 80px; padding-bottom: 80px; }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.split:nth-child(even) .himg { order: -1; }
+@media (max-width: 900px) { .split { grid-template-columns: 1fr; } .split:nth-child(even) .himg { order: 0; } }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; margin-top: 40px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; transition: all 0.3s ease; display: flex; flex-direction: column; height: 100%; }
+.card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: var(--shadow-hover); }
+.card img { border-radius: 12px; aspect-ratio: 16/9; object-fit: cover; width: 100%; margin-bottom: 20px; }
+.card h3 { font-size: 22px; font-weight: 800; margin-bottom: 12px; color: var(--ink); }
+.card p { color: var(--muted); font-size: 15px; margin-bottom: 0; flex-grow: 1; }
+
+.pt { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px 24px 20px 64px; position: relative; font-weight: 700; font-size: 16px; color: var(--ink); transition: 0.2s; }
+.pt:hover { border-color: var(--primary); background: #f0f9ff; }
+.pt::before { content: "✓"; position: absolute; left: 24px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; border-radius: 50%; background: #dcfce7; color: #166534; text-align: center; line-height: 28px; font-size: 14px; font-weight: 800; }
+
+/* Features & Steps */
+.why { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 40px; }
+.wc { background: var(--surface); border-radius: var(--radius); padding: 32px; border: 1px solid var(--line); transition: 0.3s; }
+.wc:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+.wc .icon { width: 56px; height: 56px; background: #f0f9ff; color: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; font-weight: 900; }
+.wc h3 { font-size: 20px; font-weight: 800; margin-bottom: 12px; }
+
+.steps { counter-reset: s; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 40px; }
+.steps li { counter-increment: s; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 32px; position: relative; overflow: hidden; }
+.steps li::before { content: "0" counter(s); position: absolute; right: -10px; top: -10px; font-size: 80px; font-weight: 900; color: #f1f5f9; line-height: 1; z-index: 0; }
+.steps b { display: block; font-size: 20px; font-weight: 800; margin-bottom: 8px; position: relative; z-index: 1; }
+.steps span { color: var(--muted); font-size: 15px; position: relative; z-index: 1; display: block; }
+
+/* Banner & Form */
+.band { background: linear-gradient(135deg, #0b2545, #0f172a); border-radius: 24px; padding: 60px; margin: 60px 0; display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-between; color: white; box-shadow: var(--shadow); }
+.band h2 { color: white; margin-bottom: 8px; }
+.band p { color: #94a3b8; font-size: 18px; margin: 0; }
+.band .btn { background: var(--accent); color: #000; box-shadow: 0 4px 14px rgba(245,179,1,0.4); }
+.band .btn:hover { background: #fbbf24; }
+@media (max-width: 768px) { .band { padding: 40px 24px; text-align: center; justify-content: center; } }
+
+.enq { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 40px; box-shadow: var(--shadow); }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+@media (max-width: 600px) { .row { grid-template-columns: 1fr; } }
+input, select, textarea { width: 100%; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: #f8fafc; color: var(--ink); font: inherit; font-size: 15px; transition: 0.2s; margin-bottom: 20px; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px #e0f2fe; }
+textarea { resize: vertical; min-height: 120px; }
+.enq .btn { width: 100%; margin-bottom: 0; }
+.msg { margin-top: 16px; color: #166534; font-weight: 700; text-align: center; display: none; padding: 12px; background: #dcfce7; border-radius: 8px; }
+.msg.show { display: block; }
+
+/* FAQs */
+.faq { max-width: 800px; margin: 40px auto 0; }
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 16px; overflow: hidden; transition: 0.3s; }
+details:hover { border-color: var(--primary); }
+summary { padding: 20px 24px; cursor: pointer; font-weight: 700; font-size: 17px; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; color: var(--primary); font-size: 24px; font-weight: 400; transition: 0.3s; }
+details[open] summary::after { transform: rotate(45deg); }
+details p { padding: 0 24px 24px; margin: 0; color: var(--muted); font-size: 15.5px; }
+
+/* Locations Block */
+.locations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px; }
+.loc-card { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 24px; border-radius: 16px; backdrop-filter: blur(10px); }
+.loc-card h4 { color: var(--accent); margin-bottom: 8px; font-size: 18px; }
+.loc-card p { margin: 0; color: #e2e8f0; font-size: 15px; }
+
+/* Footer */
+footer { background: #0f172a; color: #fff; padding: 80px 0 40px; margin-top: 80px; }
+.fg { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+@media (max-width: 900px) { .fg { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .fg { grid-template-columns: 1fr; } }
+footer .logo { color: #fff; margin-bottom: 20px; }
+footer .logo svg { filter: none; }
+footer p { color: #94a3b8; font-size: 15px; max-width: 300px; margin-bottom: 24px; }
+footer b { display: block; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 20px; }
+footer li { margin-bottom: 12px; }
+footer li a { color: #94a3b8; font-size: 15px; font-weight: 500; transition: 0.2s; }
+footer li a:hover { color: var(--accent); }
+.copy { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid #1e293b; color: #64748b; font-size: 14px; }
+
+/* Floating Action Button */
+.fab { position: fixed; right: 24px; bottom: 24px; z-index: 90; background: var(--accent); color: #000; text-decoration: none; font-weight: 800; padding: 16px 28px; border-radius: 99px; box-shadow: 0 10px 25px rgba(245,179,1,0.5); transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+.fab:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(245,179,1,0.6); }
+
+/* Animation */
+.rv { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.rv.in { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#home">
+      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="rg" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#bae6fd"/><stop offset=".45" stop-color="#0284c7"/><stop offset="1" stop-color="#0f172a"/></radialGradient>
+          <linearGradient id="lg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f5b301"/><stop offset="1" stop-color="#b45309"/></linearGradient>
+        </defs>
+        <ellipse cx="24" cy="44" rx="14" ry="3" fill="#0f172a" opacity=".15"/>
+        <g transform="rotate(-24 24 23)"><path d="M2 23A22 8 0 0 1 46 23" fill="none" stroke="url(#lg)" stroke-width="3" stroke-linecap="round" opacity=".6"/></g>
+        <circle cx="24" cy="23" r="14" fill="url(#rg)"/>
+        <ellipse cx="19" cy="16.5" rx="6" ry="3.4" fill="#fff" opacity=".4" transform="rotate(-30 19 16.5)"/>
+        <g transform="rotate(-24 24 23)"><path d="M2 23A22 8 0 0 0 46 23" fill="none" stroke="url(#lg)" stroke-width="3.5" stroke-linecap="round"/></g>
+      </svg>
+      <span>Space <em>Technologies</em></span>
+    </a>
+    
+    <button id="mb" aria-expanded="false" aria-controls="nv">Menu ▾</button>
+    <nav id="nv" aria-label="Main">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        
+        <li class="dd"><a href="#software-development" data-group="software-development">Software ▾</a>
+          <button class="car" aria-expanded="false">▾</button>
+          <ul>
+            <li><a href="#software-development-react">React.js</a></li>
+            <li><a href="#software-development-angular">Angular</a></li>
+            <li><a href="#software-development-nodejs">Node.js</a></li>
+            <li><a href="#software-development-python">Python</a></li>
+            <li><a href="#software-development-java">Java</a></li>
+            <li><a href="#software-development-dotnet">.NET</a></li>
+            <li><a href="#software-development-php-laravel">PHP / Laravel</a></li>
+          </ul>
+        </li>
+        
+        <li class="dd"><a href="#application-development" data-group="application-development">Apps ▾</a>
+          <button class="car" aria-expanded="false">▾</button>
+          <ul>
+            <li><a href="#application-development-android">Android Apps</a></li>
+            <li><a href="#application-development-ios">iOS Apps</a></li>
+            <li><a href="#application-development-cross-platform">Cross-Platform</a></li>
+            <li><a href="#application-development-enterprise-apps">Enterprise Apps</a></li>
+          </ul>
+        </li>
+        
+        <li class="dd"><a href="#consulting" data-group="consulting">Consulting ▾</a>
+          <button class="car" aria-expanded="false">▾</button>
+          <ul>
+            <li><a href="#consulting-it-strategy">IT Strategy</a></li>
+            <li><a href="#consulting-cloud-devops">Cloud &amp; DevOps</a></li>
+            <li><a href="#consulting-architecture-review">Architecture Review</a></li>
+          </ul>
+        </li>
+
+        <li class="dd"><a href="#digital-marketing" data-group="digital-marketing">Marketing ▾</a>
+          <button class="car" aria-expanded="false">▾</button>
+          <ul>
+            <li><a href="#digital-marketing-seo">SEO &amp; SEM</a></li>
+            <li><a href="#digital-marketing-social-media">Social Media</a></li>
+            <li><a href="#digital-marketing-bulk-sms">Bulk SMS Service</a></li>
+            <li><a href="#digital-marketing-bulk-email">Bulk Email Database</a></li>
+            <li><a href="#digital-marketing-whatsapp">WhatsApp Marketing</a></li>
+          </ul>
+        </li>
+        
+        <li><a href="#faq" data-group="faq">FAQs</a></li>
+        <li><a href="#contact" data-group="contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Main Router View -->
+<main id="m"></main>
+
+<footer>
+  <div class="wrap fg">
+    <div>
+      <a class="logo" href="#home">
+        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="23" r="14" fill="#0ea5e9"/>
+          <path d="M2 23A22 8 0 0 0 46 23" fill="none" stroke="#f5b301" stroke-width="3" transform="rotate(-24 24 23)"/>
+        </svg>
+        <span>Space <em>Technologies</em></span>
+      </a>
+      <p>Building reliable enterprise software, mobile apps, and scaling businesses with digital marketing & bulk services.</p>
+      
+      <div>
+        <p style="margin:4px 0; font-size: 14.5px;">📍 303 B, 3rd floor, Westend Mall, Janakpuri West, New Delhi 110058</p>
+        <p style="margin:4px 0; font-size: 14.5px;">📞 +91-8800927010</p>
+        <p style="margin:4px 0; font-size: 14.5px;">✉️ chandrakar@spacetechnology.com<br>&nbsp;&nbsp;&nbsp;&nbsp; vipul@spacetechnology.com</p>
+      </div>
+    </div>
+    <div>
+      <b>Tech Services</b>
+      <ul>
+        <li><a href="#software-development">Custom Software</a></li>
+        <li><a href="#application-development">Mobile Apps</a></li>
+        <li><a href="#consulting">IT Consulting</a></li>
+        <li><a href="#outsourcing">Hire Developers</a></li>
+      </ul>
+    </div>
+    <div>
+      <b>Marketing & Data</b>
+      <ul>
+        <li><a href="#digital-marketing-bulk-sms">Bulk SMS Service</a></li>
+        <li><a href="#digital-marketing-whatsapp">WhatsApp Marketing</a></li>
+        <li><a href="#digital-marketing-bulk-email">Email & Database</a></li>
+        <li><a href="#digital-marketing-seo">SEO & Paid Ads</a></li>
+      </ul>
+    </div>
+    <div>
+      <b>Company</b>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#faq">Detailed FAQs</a></li>
+        <li><a href="#careers">Careers</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap">
+      <p class="copy">&copy; 2026 Space Technologies. All rights reserved. Delivering globally across 4 Countries & 12 States.</p>
+  </div>
+</footer>
+
+<a class="fab" href="#contact">💬 Get a Quote</a>
+
+<script>
+// Image Helper using Unsplash for high quality real photos (SEO Friendly & No Base64 errors)
+function getImg(category) {
+  const map = {
+    'home': 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&auto=format&fit=crop&q=80',
+    'software': 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop&q=80',
+    'app': 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&auto=format&fit=crop&q=80',
+    'consulting': 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop&q=80',
+    'marketing': 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&auto=format&fit=crop&q=80',
+    'sms': 'https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=800&auto=format&fit=crop&q=80',
+    'contact': 'https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=800&auto=format&fit=crop&q=80',
+    'default': 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=80'
+  };
+  return map[category] || map['default'];
+}
+
+// Fallback image function for <img onerror="...">
+const fb = "this.onerror=null;this.src='https://placehold.co/800x533/e2e8f0/0f172a?text=Space+Technologies'";
+
+// Huge FAQ Database (40+ Questions for SEO)
+const faqData = [
+  // General & Company (1-10)
+  { q: "What is Space Technologies and what services do you offer?", a: "Space Technologies is a premium IT agency based in New Delhi, India. We offer Custom Software Development, Mobile App Development (Android/iOS), IT Consulting, Digital Marketing, Bulk SMS, Bulk Email, and WhatsApp Business API services." },
+  { q: "Where are your offices located?", a: "Our Headquarter is in Janakpuri West, New Delhi. We have a regional presence in 12 states in India (including Bangalore, Mumbai, Chennai) and global operations in UAE, USA, and Canada." },
+  { q: "Do you provide services to startups or only enterprises?", a: "We work with both! We help startups build MVPs quickly and scale them, while also providing robust, secure enterprise solutions (like ERPs and CRMs) for established organizations." },
+  { q: "How do you handle project pricing?", a: "We offer flexible models: Fixed-Price for well-defined projects, Time & Material for ongoing development, and Dedicated Resource hiring where you pay a monthly retainer for your own developer." },
+  { q: "Do you sign NDAs (Non-Disclosure Agreements)?", a: "Absolutely. We prioritize your intellectual property and data security. We sign strict NDAs before discussing any sensitive project details." },
+  { q: "Will I own the source code?", a: "Yes, 100%. Once the project is completed and fully paid, the complete source code and intellectual property rights are transferred to you." },
+  { q: "What is your project development methodology?", a: "We strictly follow Agile methodologies. We break the project into 2-week sprints, provide regular demo builds, and adapt to your feedback quickly." },
+  { q: "Do you provide post-launch maintenance?", a: "Yes, we offer comprehensive AMC (Annual Maintenance Contracts) covering bug fixes, server monitoring, OS updates, and new feature additions." },
+  { q: "How do you ensure data security?", a: "We implement industry-standard encryption, secure API endpoints, JWT authentication, regular vulnerability assessments, and strict access controls on AWS/Azure servers." },
+  { q: "How quickly can you start a project?", a: "Depending on the scope, we can usually start the discovery phase within 3-5 days of signing the agreement." },
+  
+  // Software & Web Dev (11-20)
+  { q: "What technologies do you use for web development?", a: "We specialize in modern stacks: React.js, Angular, and Vue for frontend. Node.js, Python (Django/Flask), Java (Spring Boot), .NET, and PHP (Laravel) for backend." },
+  { q: "Can you upgrade or migrate my old legacy software?", a: "Yes, our Digital Transformation service specifically focuses on safely migrating outdated legacy systems to modern cloud architectures without data loss." },
+  { q: "Do you build e-commerce websites?", a: "Yes, we build scalable custom e-commerce platforms using Node/React, as well as robust WooCommerce and Shopify implementations." },
+  { q: "What databases do you work with?", a: "We have deep expertise in both SQL (PostgreSQL, MySQL, SQL Server) and NoSQL (MongoDB, Redis, DynamoDB) databases." },
+  { q: "Do you handle server deployment?", a: "Yes, our Cloud & DevOps team handles end-to-end deployment on AWS, Google Cloud, or Microsoft Azure, including CI/CD pipeline setup." },
+  { q: "Can you integrate third-party APIs?", a: "We integrate payment gateways (Stripe, Razorpay), CRMs (Salesforce, HubSpot), ERPs, and custom third-party APIs seamlessly." },
+  { q: "Is the software you build mobile-responsive?", a: "100%. Every web application we build follows mobile-first design principles and looks perfect on phones, tablets, and desktops." },
+  { q: "How do you ensure code quality?", a: "We enforce strict linting rules, conduct mandatory peer code reviews, and write automated unit/integration tests to ensure bug-free delivery." },
+  { q: "Can I hire a developer on an hourly basis?", a: "Yes, under our 'Outsourcing / Part Time' model, you can hire developers hourly for maintenance or small feature additions." },
+  { q: "What is the typical timeline for a web portal?", a: "A basic portal takes 4-6 weeks. Complex enterprise dashboards with multiple roles and integrations generally take 3-6 months." },
+
+  // Mobile App Dev (21-30)
+  { q: "Do you develop both Android and iOS apps?", a: "Yes, we develop native apps (Kotlin for Android, Swift for iOS) as well as cross-platform apps." },
+  { q: "Should I choose Native or Cross-Platform (Flutter/React Native)?", a: "If you need heavy hardware integrations or ultra-high performance, Native is best. If you want faster time-to-market and lower costs for both platforms, Cross-Platform (Flutter) is highly recommended." },
+  { q: "Do you upload the app to the Play Store and App Store?", a: "Yes, deployment to Google Play Store and Apple App Store is included in our development packages." },
+  { q: "Can you build an app that works offline?", a: "Absolutely. We build apps with local SQLite/Room databases and robust syncing mechanisms so they function perfectly without internet." },
+  { q: "How do you handle App Store rejections?", a: "We strictly follow Apple and Google's Human Interface Guidelines. In the rare event of a rejection, we make the required fixes at no extra cost to get the app approved." },
+  { q: "Can you add push notifications to my app?", a: "Yes, we integrate Firebase Cloud Messaging (FCM) or OneSignal for targeted, rich push notifications." },
+  { q: "Do you design the app UI/UX?", a: "Yes, we have an in-house design team that creates wireframes and interactive Figma prototypes for your approval before coding begins." },
+  { q: "Can you integrate Bluetooth or IoT hardware with the app?", a: "Yes, we have experience building BLE (Bluetooth Low Energy) and IoT connected mobile applications." },
+  { q: "Do you provide API development for the mobile app?", a: "Yes, we build the complete backend infrastructure and REST/GraphQL APIs required to power your mobile application." },
+  { q: "What happens if a new iOS or Android version breaks the app?", a: "If you are on our maintenance plan, we proactively test and update the app for upcoming OS releases to ensure zero downtime." },
+
+  // Digital Marketing & Bulk Services (31-42)
+  { q: "What is included in your Bulk SMS service?", a: "We provide high-delivery Transactional and Promotional SMS routes, API integration for your software, DLT registration support, and real-time delivery reports." },
+  { q: "Can you help with WhatsApp Business API?", a: "Yes, we provide official WhatsApp API integration. You get a green tick verification, bulk broadcasting capabilities, and chatbot automation." },
+  { q: "Do you sell Mobile and Email Databases?", a: "We provide highly segmented, opted-in B2B and B2C databases for your marketing campaigns, filtered by industry, location, and demographics." },
+  { q: "What is your bulk email delivery rate?", a: "By utilizing dedicated IPs, proper SPF/DKIM/DMARC records, and clean lists, we achieve 90%+ inbox delivery rates." },
+  { q: "How long does SEO take to show results?", a: "SEO is a long-term strategy. You will start seeing noticeable improvements in traffic and rankings within 3 to 6 months." },
+  { q: "Do you guarantee #1 ranking on Google?", a: "No honest agency can guarantee a #1 spot due to Google's algorithm updates. We guarantee best-practice white-hat SEO that consistently drives organic growth." },
+  { q: "What platforms do you use for Paid Ads (PPC)?", a: "We manage highly optimized campaigns on Google Ads (Search, Display, Performance Max), Meta (Facebook/Instagram), and LinkedIn." },
+  { q: "Do you create content for Social Media?", a: "Yes, our team creates visual creatives, writes engaging copy, and manages a monthly content calendar for your brand." },
+  { q: "Can you provide Toll-Free Numbers?", a: "Yes, we set up 1800 Toll-Free numbers with IVR routing, call recording, and CRM integrations." },
+  { q: "How do you measure marketing success?", a: "We track Cost Per Lead (CPL), Conversion Rates, and total ROI. You receive detailed monthly analytics reports." },
+  { q: "Do you write SEO content and blogs?", a: "Yes, we have specialized content writers who create keyword-optimized blogs, case studies, and landing page copy." },
+  { q: "Can I combine software development with marketing?", a: "Yes! Many clients hire us to build their product and then immediately use our marketing team to launch it to the public." }
+];
+
+// Helper to generate pages
+const P = {};
+
+function addPage(id, tab, title, desc, imgType, contentHtml, features) {
+  let isHome = id === "home";
+  
+  let header = `
+    <section class="hero wrap">
+      <div>
+        <span class="eyebrow">${tab}</span>
+        <h1>${title}</h1>
+        <p class="lead">${desc}</p>
+        <div class="btns">
+          <a class="btn" href="#contact">Get a free quote</a>
+          ${!isHome ? `<a class="btn alt" href="#${tab.toLowerCase().replace(/ /g, '-')}">Back to ${tab}</a>` : `<a class="btn alt" href="#software-development">Our Services</a>`}
+        </div>
+      </div>
+      <img class="himg rv" src="${getImg(imgType)}" onerror="${fb}" alt="${title}">
+    </section>
+  `;
+
+  let featureBlocks = features.map(f => `<div class="pt rv">${f}</div>`).join('');
+  let featuresSection = features.length ? `
+    <section class="sec wrap bg-slate-50 rounded-3xl my-8 px-8">
+      <h2 class="rv">Key Features</h2>
+      <div class="grid">${featureBlocks}</div>
+    </section>
+  ` : '';
+
+  let commonWhy = `
+    <section class="sec wrap">
+      <h2 class="rv">Why Space Technologies?</h2>
+      <div class="why">
+        <div class="wc rv"><div class="icon">💻</div><h3>Expert Engineering</h3><p>Senior developers writing scalable, clean code.</p></div>
+        <div class="wc rv"><div class="icon">🔒</div><h3>Data Security</h3><p>Enterprise-grade security and strict NDAs.</p></div>
+        <div class="wc rv"><div class="icon">⏱️</div><h3>On-Time Delivery</h3><p>Agile sprints with guaranteed milestone tracking.</p></div>
+        <div class="wc rv"><div class="icon">📈</div><h3>Growth Focused</h3><p>We build tech that actively grows your revenue.</p></div>
+      </div>
+    </section>
+  `;
+
+  let cta = `
+    <section class="wrap">
+      <div class="band rv">
+        <div>
+          <h2>Ready to transform your business?</h2>
+          <p>Contact our experts in New Delhi today for a free consultation.</p>
+        </div>
+        <a class="btn" style="background:#f5b301; color:#000" href="#contact">Contact Us Now</a>
+      </div>
+    </section>
+  `;
+
+  P[id] = {
+    t: `${title} | Space Technologies`,
+    nav: tab.toLowerCase().replace(/ /g, '-'),
+    h: header + (contentHtml ? `<section class="sec wrap narrow rv" style="font-size:18px; color:#334155">${contentHtml}</section>` : '') + featuresSection + commonWhy + cta
+  };
+}
+
+// Generate HTML Content
+addPage("home", "Enterprise Solutions", "Software that takes your business <span class='g'>further</span>", "Space Technologies is a premium agency based in New Delhi delivering Custom Software, Mobile Apps, IT Consulting, and Data-Driven Digital Marketing & Bulk SMS globally.", "home", "", []);
+
+addPage("about", "Company", "About Space Technologies", "We are a full-stack IT and Marketing agency. We handle the technical heavy lifting so you can focus entirely on business growth.", "software", "We work with startups and established businesses, combining senior engineering, clear communication and a simple process so every project ships on time and keeps improving after launch. With presence across 7 states in India, we are always close to you.", ["End-to-end tech partner", "Agile methodologies", "Transparent pricing"]);
+
+// Software
+addPage("software-development", "Software", "Custom Software Development", "Scalable, secure software tailored to your specific business needs.", "software", "We build CRMs, ERPs, Web Portals and SaaS products.", ["React, Angular, Vue", "Node, Python, Java, .NET", "Cloud Native Architecture"]);
+addPage("software-development-react", "Software", "React.js Development", "Fast, interactive single-page web applications.", "software", "React allows us to build highly responsive UIs.", ["Component-based UI", "Next.js SSR for SEO", "State management"]);
+addPage("software-development-angular", "Software", "Angular Development", "Structured, enterprise-grade applications.", "software", "Backed by Google, Angular is perfect for large teams.", ["TypeScript first", "Robust architecture", "Enterprise ready"]);
+addPage("software-development-nodejs", "Software", "Node.js Backends", "High-performance, scalable API development.", "software", "We build REST and GraphQL APIs capable of handling millions of requests.", ["Real-time sockets", "Microservices", "High throughput"]);
+addPage("software-development-python", "Software", "Python / Django", "Data-heavy applications and AI integrations.", "software", "Python powers our data engineering and robust backend services.", ["Django & Flask", "AI/ML Integration", "Data Pipelines"]);
+addPage("software-development-java", "Software", "Java Spring Boot", "Highly secure systems for Banking and Finance.", "software", "For absolute reliability and security.", ["Spring Framework", "High Security", "Legacy Integration"]);
+addPage("software-development-dotnet", "Software", ".NET Development", "Microsoft-stack business software.", "software", "Perfect for deep Azure and Windows integrations.", ["C# & ASP.NET Core", "Azure Services", "Enterprise Security"]);
+addPage("software-development-php-laravel", "Software", "PHP / Laravel", "Cost-effective, rapid web application development.", "software", "Laravel offers elegant syntax and rapid delivery.", ["Rapid Prototyping", "Custom E-commerce", "API Creation"]);
+
+// Apps
+addPage("application-development", "Apps", "Mobile App Development", "Native and cross-platform apps for Android and iOS.", "app", "We cover the full journey: design, development, and App Store launch.", ["Native & Cross-platform", "UI/UX Design", "App Store Optimization"]);
+addPage("application-development-android", "Apps", "Android App Development", "Native Kotlin apps for the Google Play Store.", "app", "Built to Android's strict Material Design guidelines.", ["Kotlin & Jetpack", "Offline Support", "Play Store Launch"]);
+addPage("application-development-ios", "Apps", "iOS App Development", "Premium Swift applications for iPhone and iPad.", "app", "Smooth, secure, and beautiful Apple experiences.", ["SwiftUI", "Apple Pay Integration", "App Store Approval"]);
+addPage("application-development-cross-platform", "Apps", "Cross-Platform Apps", "One codebase, dual deployment using Flutter or React Native.", "app", "Save time and budget without sacrificing quality.", ["Flutter & React Native", "Unified Codebase", "Faster Time-to-Market"]);
+addPage("application-development-enterprise-apps", "Apps", "Enterprise Mobile Apps", "Internal workforce and B2B workflow applications.", "app", "Secure apps connected to your internal ERPs.", ["Active Directory Login", "MDM Support", "Offline Sync"]);
+
+// Consulting
+addPage("consulting", "Consulting", "IT Consulting Services", "Strategic technology advice to save costs and avoid pitfalls.", "consulting", "We audit code, review architectures, and plan digital transformations.", ["Unbiased Tech Audits", "Scalability Planning", "Security Reviews"]);
+addPage("consulting-it-strategy", "Consulting", "IT Strategy & Roadmaps", "Aligning technology investments with business goals.", "consulting", "Stop guessing. We provide a 3-year tech roadmap.", ["Budget Planning", "Build vs Buy Analysis", "Tech Stack Selection"]);
+addPage("consulting-cloud-devops", "Consulting", "Cloud & DevOps", "AWS/Azure migrations and CI/CD pipelines.", "consulting", "Automate deployments and cut cloud hosting costs.", ["AWS/Azure/GCP", "Docker & Kubernetes", "Cost Optimization"]);
+addPage("consulting-architecture-review", "Consulting", "Architecture Review", "Find bottlenecks before they break your business.", "consulting", "Deep dive into your codebase and database schema.", ["Code Quality Audit", "Security Assessment", "Load Testing"]);
+
+// Marketing & Bulk (New Additions)
+addPage("digital-marketing", "Marketing", "Digital Marketing & Bulk Services", "Turn traffic into leads with data-driven campaigns.", "marketing", "From SEO to direct WhatsApp blasts, we manage your entire funnel.", ["SEO & Paid Ads", "Bulk SMS & Email", "Social Media"]);
+addPage("digital-marketing-seo", "Marketing", "SEO & Search Marketing", "Dominate Google search results organically.", "marketing", "Technical SEO, content writing, and high-quality link building.", ["Keyword Strategy", "Technical Audits", "Content Creation"]);
+addPage("digital-marketing-social-media", "Marketing", "Social Media Management", "Build your brand on LinkedIn, Instagram, and Facebook.", "marketing", "We handle the graphics, copy, and posting schedule.", ["Content Calendars", "Custom Graphics", "Community Management"]);
+addPage("digital-marketing-bulk-sms", "Marketing", "Bulk SMS Services", "Instant reach with 99.9% delivery rates.", "sms", "Promotional and Transactional SMS gateways with API integration for your software.", ["DLT Registration Support", "API Integration", "Real-time Delivery Reports", "Transactional & Promotional Routes"]);
+addPage("digital-marketing-bulk-email", "Marketing", "Bulk Email & Database", "Targeted B2B and B2C email marketing.", "marketing", "We provide verified databases and manage high-volume email blasts without hitting spam.", ["Segmented Databases", "High Inbox Delivery", "Automated Drip Campaigns", "Spam-score Checking"]);
+addPage("digital-marketing-whatsapp", "Marketing", "WhatsApp Business API", "Automate customer support and marketing on WhatsApp.", "sms", "Get the Green Tick, send broadcast messages, and build chatbots.", ["Official API Integration", "Green Tick Verification", "Chatbot Automation", "Rich Media Broadcasting"]);
+
+// FAQs
+let faqHtml = `<div class="faq">`;
+faqData.forEach(f => {
+  faqHtml += `<details class="rv"><summary>${f.q}</summary><p>${f.a}</p></details>`;
+});
+faqHtml += `</div>`;
+
+P["faq"] = {
+  t: "Frequently Asked Questions | Space Technologies",
+  nav: "faq",
+  h: `
+    <section class="hero wrap text-center">
+      <div>
+        <span class="eyebrow">Knowledge Base</span>
+        <h1>Frequently Asked Questions</h1>
+        <p class="lead mx-auto">Everything you need to know about working with Space Technologies, our software dev process, and marketing services.</p>
+      </div>
+    </section>
+    <section class="wrap pb-20">${faqHtml}</section>
+  `
+};
+
+// Contact Page Setup
+const contactHtml = `
+  <section class="hero wrap">
+    <div>
+      <span class="eyebrow">Contact Us</span>
+      <h1>Let's build something great.</h1>
+      <p class="lead">Fill out the form below. Our team in New Delhi will reach out within 24 hours.</p>
+    </div>
+    <img class="himg rv" src="${getImg('contact')}" onerror="${fb}" alt="Contact">
+  </section>
+  <section class="wrap split sec">
+    <div class="enq rv">
+      <h2 style="font-size:24px; margin-bottom:20px;">Send an Enquiry</h2>
+      <form data-form>
+        <div class="row">
+          <input name="name" required placeholder="Your Name" aria-label="Name">
+          <input name="phone" placeholder="Phone Number" aria-label="Phone">
+        </div>
+        <input name="email" type="email" required placeholder="Corporate Email" aria-label="Email">
+        <select name="service" aria-label="Service">
+          <option>Software Development</option>
+          <option>Mobile Apps</option>
+          <option>Bulk SMS / WhatsApp</option>
+          <option>Digital Marketing</option>
+          <option>Other / General</option>
+        </select>
+        <textarea name="message" required placeholder="Tell us about your requirements..."></textarea>
+        <button class="btn" type="submit">Submit Request</button>
+        <p class="msg" role="status"></p>
+      </form>
+    </div>
+    <div>
+      <div class="band rv" style="margin:0; padding: 40px; background: var(--primary);">
+        <h2 style="color:white; font-size:28px;">Global Presence</h2>
+        <p style="color:#e0f2fe; margin-bottom: 20px;">Delivering enterprise solutions across 4 Countries and 12 States.</p>
+        <div class="locations-grid">
+          <div class="loc-card"><h4>Headquarters</h4><p>New Delhi, India</p></div>
+          <div class="loc-card"><h4>Countries</h4><p>India, UAE, USA, Canada</p></div>
+          <div class="loc-card" style="grid-column: 1/-1;"><h4>Regional Hubs</h4><p>Washington DC, Dubai, Bangalore, Mumbai, Chennai, Kochi, Jaipur, Chandigarh & more.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+`;
+P["contact"] = { t: "Contact Us | Space Technologies", nav: "contact", h: contactHtml };
+
+// Setup Router & Animations
+function rev() {
+  const io = new IntersectionObserver((es) => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll(".rv").forEach(x => io.observe(x));
+}
+
+function show() {
+  let id = location.hash.slice(1);
+  if (!P[id]) id = "home";
+  const p = P[id];
+  
+  document.getElementById("m").innerHTML = p.h;
+  document.title = p.t;
+  
+  // Highlight Nav
+  document.querySelectorAll("nav > ul > li > a").forEach(a => {
+    a.classList.toggle("on", a.dataset.group === p.nav || a.getAttribute("href") === `#${id}`);
+  });
+  
+  // Close Mobile Menu
+  document.getElementById("nv").classList.remove("open");
+  document.querySelectorAll(".dd.open").forEach(x => x.classList.remove("open"));
+  
+  window.scrollTo(0, 0);
+  setTimeout(rev, 50); // trigger animations
+}
+
+// Event Listeners
+document.getElementById("mb").addEventListener("click", () => {
+  const o = document.getElementById("nv").classList.toggle("open");
+  document.getElementById("mb").setAttribute("aria-expanded", o);
+});
+
+document.querySelectorAll(".car").forEach(b => {
+  b.addEventListener("click", () => {
+    const li = b.parentNode;
+    const o = li.classList.toggle("open");
+    b.setAttribute("aria-expanded", o);
+  });
+});
+
+document.addEventListener("submit", e => {
+  const f = e.target;
+  if (!f.hasAttribute("data-form")) return;
+  e.preventDefault();
+  f.querySelector(".msg").textContent = "Thank you! Our team will contact you shortly.";
+  f.querySelector(".msg").classList.add("show");
+  f.reset();
+});
+
+window.addEventListener("hashchange", show);
+show(); // Init
+</script>
+</body>
+</html>
