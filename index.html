@@ -15,10 +15,10 @@
     <link rel="alternate" hreflang="en-IN" href="https://zenalphasolution.com/" />
     <link rel="alternate" hreflang="x-default" href="https://zenalphasolution.com/" />
     
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
     <style>
-        /* Modern Clean CSS */
-        :root { --bg: #f8fafc; --ink: #0f172a; --primary: #0369a1; --accent: #d97706; --surface: #ffffff; }
+        /* Modern Enterprise CSS */
+        :root { --bg: #f8fafc; --ink: #0f172a; --primary: #0284c7; --primary-dark: #0369a1; --accent: #d97706; --surface: #ffffff; --border: #cbd5e1; }
         * { box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; padding: 0; }
         body { background: var(--bg); color: var(--ink); line-height: 1.6; }
         a { text-decoration: none; color: inherit; }
@@ -51,7 +51,7 @@
         .hero p { font-size: 1.1rem; color: #475569; margin-bottom: 30px; }
         
         .btn { display: inline-block; background: var(--primary); color: white; padding: 14px 28px; border-radius: 30px; font-weight: 800; box-shadow: 0 10px 20px -5px rgba(3,105,161,0.4); transition: 0.3s; cursor: pointer; border: none; }
-        .btn:hover { background: #0284c7; transform: translateY(-2px); }
+        .btn:hover { background: var(--primary-dark); transform: translateY(-2px); }
         
         /* Cards Grid */
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 30px; }
@@ -87,11 +87,15 @@
         .faq-item.active .faq-answer { max-height: 400px; padding: 0 20px 20px 20px; }
         .faq-item.active .faq-icon { transform: rotate(45deg); }
 
-        /* POPUP MODAL STYLES */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(5px); z-index: 1000; display: none; align-items: center; justify-content: center; animation: fadeIn 0.3s ease; }
-        .modal-box { background: white; width: 90%; max-width: 500px; padding: 30px; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); position: relative; }
-        .modal-close { position: absolute; top: 15px; right: 20px; font-size: 24px; font-weight: 800; color: #64748b; cursor: pointer; }
-        .modal-close:hover { color: var(--ink); }
+        /* MODERN ENTERPRISE MODAL STYLES */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(6px); z-index: 1000; display: none; align-items: center; justify-content: center; animation: fadeIn 0.3s ease; }
+        .modal-box { background: #ffffff; width: 92%; max-width: 520px; padding: 35px; border-radius: 24px; box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.3); position: relative; border: 1px solid #e2e8f0; }
+        .modal-close { position: absolute; top: 20px; right: 22px; width: 36px; height: 36px; background: #f1f5f9; border-radius: 50%; display: grid; place-items: center; font-size: 18px; font-weight: 800; color: #475569; cursor: pointer; transition: 0.2s; }
+        .modal-close:hover { background: #e2e8f0; color: var(--ink); }
+        
+        .enterprise-input { width: 100%; padding: 12px 16px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 0.95rem; color: var(--ink); background: #f8fafc; transition: all 0.2s ease; outline: none; }
+        .enterprise-input:focus { border-color: var(--primary); background: #ffffff; box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.1); }
+        .enterprise-label { font-size: 0.85rem; font-weight: 700; color: #334155; margin-bottom: 6px; display: block; text-transform: uppercase; letter-spacing: 0.5px; }
 
         /* Banners */
         .ai-banner { background: linear-gradient(135deg, #0f172a, #1e293b); color: white; padding: 60px 40px; border-radius: 24px; text-align: center; margin-bottom: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
@@ -122,29 +126,53 @@
 </head>
 <body>
 
-    <!-- 10-SECOND POPUP MODAL -->
+    <!-- MODERN ENTERPRISE POPUP MODAL -->
     <div id="servicePopup" class="modal-overlay">
         <div class="modal-box">
-            <span class="modal-close" onclick="closePopup()">&times;</span>
-            <h2 style="color: var(--primary); margin-bottom: 10px;">Need any service? Enquiry Now</h2>
-            <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 20px;">Fill out the form below and our team will get back to you within 6 working hours.</p>
+            <div class="modal-close" onclick="closePopup()">&times;</div>
+            <div style="margin-bottom: 20px;">
+                <h2 style="color: var(--ink); font-size: 1.6rem; font-weight: 800; margin-bottom: 6px;">Need any service? Enquiry Now</h2>
+                <p style="color: #64748b; font-size: 0.95rem;">Connect with our enterprise experts. We respond within 6 working hours.</p>
+            </div>
             
-            <form action="https://formsubmit.co/chandrakar@zenalphasolution.com" method="POST" onsubmit="handlePopupSubmit(event)" style="display: flex; flex-direction: column; gap: 12px;">
-                <input type="hidden" name="_subject" value="Popup Quick Enquiry from Zen Alpha!">
+            <form action="https://formsubmit.co/chandrakar@zenalphasolution.com" method="POST" onsubmit="handlePopupSubmit(event)" style="display: flex; flex-direction: column; gap: 14px;">
+                <input type="hidden" name="_subject" value="Enterprise Quick Enquiry - Zen Alpha!">
                 <input type="hidden" name="_captcha" value="false">
                 
-                <input type="text" name="name" placeholder="Your Name" required style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;">
-                <input type="tel" name="phone" placeholder="Mobile Number" required style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;">
-                <input type="email" name="email" placeholder="Email Address" required style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;">
-                <input type="text" name="reason" placeholder="Reason for Query (e.g. AI, Software, SEO)" required style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;">
-                <input type="text" name="calling_time" placeholder="Suitable Time for Calling (e.g. 3 PM - 5 PM)" required style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;">
-                <textarea name="comment" placeholder="Additional Comments or Details" rows="3" style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;"></textarea>
+                <div>
+                    <label class="enterprise-label">Full Name</label>
+                    <input type="text" name="name" class="enterprise-input" placeholder="e.g. Rajesh Kumar" required>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <div>
+                        <label class="enterprise-label">Mobile Number</label>
+                        <input type="tel" name="phone" class="enterprise-input" placeholder="+91 98765 43210" required>
+                    </div>
+                    <div>
+                        <label class="enterprise-label">Email Address</label>
+                        <input type="email" name="email" class="enterprise-input" placeholder="name@company.com" required>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <div>
+                        <label class="enterprise-label">Reason for Query</label>
+                        <input type="text" name="reason" class="enterprise-input" placeholder="AI, Software, SEO..." required>
+                    </div>
+                    <div>
+                        <label class="enterprise-label">Suitable Calling Time</label>
+                        <input type="text" name="calling_time" class="enterprise-input" placeholder="e.g. 3 PM - 5 PM" required>
+                    </div>
+                </div>
+                <div>
+                    <label class="enterprise-label">Additional Comments</label>
+                    <textarea name="comment" class="enterprise-input" placeholder="Briefly describe your requirements..." rows="3" style="resize: none;"></textarea>
+                </div>
                 
-                <button type="submit" class="btn" style="width: 100%;">Submit Enquiry</button>
+                <button type="submit" class="btn" style="width: 100%; margin-top: 5px; padding: 14px; font-size: 1rem; border-radius: 12px;">Submit Enterprise Enquiry</button>
             </form>
-            <div id="popupThankYou" style="display: none; text-align: center; padding: 20px 0;">
-                <h3 style="color: #10b981; margin-bottom: 10px;">Thank You!</h3>
-                <p style="color: var(--ink);">Our team will call you within 6 working hours.</p>
+            <div id="popupThankYou" style="display: none; text-align: center; padding: 30px 0;">
+                <h3 style="color: #10b981; font-size: 1.5rem; margin-bottom: 10px;">Enquiry Submitted Successfully!</h3>
+                <p style="color: var(--ink); font-size: 1.05rem;">Thank you. Our team will call you within 6 working hours.</p>
             </div>
         </div>
     </div>
@@ -205,7 +233,7 @@
 
     <main class="container">
 
-        <!-- 1. HOME PAGE WITH ALL 9 CORE SOLUTIONS -->
+        <!-- 1. HOME PAGE -->
         <div id="home" class="page active-page">
             <div class="hero">
                 <div>
@@ -219,7 +247,8 @@
                 </div>
             </div>
 
-            <h2>Our Core Solutions (All Services)</h2>
+            <!-- CLEAN TITLE WITHOUT (All Services) -->
+            <h2>Our Core Solutions</h2>
             <div class="grid-3">
                 <div class="card" onclick="navigate('ai')" style="cursor:pointer;">
                     <h3>Artificial Intelligence</h3>
@@ -277,21 +306,21 @@
             </div>
         </div>
 
-        <!-- CAREERS PAGE WITH 12 JOB OPENINGS & MULTI-ATTACHMENT FORM -->
+        <!-- CAREERS PAGE -->
         <div id="careers" class="page">
             <div style="text-align:center; margin-bottom: 40px;">
                 <h1>Careers at Zen Alpha</h1>
                 <p>Join a culture of innovation, growth, and excellence. Explore our 12 open tech positions below.</p>
             </div>
 
-            <div class="grid-3" id="jobListings">
+            <div class="grid-3">
                 <div class="card"><h3>1. Front-End Developer</h3><p>React, Vue, Tailwind CSS</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('Front-End Developer')">Apply Now</button></div>
                 <div class="card"><h3>2. Back-End Developer</h3><p>Node.js, Express, Microservices</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('Back-End Developer')">Apply Now</button></div>
                 <div class="card"><h3>3. Python Developer</h3><p>Django, FastAPI, AI pipelines</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('Python Developer')">Apply Now</button></div>
                 <div class="card"><h3>4. System Architect</h3><p>Cloud infrastructure, Scalability</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('System Architect')">Apply Now</button></div>
                 <div class="card"><h3>5. DevOps Engineer</h3><p>AWS, Azure, Docker, Kubernetes</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('DevOps Engineer')">Apply Now</button></div>
                 <div class="card"><h3>6. Full Stack Engineer</h3><p>MERN Stack, Next.js</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('Full Stack Engineer')">Apply Now</button></div>
-                <div class="card"><h3>7. UI/UX Designer</h3>p>Figma, User Research, Wireframing</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('UI/UX Designer')">Apply Now</button></div>
+                <div class="card"><h3>7. UI/UX Designer</h3><p>Figma, User Research, Wireframing</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('UI/UX Designer')">Apply Now</button></div>
                 <div class="card"><h3>8. AI / ML Engineer</h3><p>LLMs, GPT integration, Python</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('AI / ML Engineer')">Apply Now</button></div>
                 <div class="card"><h3>9. Mobile App Developer</h3><p>Flutter, React Native, iOS/Android</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('Mobile App Developer')">Apply Now</button></div>
                 <div class="card"><h3>10. Digital Marketing Head</h3><p>SEO, PPC, Growth Strategies</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('Digital Marketing Head')">Apply Now</button></div>
@@ -300,37 +329,54 @@
             </div>
         </div>
 
-        <!-- JOB APPLICATION MODAL WITH 2 ATTACHMENTS -->
+        <!-- MODERNIZED JOB APPLICATION MODAL -->
         <div id="jobModal" class="modal-overlay">
             <div class="modal-box">
-                <span class="modal-close" onclick="closeJobForm()">&times;</span>
-                <h2 id="jobTitle" style="color: var(--primary); margin-bottom: 15px;">Apply for Job</h2>
+                <div class="modal-close" onclick="closeJobForm()">&times;</div>
+                <div style="margin-bottom: 20px;">
+                    <h2 id="jobTitle" style="color: var(--ink); font-size: 1.5rem; font-weight: 800; margin-bottom: 4px;">Apply for Position</h2>
+                    <p style="color: #64748b; font-size: 0.9rem;">Submit your details and attachments securely.</p>
+                </div>
                 
-                <form action="https://formsubmit.co/chandrakar@zenalphasolution.com" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 12px;">
-                    <input type="hidden" name="_subject" value="New Job Application - Zen Alpha!">
+                <form action="https://formsubmit.co/chandrakar@zenalphasolution.com" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 14px;">
+                    <input type="hidden" name="_subject" value="New Enterprise Job Application - Zen Alpha!">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" id="appliedRoleInput" name="Applied_Role" value="">
                     
-                    <input type="text" name="name" placeholder="Full Name" required style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;">
-                    <input type="email" name="email" placeholder="Email Address" required style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;">
-                    <input type="tel" name="phone" placeholder="Phone Number" required style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;">
+                    <div>
+                        <label class="enterprise-label">Full Name</label>
+                        <input type="text" name="name" class="enterprise-input" placeholder="e.g. Amit Sharma" required>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                        <div>
+                            <label class="enterprise-label">Email Address</label>
+                            <input type="email" name="email" class="enterprise-input" placeholder="name@domain.com" required>
+                        </div>
+                        <div>
+                            <label class="enterprise-label">Phone Number</label>
+                            <input type="tel" name="phone" class="enterprise-input" placeholder="+91 98765 43210" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="enterprise-label">Upload CV / Resume (PDF / Doc)</label>
+                        <input type="file" name="CV_Attachment" class="enterprise-input" style="padding: 9px;" required>
+                    </div>
+                    <div>
+                        <label class="enterprise-label">Upload Additional Document / ID</label>
+                        <input type="file" name="Supporting_Document" class="enterprise-input" style="padding: 9px;" required>
+                    </div>
+                    <div>
+                        <label class="enterprise-label">Cover Letter / Experience Summary</label>
+                        <textarea name="cover_letter" class="enterprise-input" placeholder="Briefly mention your experience..." rows="3" style="resize: none;"></textarea>
+                    </div>
                     
-                    <label style="font-size: 0.9rem; font-weight: 600; color: #475569;">Upload CV / Resume (PDF/Doc):</label>
-                    <input type="file" name="CV_Attachment" required style="padding: 5px; border: 1px solid #cbd5e1; border-radius: 8px;">
-                    
-                    <label style="font-size: 0.9rem; font-weight: 600; color: #475569;">Upload Additional Document / ID:</label>
-                    <input type="file" name="Supporting_Document" required style="padding: 5px; border: 1px solid #cbd5e1; border-radius: 8px;">
-                    
-                    <textarea name="cover_letter" placeholder="Brief Cover Letter or Experience Summary" rows="3" style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;"></textarea>
-                    
-                    <button type="submit" class="btn" style="width: 100%;">Submit Application</button>
+                    <button type="submit" class="btn" style="width: 100%; margin-top: 5px; padding: 14px; font-size: 1rem; border-radius: 12px;">Submit Application</button>
                 </form>
             </div>
         </div>
 
 
-        <!-- ======================= TECH SERVICES (EXPANDED HEAVY CONTENT) ======================= -->
-
+        <!-- TECH SERVICES (HEAVY CONTENT) -->
         <div id="ai" class="page">
             <div class="ai-banner">
                 <h1>Artificial Intelligence Solutions</h1>
@@ -397,21 +443,18 @@
             </div>
         </div>
 
-
-        <!-- DIGITAL MARKETING PAGES -->
+        <!-- DIGITAL MARKETING & OUTSOURCING PAGES -->
         <div id="marketing-sms" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Bulk SMS Services</h1><p>High-delivery SMS gateways with 99.9% uptime.</p></div></div>
         <div id="marketing-email" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Bulk Email Services</h1><p>Targeted campaigns with high inbox placement rates.</p></div></div>
         <div id="marketing-whatsapp" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Bulk WhatsApp Services</h1><p>Official Meta API integration with green tick support.</p></div></div>
         <div id="marketing-web" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Website Development</h1><p>Corporate portfolios and e-commerce platforms.</p></div></div>
         <div id="marketing-seo" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>SEO / SMO / PPC Services</h1><p>Dominate search engines and paid ads for maximum ROI.</p></div></div>
-
-        <!-- OUTSOURCING PAGES -->
         <div id="outsourcing-jobs" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Full Time / Part Time Hiring</h1><p>Staff augmentation with top 1% vetted tech professionals.</p></div></div>
         <div id="outsourcing-freelance" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Freelancing Projects</h1><p>Fixed-cost end-to-end project execution.</p></div></div>
         <div id="outsourcing-consultancy" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Consultancy & BPO Services</h1><p>24/7 customer support and back-office operations.</p></div></div>
 
 
-        <!-- ======================= MEGA FAQ SECTION (ACCORDION) ======================= -->
+        <!-- FAQ SECTION -->
         <div id="faq" class="page">
             <div style="text-align:center; margin-bottom: 40px;">
                 <h1>Frequently Asked Questions</h1>
@@ -443,7 +486,7 @@
         </div>
 
 
-        <!-- ======================= CONTACT ======================= -->
+        <!-- CONTACT PAGE -->
         <div id="contact" class="page">
             <div class="hero">
                 <div>
@@ -532,14 +575,14 @@
         </div>
     </footer>
 
-    <!-- SCRIPT FOR POPUP, JOB FORM, ACCORDION & ROUTING -->
+    <!-- SCRIPT -->
     <script>
-        // 1. 10-Second Popup Logic
+        // 10-Second Popup Logic
         window.addEventListener('DOMContentLoaded', function() {
             setTimeout(function() {
                 var popup = document.getElementById('servicePopup');
                 if(popup) popup.style.display = 'flex';
-            }, 10000); // 10000ms = 10 seconds
+            }, 10000);
         });
 
         function closePopup() {
@@ -551,12 +594,10 @@
         }
 
         function handlePopupSubmit(event) {
-            // Let formsubmit handle the post, but show thank you message inline first if desired
-            // FormSubmit will redirect or post, so we let default action proceed after a brief alert
             alert("Thank you! Our team will call you within 6 working hours.");
         }
 
-        // 2. Job Application Modal Logic
+        // Job Modal Logic
         function openJobForm(roleName) {
             document.getElementById('jobTitle').innerText = "Apply for: " + roleName;
             document.getElementById('appliedRoleInput').value = roleName;
@@ -567,7 +608,7 @@
             document.getElementById('jobModal').style.display = 'none';
         }
 
-        // 3. Smart Accordion FAQ Logic
+        // Smart Accordion FAQ Logic
         function toggleFaq(element) {
             var item = element.parentElement;
             var isActive = item.classList.contains('active');
@@ -580,7 +621,7 @@
             }
         }
 
-        // 4. Router Logic
+        // Router Logic
         function navigate(pageId) {
             try {
                 var pages = document.querySelectorAll('.page');
