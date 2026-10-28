@@ -19,86 +19,86 @@
     <style>
         :root { --bg: #f8fafc; --ink: #0f172a; --primary: #0284c7; --primary-dark: #0369a1; --accent: #d97706; --surface: #ffffff; --border: #cbd5e1; }
         * { box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; padding: 0; }
-        body { background: var(--bg); color: var(--ink); line-height: 1.6; }
+        body { background: var(--bg); color: var(--ink); line-height: 1.6; overflow-x: hidden; }
         a { text-decoration: none; color: inherit; }
         img { max-width: 100%; height: auto; border-radius: 12px; }
         
         /* Header & Logo */
-        header { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #e2e8f0; padding: 15px 3%; display: flex; justify-content: space-between; align-items: center; }
-        .logo-box { display: flex; align-items: center; gap: 12px; cursor: pointer; }
-        .logo-icon { width: 45px; height: 45px; background: linear-gradient(135deg, #0284c7, #10b981); border-radius: 10px; display: grid; place-items: center; color: white; font-weight: 900; font-size: 24px; box-shadow: 0 4px 15px -3px rgba(2,132,199,0.4); }
+        header { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #e2e8f0; padding: 12px 3%; display: flex; justify-content: space-between; align-items: center; }
+        .logo-box { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+        .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, #0284c7, #10b981); border-radius: 10px; display: grid; place-items: center; color: white; font-weight: 900; font-size: 22px; box-shadow: 0 4px 15px -3px rgba(2,132,199,0.4); }
         .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
-        .logo-text .zen { font-weight: 800; font-size: 22px; color: var(--ink); }
-        .logo-text .alpha { font-weight: 800; font-size: 14px; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; }
+        .logo-text .zen { font-weight: 800; font-size: 20px; color: var(--ink); }
+        .logo-text .alpha { font-weight: 800; font-size: 12px; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; }
         
         /* Navigation & Dropdowns */
-        nav { display: flex; gap: 12px; align-items: center; }
-        nav > a, .dropbtn { font-weight: 800; font-size: 13px; padding: 8px 10px; border-radius: 8px; transition: 0.3s; color: #334155; cursor: pointer; }
+        nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+        nav > a, .dropbtn { font-weight: 700; font-size: 12.5px; padding: 6px 8px; border-radius: 6px; transition: 0.3s; color: #334155; cursor: pointer; }
         nav > a:hover, .dropdown:hover .dropbtn { background: #e0f2fe; color: var(--primary); }
         
         .dropdown { position: relative; display: inline-block; }
-        .dropdown-content { display: none; position: absolute; background-color: #ffffff; min-width: 230px; box-shadow: 0px 10px 25px rgba(0,0,0,0.1); z-index: 1; border-radius: 12px; top: 100%; left: 0; padding: 10px 0; border: 1px solid #e2e8f0; }
+        .dropdown-content { display: none; position: absolute; background-color: #ffffff; min-width: 220px; box-shadow: 0px 10px 25px rgba(0,0,0,0.1); z-index: 101; border-radius: 12px; top: 100%; left: 0; padding: 8px 0; border: 1px solid #e2e8f0; }
         .dropdown:hover .dropdown-content { display: flex; flex-direction: column; }
-        .dropdown-content a { color: var(--ink); padding: 10px 20px; text-decoration: none; display: block; font-weight: 600; font-size: 13px; transition: 0.2s; }
-        .dropdown-content a:hover { background-color: #f1f5f9; color: var(--primary); padding-left: 25px; }
+        .dropdown-content a { color: var(--ink); padding: 10px 18px; text-decoration: none; display: block; font-weight: 600; font-size: 13px; transition: 0.2s; }
+        .dropdown-content a:hover { background-color: #f1f5f9; color: var(--primary); padding-left: 22px; }
 
         /* Layouts */
-        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
-        .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 60px; }
-        .hero h1 { font-size: 3.2rem; line-height: 1.15; margin-bottom: 20px; color: var(--ink); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 30px 15px; }
+        .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 50px; }
+        .hero h1 { font-size: 2.8rem; line-height: 1.2; margin-bottom: 20px; color: var(--ink); }
         .hero h1 span { color: var(--primary); }
-        .hero p { font-size: 1.15rem; color: #475569; margin-bottom: 30px; }
+        .hero p { font-size: 1.05rem; color: #475569; margin-bottom: 25px; }
         
-        .btn { display: inline-block; background: var(--primary); color: white; padding: 14px 28px; border-radius: 30px; font-weight: 800; box-shadow: 0 10px 20px -5px rgba(3,105,161,0.4); transition: 0.3s; cursor: pointer; border: none; }
+        .btn { display: inline-block; background: var(--primary); color: white; padding: 12px 24px; border-radius: 30px; font-weight: 800; font-size: 0.95rem; box-shadow: 0 10px 20px -5px rgba(3,105,161,0.4); transition: 0.3s; cursor: pointer; border: none; text-align: center; }
         .btn:hover { background: var(--primary-dark); transform: translateY(-2px); }
         
         /* Cards Grid */
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 30px; }
-        .card { background: var(--surface); padding: 25px; border-radius: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; transition: 0.3s; cursor: pointer; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: var(--primary); }
-        .card h3 { font-size: 1.4rem; margin: 15px 0 10px; color: var(--ink); }
-        .card p { color: #64748b; font-size: 0.95rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 25px; }
+        .card { background: var(--surface); padding: 22px; border-radius: 18px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; transition: 0.3s; cursor: pointer; }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 15px 20px -5px rgba(0,0,0,0.08); border-color: var(--primary); }
+        .card h3 { font-size: 1.35rem; margin: 12px 0 8px; color: var(--ink); }
+        .card p { color: #64748b; font-size: 0.92rem; }
         
         /* Detail Sections */
-        .detail-row { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 50px; background: white; padding: 35px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid #e2e8f0;}
+        .detail-row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; margin-bottom: 40px; background: white; padding: 30px; border-radius: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid #e2e8f0;}
         .detail-row.reverse { grid-template-columns: 1fr 1fr; direction: rtl; }
         .detail-row.reverse > * { direction: ltr; }
-        .detail-row h2 { color: var(--ink); margin-bottom: 15px; font-size: 2rem;}
-        .detail-row p { color: #475569; margin-bottom: 15px; font-size: 1.05rem; }
-        .detail-row ul { margin-left: 20px; color: #475569; margin-bottom: 20px; }
-        .detail-row li { margin-bottom: 10px; }
+        .detail-row h2 { color: var(--ink); margin-bottom: 12px; font-size: 1.8rem;}
+        .detail-row p { color: #475569; margin-bottom: 12px; font-size: 1rem; }
+        .detail-row ul { margin-left: 20px; color: #475569; margin-bottom: 15px; }
+        .detail-row li { margin-bottom: 8px; font-size: 0.95rem; }
 
         /* Global Presence Cards */
-        .location-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
-        .loc-card { height: 200px; border-radius: 16px; background-size: cover; background-position: center; position: relative; overflow: hidden; display: flex; align-items: flex-end; padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: 0.3s; }
+        .location-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-top: 25px; }
+        .loc-card { height: 180px; border-radius: 14px; background-size: cover; background-position: center; position: relative; overflow: hidden; display: flex; align-items: flex-end; padding: 18px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); transition: 0.3s; }
         .loc-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(15,23,42,0.9), rgba(15,23,42,0.1)); z-index: 1; }
-        .loc-card:hover { transform: translateY(-5px); }
-        .loc-card h3 { color: white; position: relative; z-index: 2; font-size: 1.5rem; margin: 0; }
-        .loc-card p { color: #cbd5e1; position: relative; z-index: 2; margin: 0; font-size: 0.9rem; }
+        .loc-card:hover { transform: translateY(-4px); }
+        .loc-card h3 { color: white; position: relative; z-index: 2; font-size: 1.35rem; margin: 0; }
+        .loc-card p { color: #cbd5e1; position: relative; z-index: 2; margin: 0; font-size: 0.85rem; }
 
         /* FAQ ACCORDION STYLES */
         .faq-container { max-width: 900px; margin: 0 auto; }
-        .faq-item { background: white; border: 1px solid #e2e8f0; border-radius: 12px; margin-bottom: 15px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: 0.3s; }
-        .faq-question { padding: 20px; font-weight: 800; font-size: 1.1rem; color: var(--ink); display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: #ffffff; }
+        .faq-item { background: white; border: 1px solid #e2e8f0; border-radius: 12px; margin-bottom: 12px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: 0.3s; }
+        .faq-question { padding: 18px; font-weight: 800; font-size: 1.02rem; color: var(--ink); display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: #ffffff; }
         .faq-question:hover { background: #f8fafc; color: var(--primary); }
-        .faq-icon { font-size: 1.4rem; font-weight: 900; color: var(--primary); transition: transform 0.3s ease; }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding 0.3s ease; padding: 0 20px; color: #475569; background: #ffffff; font-size: 1rem; }
-        .faq-item.active .faq-answer { max-height: 400px; padding: 0 20px 20px 20px; }
+        .faq-icon { font-size: 1.3rem; font-weight: 900; color: var(--primary); transition: transform 0.3s ease; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding 0.3s ease; padding: 0 18px; color: #475569; background: #ffffff; font-size: 0.95rem; }
+        .faq-item.active .faq-answer { max-height: 400px; padding: 0 18px 18px 18px; }
         .faq-item.active .faq-icon { transform: rotate(45deg); }
 
-        /* MODAL STYLES */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(6px); z-index: 1000; display: none; align-items: center; justify-content: center; animation: fadeIn 0.3s ease; }
-        .modal-box { background: #ffffff; width: 92%; max-width: 520px; padding: 35px; border-radius: 24px; box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.3); position: relative; border: 1px solid #e2e8f0; }
-        .modal-close { position: absolute; top: 20px; right: 22px; width: 36px; height: 36px; background: #f1f5f9; border-radius: 50%; display: grid; place-items: center; font-size: 18px; font-weight: 800; color: #475569; cursor: pointer; transition: 0.2s; }
+        /* MODAL STYLES (MOBILE RESPONSIVE) */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(6px); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 15px; animation: fadeIn 0.3s ease; overflow-y: auto; }
+        .modal-box { background: #ffffff; width: 100%; max-width: 500px; padding: 25px; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.3); position: relative; border: 1px solid #e2e8f0; max-height: 90vh; overflow-y: auto; }
+        .modal-close { position: absolute; top: 15px; right: 15px; width: 32px; height: 32px; background: #f1f5f9; border-radius: 50%; display: grid; place-items: center; font-size: 16px; font-weight: 800; color: #475569; cursor: pointer; transition: 0.2s; }
         .modal-close:hover { background: #e2e8f0; color: var(--ink); }
         
-        .enterprise-input { width: 100%; padding: 12px 16px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 0.95rem; color: var(--ink); background: #f8fafc; transition: all 0.2s ease; outline: none; }
+        .enterprise-input { width: 100%; padding: 11px 14px; border-radius: 9px; border: 1.5px solid #cbd5e1; font-size: 0.92rem; color: var(--ink); background: #f8fafc; transition: all 0.2s ease; outline: none; }
         .enterprise-input:focus { border-color: var(--primary); background: #ffffff; box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.1); }
-        .enterprise-label { font-size: 0.85rem; font-weight: 700; color: #334155; margin-bottom: 6px; display: block; text-transform: uppercase; letter-spacing: 0.5px; }
+        .enterprise-label { font-size: 0.82rem; font-weight: 700; color: #334155; margin-bottom: 5px; display: block; text-transform: uppercase; letter-spacing: 0.5px; }
 
         /* Banners */
-        .ai-banner { background: linear-gradient(135deg, #0f172a, #1e293b); color: white; padding: 60px 40px; border-radius: 24px; text-align: center; margin-bottom: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-        .ai-banner h1 { font-size: 3.2rem; background: linear-gradient(to right, #38bdf8, #fcd34d); -webkit-background-clip: text; color: transparent; margin-bottom: 20px; }
+        .ai-banner { background: linear-gradient(135deg, #0f172a, #1e293b); color: white; padding: 45px 25px; border-radius: 20px; text-align: center; margin-bottom: 35px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        .ai-banner h1 { font-size: 2.5rem; background: linear-gradient(to right, #38bdf8, #fcd34d); -webkit-background-clip: text; color: transparent; margin-bottom: 15px; }
 
         /* Pages */
         .page { display: none; animation: fadeIn 0.4s ease-in-out; }
@@ -107,34 +107,38 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* Footer */
-        footer { background: #1e293b; color: white; padding: 60px 20px 20px; margin-top: 60px; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; }
-        .footer-grid h3 { color: #38bdf8; margin-bottom: 20px; }
-        .footer-grid p, .footer-grid a { color: #94a3b8; margin-bottom: 10px; display: block; }
+        footer { background: #1e293b; color: white; padding: 50px 20px 20px; margin-top: 50px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .footer-grid h3 { color: #38bdf8; margin-bottom: 15px; font-size: 1.1rem; }
+        .footer-grid p, .footer-grid a { color: #94a3b8; margin-bottom: 8px; display: block; font-size: 0.92rem; }
         
-        @media (max-width: 1100px) {
-            header { flex-direction: column; gap: 15px; }
-            nav { flex-wrap: wrap; justify-content: center; width: 100%; }
-        }
+        /* RESPONSIVE MEDIA QUERIES FOR MOBILE */
         @media (max-width: 900px) {
-            .hero, .detail-row, .detail-row.reverse { grid-template-columns: 1fr; text-align: center; direction: ltr; }
-            .detail-row ul { text-align: left; }
-            .dropdown-content { position: relative; box-shadow: none; border: none; min-width: 100%; }
+            header { flex-direction: column; gap: 10px; padding: 12px; }
+            nav { width: 100%; justify-content: center; gap: 6px; overflow-x: auto; padding-bottom: 5px; }
+            nav > a, .dropbtn { font-size: 11.5px; padding: 5px 7px; }
+            .hero { grid-template-columns: 1fr; text-align: center; gap: 25px; margin-bottom: 40px; }
+            .hero h1 { font-size: 2.2rem; }
+            .detail-row, .detail-row.reverse { grid-template-columns: 1fr; text-align: center; direction: ltr; padding: 20px; gap: 20px; }
+            .detail-row ul { text-align: left; display: inline-block; }
+            .dropdown-content { position: static; box-shadow: none; border: none; width: 100%; background: #f1f5f9; margin-top: 5px; }
+            .dropdown:hover .dropdown-content { display: none; } /* On mobile click toggle or simple list */
+            .modal-box { padding: 20px; width: 95%; max-height: 85vh; }
         }
     </style>
 </head>
 <body>
 
-    <!-- MODERN ENTERPRISE POPUP MODAL -->
+    <!-- MOBILE ENTERPRISE POPUP MODAL -->
     <div id="servicePopup" class="modal-overlay">
         <div class="modal-box">
             <div class="modal-close" onclick="closePopup()">&times;</div>
-            <div style="margin-bottom: 20px;">
-                <h2 style="color: var(--ink); font-size: 1.6rem; font-weight: 800; margin-bottom: 6px;">Need any service? Enquiry Now</h2>
-                <p style="color: #64748b; font-size: 0.95rem;">Connect with our enterprise experts. We respond within 6 working hours.</p>
+            <div style="margin-bottom: 15px;">
+                <h2 style="color: var(--ink); font-size: 1.35rem; font-weight: 800; margin-bottom: 4px;">Need any service? Enquiry Now</h2>
+                <p style="color: #64748b; font-size: 0.88rem;">Connect with our experts. We respond within 6 working hours.</p>
             </div>
             
-            <form action="https://formsubmit.co/chandrakar@zenalphasolution.com" method="POST" onsubmit="handlePopupSubmit(event)" style="display: flex; flex-direction: column; gap: 14px;">
+            <form action="https://formsubmit.co/chandrakar@zenalphasolution.com" method="POST" onsubmit="handlePopupSubmit(event)" style="display: flex; flex-direction: column; gap: 10px;">
                 <input type="hidden" name="_subject" value="Enterprise Quick Enquiry - Zen Alpha!">
                 <input type="hidden" name="_captcha" value="false">
                 
@@ -142,32 +146,32 @@
                     <label class="enterprise-label">Full Name</label>
                     <input type="text" name="name" class="enterprise-input" placeholder="e.g. Rajesh Kumar" required>
                 </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                     <div>
                         <label class="enterprise-label">Mobile Number</label>
-                        <input type="tel" name="phone" class="enterprise-input" placeholder="+91 98765 43210" required>
+                        <input type="tel" name="phone" class="enterprise-input" placeholder="+91 98765..." required>
                     </div>
                     <div>
                         <label class="enterprise-label">Email Address</label>
                         <input type="email" name="email" class="enterprise-input" placeholder="name@company.com" required>
                     </div>
                 </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                     <div>
                         <label class="enterprise-label">Reason for Query</label>
                         <input type="text" name="reason" class="enterprise-input" placeholder="AI, Software, SEO..." required>
                     </div>
                     <div>
-                        <label class="enterprise-label">Suitable Calling Time</label>
-                        <input type="text" name="calling_time" class="enterprise-input" placeholder="e.g. 3 PM - 5 PM" required>
+                        <label class="enterprise-label">Calling Time</label>
+                        <input type="text" name="calling_time" class="enterprise-input" placeholder="3 PM - 5 PM" required>
                     </div>
                 </div>
                 <div>
-                    <label class="enterprise-label">Additional Comments</label>
-                    <textarea name="comment" class="enterprise-input" placeholder="Briefly describe your requirements..." rows="3" style="resize: none;"></textarea>
+                    <label class="enterprise-label">Comments</label>
+                    <textarea name="comment" class="enterprise-input" placeholder="Brief requirements..." rows="2" style="resize: none;"></textarea>
                 </div>
                 
-                <button type="submit" class="btn" style="width: 100%; margin-top: 5px; padding: 14px; font-size: 1rem; border-radius: 12px;">Submit Enterprise Enquiry</button>
+                <button type="submit" class="btn" style="width: 100%; margin-top: 5px; padding: 12px; font-size: 0.95rem; border-radius: 10px;">Submit Enquiry</button>
             </form>
         </div>
     </div>
@@ -185,7 +189,7 @@
             <a href="#home" onclick="navigate('home')">Home</a>
             
             <div class="dropdown">
-                <div class="dropbtn">Company ▾</div>
+                <div class="dropbtn" onclick="toggleDropdown(this)">Company ▾</div>
                 <div class="dropdown-content">
                     <a href="#about" onclick="navigate('about')">About Us & Mission</a>
                     <a href="#careers" onclick="navigate('careers')">Careers & Hiring</a>
@@ -193,7 +197,7 @@
             </div>
 
             <div class="dropdown">
-                <div class="dropbtn">Tech Services ▾</div>
+                <div class="dropbtn" onclick="toggleDropdown(this)">Tech Services ▾</div>
                 <div class="dropdown-content">
                     <a href="#ai" onclick="navigate('ai')">Artificial Intelligence 🔥</a>
                     <a href="#software" onclick="navigate('software')">Software & Apps</a>
@@ -202,7 +206,7 @@
             </div>
             
             <div class="dropdown">
-                <div class="dropbtn">Digital Marketing ▾</div>
+                <div class="dropbtn" onclick="toggleDropdown(this)">Marketing ▾</div>
                 <div class="dropdown-content">
                     <a href="#marketing-sms" onclick="navigate('marketing-sms')">Bulk SMS Services</a>
                     <a href="#marketing-email" onclick="navigate('marketing-email')">Bulk Email Services</a>
@@ -213,7 +217,7 @@
             </div>
 
             <div class="dropdown">
-                <div class="dropbtn">Outsourcing ▾</div>
+                <div class="dropbtn" onclick="toggleDropdown(this)">Outsourcing ▾</div>
                 <div class="dropdown-content">
                     <a href="#outsourcing-jobs" onclick="navigate('outsourcing-jobs')">Full/Part Time Jobs</a>
                     <a href="#outsourcing-freelance" onclick="navigate('outsourcing-freelance')">Freelancing Projects</a>
@@ -228,7 +232,7 @@
 
     <main class="container">
 
-        <!-- 1. UPGRADED HOME PAGE -->
+        <!-- HOME PAGE -->
         <div id="home" class="page active-page">
             <div class="hero">
                 <div>
@@ -283,9 +287,9 @@
             </div>
         </div>
 
-        <!-- COMPANY PAGES -->
+        <!-- ABOUT PAGE -->
         <div id="about" class="page">
-            <div style="text-align:center; margin-bottom: 40px;">
+            <div style="text-align:center; margin-bottom: 30px;">
                 <h1>About Zen Alpha</h1>
                 <p>Empowering businesses globally from our headquarters in New Delhi.</p>
             </div>
@@ -302,24 +306,24 @@
 
         <!-- CAREERS PAGE -->
         <div id="careers" class="page">
-            <div style="text-align:center; margin-bottom: 40px;">
+            <div style="text-align:center; margin-bottom: 30px;">
                 <h1>Careers at Zen Alpha</h1>
                 <p>Join a culture of innovation, growth, and excellence. Explore our 12 open tech positions below.</p>
             </div>
 
             <div class="grid-3">
-                <div class="card"><h3>1. Front-End Developer</h3><p>React, Vue, Tailwind CSS</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('Front-End Developer')">Apply Now</button></div>
-                <div class="card"><h3>2. Back-End Developer</h3><p>Node.js, Express, Microservices</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('Back-End Developer')">Apply Now</button></div>
-                <div class="card"><h3>3. Python Developer</h3><p>Django, FastAPI, AI pipelines</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('Python Developer')">Apply Now</button></div>
-                <div class="card"><h3>4. System Architect</h3><p>Cloud infrastructure, Scalability</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('System Architect')">Apply Now</button></div>
-                <div class="card"><h3>5. DevOps Engineer</h3><p>AWS, Azure, Docker, Kubernetes</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('DevOps Engineer')">Apply Now</button></div>
-                <div class="card"><h3>6. Full Stack Engineer</h3><p>MERN Stack, Next.js</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('Full Stack Engineer')">Apply Now</button></div>
-                <div class="card"><h3>7. UI/UX Designer</h3><p>Figma, User Research, Wireframing</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('UI/UX Designer')">Apply Now</button></div>
-                <div class="card"><h3>8. AI / ML Engineer</h3><p>LLMs, GPT integration, Python</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('AI / ML Engineer')">Apply Now</button></div>
-                <div class="card"><h3>9. Mobile App Developer</h3><p>Flutter, React Native, iOS/Android</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('Mobile App Developer')">Apply Now</button></div>
-                <div class="card"><h3>10. Digital Marketing Head</h3><p>SEO, PPC, Growth Strategies</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('Digital Marketing Head')">Apply Now</button></div>
-                <div class="card"><h3>11. QA & Testing Engineer</h3><p>Automated & Manual Testing</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('QA & Testing Engineer')">Apply Now</button></div>
-                <div class="card"><h3>12. Business Development Exec</h3><p>B2B Tech Sales & Client Outreach</p><button class="btn" style="margin-top:15px; padding: 8px 16px;" onclick="openJobForm('Business Development Executive')">Apply Now</button></div>
+                <div class="card"><h3>1. Front-End Developer</h3><p>React, Vue, Tailwind CSS</p><button class="btn" style="margin-top:12px; padding: 7px 14px; font-size: 0.85rem;" onclick="openJobForm('Front-End Developer')">Apply Now</button></div>
+                <div class="card"><h3>2. Back-End Developer</h3><p>Node.js, Express, Microservices</p><button class="btn" style="margin-top:12px; padding: 7px 14px; font-size: 0.85rem;" onclick="openJobForm('Back-End Developer')">Apply Now</button></div>
+                <div class="card"><h3>3. Python Developer</h3><p>Django, FastAPI, AI pipelines</p><button class="btn" style="margin-top:12px; padding: 7px 14px; font-size: 0.85rem;" onclick="openJobForm('Python Developer')">Apply Now</button></div>
+                <div class="card"><h3>4. System Architect</h3><p>Cloud infrastructure, Scalability</p><button class="btn" style="margin-top:12px; padding: 7px 14px; font-size: 0.85rem;" onclick="openJobForm('System Architect')">Apply Now</button></div>
+                <div class="card"><h3>5. DevOps Engineer</h3><p>AWS, Azure, Docker, Kubernetes</p><button class="btn" style="margin-top:12px; padding: 7px 14px; font-size: 0.85rem;" onclick="openJobForm('DevOps Engineer')">Apply Now</button></div>
+                <div class="card"><h3>6. Full Stack Engineer</h3><p>MERN Stack, Next.js</p><button class="btn" style="margin-top:12px; padding: 7px 14px; font-size: 0.85rem;" onclick="openJobForm('Full Stack Engineer')">Apply Now</button></div>
+                <div class="card"><h3>7. UI/UX Designer</h3><p>Figma, User Research, Wireframing</p><button class="btn" style="margin-top:12px; padding: 7px 14px; font-size: 0.85rem;" onclick="openJobForm('UI/UX Designer')">Apply Now</button></div>
+                <div class="card"><h3>8. AI / ML Engineer</h3><p>LLMs, GPT integration, Python</p><button class="btn" style="margin-top:12px; padding: 7px 14px; font-size: 0.85rem;" onclick="openJobForm('AI / ML Engineer')">Apply Now</button></div>
+                <div class="card"><h3>9. Mobile App Developer</h3><p>Flutter, React Native, iOS/Android</p><button class="btn" style="margin-top:12px; padding: 7px 14px; font-size: 0.85rem;" onclick="openJobForm('Mobile App Developer')">Apply Now</button></div>
+                <div class="card"><h3>10. Digital Marketing Head</h3><p>SEO, PPC, Growth Strategies</p><button class="btn" style="margin-top:12px; padding: 7px 14px; font-size: 0.85rem;" onclick="openJobForm('Digital Marketing Head')">Apply Now</button></div>
+                <div class="card"><h3>11. QA & Testing Engineer</h3><p>Automated & Manual Testing</p><button class="btn" style="margin-top:12px; padding: 7px 14px; font-size: 0.85rem;" onclick="openJobForm('QA & Testing Engineer')">Apply Now</button></div>
+                <div class="card"><h3>12. Business Development</h3><p>B2B Tech Sales & Client Outreach</p><button class="btn" style="margin-top:12px; padding: 7px 14px; font-size: 0.85rem;" onclick="openJobForm('Business Development Executive')">Apply Now</button></div>
             </div>
         </div>
 
@@ -327,12 +331,12 @@
         <div id="jobModal" class="modal-overlay">
             <div class="modal-box">
                 <div class="modal-close" onclick="closeJobForm()">&times;</div>
-                <div style="margin-bottom: 20px;">
-                    <h2 id="jobTitle" style="color: var(--ink); font-size: 1.5rem; font-weight: 800; margin-bottom: 4px;">Apply for Position</h2>
-                    <p style="color: #64748b; font-size: 0.9rem;">Submit your details and attachments securely.</p>
+                <div style="margin-bottom: 15px;">
+                    <h2 id="jobTitle" style="color: var(--ink); font-size: 1.35rem; font-weight: 800; margin-bottom: 4px;">Apply for Position</h2>
+                    <p style="color: #64748b; font-size: 0.88rem;">Submit your details and attachments securely.</p>
                 </div>
                 
-                <form action="https://formsubmit.co/chandrakar@zenalphasolution.com" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 14px;">
+                <form action="https://formsubmit.co/chandrakar@zenalphasolution.com" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 10px;">
                     <input type="hidden" name="_subject" value="New Enterprise Job Application - Zen Alpha!">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" id="appliedRoleInput" name="Applied_Role" value="">
@@ -341,30 +345,30 @@
                         <label class="enterprise-label">Full Name</label>
                         <input type="text" name="name" class="enterprise-input" placeholder="e.g. Amit Sharma" required>
                     </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                         <div>
                             <label class="enterprise-label">Email Address</label>
                             <input type="email" name="email" class="enterprise-input" placeholder="name@domain.com" required>
                         </div>
                         <div>
                             <label class="enterprise-label">Phone Number</label>
-                            <input type="tel" name="phone" class="enterprise-input" placeholder="+91 98765 43210" required>
+                            <input type="tel" name="phone" class="enterprise-input" placeholder="+91 98765..." required>
                         </div>
                     </div>
                     <div>
                         <label class="enterprise-label">Upload CV / Resume (PDF / Doc)</label>
-                        <input type="file" name="CV_Attachment" class="enterprise-input" style="padding: 9px;" required>
+                        <input type="file" name="CV_Attachment" class="enterprise-input" style="padding: 7px;" required>
                     </div>
                     <div>
                         <label class="enterprise-label">Upload Additional Document / ID</label>
-                        <input type="file" name="Supporting_Document" class="enterprise-input" style="padding: 9px;" required>
+                        <input type="file" name="Supporting_Document" class="enterprise-input" style="padding: 7px;" required>
                     </div>
                     <div>
                         <label class="enterprise-label">Cover Letter / Experience Summary</label>
-                        <textarea name="cover_letter" class="enterprise-input" placeholder="Briefly mention your experience..." rows="3" style="resize: none;"></textarea>
+                        <textarea name="cover_letter" class="enterprise-input" placeholder="Briefly mention your experience..." rows="2" style="resize: none;"></textarea>
                     </div>
                     
-                    <button type="submit" class="btn" style="width: 100%; margin-top: 5px; padding: 14px; font-size: 1rem; border-radius: 12px;">Submit Application</button>
+                    <button type="submit" class="btn" style="width: 100%; margin-top: 5px; padding: 12px; font-size: 0.95rem; border-radius: 10px;">Submit Application</button>
                 </form>
             </div>
         </div>
@@ -373,7 +377,7 @@
         <div id="ai" class="page">
             <div class="ai-banner">
                 <h1>Artificial Intelligence Solutions</h1>
-                <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">Pioneering enterprise automation with custom LLMs, autonomous multi-agent systems, and neural networks.</p>
+                <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto;">Pioneering enterprise automation with custom LLMs, autonomous multi-agent systems, and neural networks.</p>
             </div>
             <div class="detail-row">
                 <div>
@@ -385,7 +389,7 @@
         </div>
 
         <div id="software" class="page">
-            <div style="text-align:center; margin-bottom: 40px;"><h1>Custom Software & App Development</h1></div>
+            <div style="text-align:center; margin-bottom: 30px;"><h1>Custom Software & App Development</h1></div>
             <div class="detail-row">
                 <div>
                     <h2>Enterprise Web & Mobile Engineering</h2>
@@ -396,7 +400,7 @@
         </div>
 
         <div id="consulting" class="page">
-            <div style="text-align:center; margin-bottom: 40px;"><h1>IT Consulting & vCTO Services</h1></div>
+            <div style="text-align:center; margin-bottom: 30px;"><h1>IT Consulting & vCTO Services</h1></div>
             <div class="detail-row">
                 <div>
                     <h2>Strategic Technology Governance</h2>
@@ -406,20 +410,20 @@
             </div>
         </div>
 
-        <!-- MARKETING FULLY DETAILED PAGES -->
+        <!-- MARKETING PAGES -->
         <div id="marketing-sms" class="page">
-            <div style="text-align:center; margin-bottom: 40px;"><h1>Bulk SMS Services</h1></div>
+            <div style="text-align:center; margin-bottom: 30px;"><h1>Bulk SMS Services</h1></div>
             <div class="detail-row">
                 <div>
                     <h2>High-Performance SMS Gateways</h2>
-                    <p>Instant transactional and promotional SMS delivery with 99.9% uptime and full TRAI DLT template support.</p>
+                    <p>Instant transactional and promotional SMS delivery with 99.9% uptime and full TRAI DLT compliance support.</p>
                 </div>
                 <div><img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=600&auto=format&fit=crop" alt="SMS"></div>
             </div>
         </div>
 
         <div id="marketing-email" class="page">
-            <div style="text-align:center; margin-bottom: 40px;"><h1>Bulk Email Services</h1></div>
+            <div style="text-align:center; margin-bottom: 30px;"><h1>Bulk Email Services</h1></div>
             <div class="detail-row">
                 <div>
                     <h2>High Inbox Placement Campaigns</h2>
@@ -430,7 +434,7 @@
         </div>
 
         <div id="marketing-whatsapp" class="page">
-            <div style="text-align:center; margin-bottom: 40px;"><h1>Bulk WhatsApp Services</h1></div>
+            <div style="text-align:center; margin-bottom: 30px;"><h1>Bulk WhatsApp Services</h1></div>
             <div class="detail-row">
                 <div>
                     <h2>Official Meta WhatsApp API</h2>
@@ -441,7 +445,7 @@
         </div>
 
         <div id="marketing-web" class="page">
-            <div style="text-align:center; margin-bottom: 40px;"><h1>Website Development</h1></div>
+            <div style="text-align:center; margin-bottom: 30px;"><h1>Website Development</h1></div>
             <div class="detail-row">
                 <div>
                     <h2>Corporate & E-Commerce Platforms</h2>
@@ -452,7 +456,7 @@
         </div>
 
         <div id="marketing-seo" class="page">
-            <div style="text-align:center; margin-bottom: 40px;"><h1>SEO / SMO / PPC Services</h1></div>
+            <div style="text-align:center; margin-bottom: 30px;"><h1>SEO / SMO / PPC Services</h1></div>
             <div class="detail-row">
                 <div>
                     <h2>Complete Digital Dominance</h2>
@@ -463,14 +467,14 @@
         </div>
 
         <!-- OUTSOURCING PAGES -->
-        <div id="outsourcing-jobs" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Full Time / Part Time Hiring</h1></div></div>
-        <div id="outsourcing-freelance" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Freelancing Projects</h1></div></div>
-        <div id="outsourcing-consultancy" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Consultancy & BPO Services</h1></div></div>
+        <div id="outsourcing-jobs" class="page"><div style="text-align:center; margin-bottom: 30px;"><h1>Full Time / Part Time Hiring</h1></div></div>
+        <div id="outsourcing-freelance" class="page"><div style="text-align:center; margin-bottom: 30px;"><h1>Freelancing Projects</h1></div></div>
+        <div id="outsourcing-consultancy" class="page"><div style="text-align:center; margin-bottom: 30px;"><h1>Consultancy & BPO Services</h1></div></div>
 
 
-        <!-- ======================= 50+ MEGA FAQ SECTION ======================= -->
+        <!-- FAQ SECTION -->
         <div id="faq" class="page">
-            <div style="text-align:center; margin-bottom: 40px;">
+            <div style="text-align:center; margin-bottom: 30px;">
                 <h1>Frequently Asked Questions</h1>
                 <p>Comprehensive answers regarding Zen Alpha's services, technologies, and engagement models.</p>
             </div>
@@ -496,7 +500,7 @@
                     <div class="faq-question" onclick="toggleFaq(this)"><span>5. How do Custom AI Agents help my business?</span><span class="faq-icon">+</span></div>
                     <div class="faq-answer">AI agents automate 24/7 customer support, qualify sales leads instantly, and reduce operational overhead by up to 70%.</div>
                 </div>
-                <!-- 6 to 50 -->
+                <!-- 6 to 50 FAQs -->
                 <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>6. Is my enterprise data secure with your AI solutions?</span><span class="faq-icon">+</span></div><div class="faq-answer">Yes, we deploy private, secure local or cloud-hosted models ensuring zero leakage of proprietary data.</div></div>
                 <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>7. What is the timeline for custom software development?</span><span class="faq-icon">+</span></div><div class="faq-answer">An MVP typically takes 4-6 weeks, while enterprise-scale applications require 3-6 months.</div></div>
                 <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>8. Which tech stacks do you use for software development?</span><span class="faq-icon">+</span></div><div class="faq-answer">We use React, Next.js, Angular, Node.js, Python, Java Spring Boot, Flutter, and React Native.</div></div>
@@ -561,26 +565,26 @@
                 <div>
                     <div class="card">
                         <h3>Enquiry / Request Quote</h3>
-                        <form action="https://formsubmit.co/chandrakar@zenalphasolution.com" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+                        <form action="https://formsubmit.co/chandrakar@zenalphasolution.com" method="POST" style="display: flex; flex-direction: column; gap: 12px;">
                             <input type="hidden" name="_subject" value="New Enquiry from Zen Alpha Website!">
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_next" value="https://zenalphasolution.com/#home">
                             
-                            <input type="text" name="name" placeholder="Your Name" required style="padding: 12px; border-radius: 8px; border: 1px solid #cbd5e1;">
-                            <input type="email" name="email" placeholder="Email Address" required style="padding: 12px; border-radius: 8px; border: 1px solid #cbd5e1;">
-                            <input type="tel" name="phone" placeholder="Phone Number" style="padding: 12px; border-radius: 8px; border: 1px solid #cbd5e1;">
-                            <textarea name="message" placeholder="Which service are you looking for?" rows="4" required style="padding: 12px; border-radius: 8px; border: 1px solid #cbd5e1;"></textarea>
+                            <input type="text" name="name" placeholder="Your Name" required style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;">
+                            <input type="email" name="email" placeholder="Email Address" required style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;">
+                            <input type="tel" name="phone" placeholder="Phone Number" style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;">
+                            <textarea name="message" placeholder="Which service are you looking for?" rows="3" required style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1;"></textarea>
                             
-                            <button type="submit" class="btn">Send Message</button>
+                            <button type="submit" class="btn" style="width: 100%;">Send Message</button>
                         </form>
                     </div>
                 </div>
             </div>
 
             <!-- GLOBAL PRESENCE -->
-            <div style="margin-top: 80px; text-align: center;">
+            <div style="margin-top: 50px; text-align: center;">
                 <h1>Our Global Presence</h1>
-                <p style="color: #64748b; font-size: 1.1rem;">Delivering excellence across 4 Countries and 12 Regional Hubs.</p>
+                <p style="color: #64748b; font-size: 1rem;">Delivering excellence across 4 Countries and 12 Regional Hubs.</p>
                 <div class="location-grid">
                     <div class="loc-card" style="background-image: url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&auto=format&fit=crop');"><div><h3>India (HQ)</h3><p>New Delhi, Bangalore, Mumbai</p></div></div>
                     <div class="loc-card" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&auto=format&fit=crop');"><div><h3>UAE</h3><p>Dubai Silicon Oasis</p></div></div>
@@ -596,15 +600,15 @@
     <footer>
         <div class="footer-grid">
             <div>
-                <div class="logo-box" style="margin-bottom: 20px;">
-                    <div class="logo-icon" style="width:35px; height:35px; font-size: 18px;">Z</div>
+                <div class="logo-box" style="margin-bottom: 15px;">
+                    <div class="logo-icon" style="width:32px; height:32px; font-size: 16px;">Z</div>
                     <div class="logo-text">
-                        <span class="zen" style="color:white; font-size: 18px;">Zen Alpha</span>
-                        <span class="alpha" style="font-size: 11px;">Solutions</span>
+                        <span class="zen" style="color:white; font-size: 16px;">Zen Alpha</span>
+                        <span class="alpha" style="font-size: 10px;">Solutions</span>
                     </div>
                 </div>
                 <p>Leading the digital revolution with AI, Custom Software, Consulting, Outsourcing, and Data-Driven Marketing.</p>
-                <p style="margin-top: 20px; font-size: 14px;">📍 303 B, 3rd floor, Westend Mall, Janakpuri West, New Delhi 110058</p>
+                <p style="margin-top: 15px; font-size: 13px;">📍 303 B, 3rd floor, Westend Mall, Janakpuri West, New Delhi 110058</p>
             </div>
             <div>
                 <h3>Our Services</h3>
@@ -629,7 +633,7 @@
                 <p>Toronto, Canada</p>
             </div>
         </div>
-        <div style="text-align: center; border-top: 1px solid #334155; margin-top: 40px; padding-top: 20px; color: #64748b;">
+        <div style="text-align: center; border-top: 1px solid #334155; margin-top: 30px; padding-top: 15px; color: #64748b; font-size: 0.85rem;">
             &copy; 2026 Zen Alpha Solutions. All rights reserved.
         </div>
     </footer>
@@ -663,6 +667,14 @@
 
         function closeJobForm() {
             document.getElementById('jobModal').style.display = 'none';
+        }
+
+        function toggleDropdown(element) {
+            // For mobile touch support
+            var content = element.nextElementSibling;
+            if(content) {
+                content.style.display = (content.style.display === 'flex') ? 'none' : 'flex';
+            }
         }
 
         function toggleFaq(element) {
