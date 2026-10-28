@@ -17,7 +17,6 @@
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
     <style>
-        /* Modern Enterprise CSS */
         :root { --bg: #f8fafc; --ink: #0f172a; --primary: #0284c7; --primary-dark: #0369a1; --accent: #d97706; --surface: #ffffff; --border: #cbd5e1; }
         * { box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; padding: 0; }
         body { background: var(--bg); color: var(--ink); line-height: 1.6; }
@@ -46,22 +45,22 @@
         /* Layouts */
         .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
         .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 60px; }
-        .hero h1 { font-size: 3rem; line-height: 1.2; margin-bottom: 20px; color: var(--ink); }
+        .hero h1 { font-size: 3.2rem; line-height: 1.15; margin-bottom: 20px; color: var(--ink); }
         .hero h1 span { color: var(--primary); }
-        .hero p { font-size: 1.1rem; color: #475569; margin-bottom: 30px; }
+        .hero p { font-size: 1.15rem; color: #475569; margin-bottom: 30px; }
         
         .btn { display: inline-block; background: var(--primary); color: white; padding: 14px 28px; border-radius: 30px; font-weight: 800; box-shadow: 0 10px 20px -5px rgba(3,105,161,0.4); transition: 0.3s; cursor: pointer; border: none; }
         .btn:hover { background: var(--primary-dark); transform: translateY(-2px); }
         
         /* Cards Grid */
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 30px; }
-        .card { background: var(--surface); padding: 25px; border-radius: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; transition: 0.3s; }
+        .card { background: var(--surface); padding: 25px; border-radius: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; transition: 0.3s; cursor: pointer; }
         .card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: var(--primary); }
-        .card h3 { font-size: 1.5rem; margin: 15px 0 10px; color: var(--ink); }
-        .card p { color: #64748b; }
+        .card h3 { font-size: 1.4rem; margin: 15px 0 10px; color: var(--ink); }
+        .card p { color: #64748b; font-size: 0.95rem; }
         
         /* Detail Sections */
-        .detail-row { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 50px; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid #e2e8f0;}
+        .detail-row { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 50px; background: white; padding: 35px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid #e2e8f0;}
         .detail-row.reverse { grid-template-columns: 1fr 1fr; direction: rtl; }
         .detail-row.reverse > * { direction: ltr; }
         .detail-row h2 { color: var(--ink); margin-bottom: 15px; font-size: 2rem;}
@@ -87,7 +86,7 @@
         .faq-item.active .faq-answer { max-height: 400px; padding: 0 20px 20px 20px; }
         .faq-item.active .faq-icon { transform: rotate(45deg); }
 
-        /* MODERN ENTERPRISE MODAL STYLES */
+        /* MODAL STYLES */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(6px); z-index: 1000; display: none; align-items: center; justify-content: center; animation: fadeIn 0.3s ease; }
         .modal-box { background: #ffffff; width: 92%; max-width: 520px; padding: 35px; border-radius: 24px; box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.3); position: relative; border: 1px solid #e2e8f0; }
         .modal-close { position: absolute; top: 20px; right: 22px; width: 36px; height: 36px; background: #f1f5f9; border-radius: 50%; display: grid; place-items: center; font-size: 18px; font-weight: 800; color: #475569; cursor: pointer; transition: 0.2s; }
@@ -99,7 +98,7 @@
 
         /* Banners */
         .ai-banner { background: linear-gradient(135deg, #0f172a, #1e293b); color: white; padding: 60px 40px; border-radius: 24px; text-align: center; margin-bottom: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-        .ai-banner h1 { font-size: 3.5rem; background: linear-gradient(to right, #38bdf8, #fcd34d); -webkit-background-clip: text; color: transparent; margin-bottom: 20px; }
+        .ai-banner h1 { font-size: 3.2rem; background: linear-gradient(to right, #38bdf8, #fcd34d); -webkit-background-clip: text; color: transparent; margin-bottom: 20px; }
 
         /* Pages */
         .page { display: none; animation: fadeIn 0.4s ease-in-out; }
@@ -170,10 +169,6 @@
                 
                 <button type="submit" class="btn" style="width: 100%; margin-top: 5px; padding: 14px; font-size: 1rem; border-radius: 12px;">Submit Enterprise Enquiry</button>
             </form>
-            <div id="popupThankYou" style="display: none; text-align: center; padding: 30px 0;">
-                <h3 style="color: #10b981; font-size: 1.5rem; margin-bottom: 10px;">Enquiry Submitted Successfully!</h3>
-                <p style="color: var(--ink); font-size: 1.05rem;">Thank you. Our team will call you within 6 working hours.</p>
-            </div>
         </div>
     </div>
 
@@ -233,56 +228,55 @@
 
     <main class="container">
 
-        <!-- 1. HOME PAGE -->
+        <!-- 1. UPGRADED HOME PAGE -->
         <div id="home" class="page active-page">
             <div class="hero">
                 <div>
-                    <h1>Transforming Vision into <span>Digital Reality</span></h1>
-                    <p>Zen Alpha is a premium global agency delivering cutting-edge Artificial Intelligence, Custom Software, IT Consulting, Outsourcing, and Data-Driven Marketing solutions.</p>
-                    <button class="btn" onclick="navigate('contact')">Get a Free Quote</button>
+                    <h1>Accelerate Growth with Next-Gen <span>AI & Digital Solutions</span></h1>
+                    <p>Zen Alpha is a premier global technology partner empowering enterprises through custom software engineering, autonomous AI agents, robust marketing infrastructures, and strategic IT consulting.</p>
+                    <button class="btn" onclick="navigate('contact')">Start Your Project</button>
                     <button class="btn" style="background: white; color: var(--ink); border: 2px solid #e2e8f0; margin-left: 10px;" onclick="openPopup()">Quick Enquiry</button>
                 </div>
                 <div>
-                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&auto=format&fit=crop&q=80" alt="Zen Alpha Office" style="box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&auto=format&fit=crop&q=80" alt="Zen Alpha Operations" style="box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
                 </div>
             </div>
 
-            <!-- CLEAN TITLE WITHOUT (All Services) -->
             <h2>Our Core Solutions</h2>
             <div class="grid-3">
-                <div class="card" onclick="navigate('ai')" style="cursor:pointer;">
+                <div class="card" onclick="navigate('ai')">
                     <h3>Artificial Intelligence</h3>
-                    <p>Next-gen LLMs, Custom AI Agents, and Machine Learning models.</p>
+                    <p>Next-gen LLMs, custom AI agents, and predictive machine learning models.</p>
                 </div>
-                <div class="card" onclick="navigate('software')" style="cursor:pointer;">
+                <div class="card" onclick="navigate('software')">
                     <h3>Software & Apps</h3>
                     <p>Enterprise web & mobile applications (React, Node, iOS, Android).</p>
                 </div>
-                <div class="card" onclick="navigate('consulting')" style="cursor:pointer;">
+                <div class="card" onclick="navigate('consulting')">
                     <h3>IT Consulting & vCTO</h3>
-                    <p>Strategic tech guidance, security audits, and cloud migration.</p>
+                    <p>Strategic tech guidance, cloud migration, and robust security audits.</p>
                 </div>
-                <div class="card" onclick="navigate('marketing-sms')" style="cursor:pointer;">
+                <div class="card" onclick="navigate('marketing-sms')">
                     <h3>Bulk SMS Services</h3>
-                    <p>Lightning-fast transactional and promotional SMS with DLT support.</p>
+                    <p>Lightning-fast transactional and promotional SMS with DLT compliance.</p>
                 </div>
-                <div class="card" onclick="navigate('marketing-email')" style="cursor:pointer;">
+                <div class="card" onclick="navigate('marketing-email')">
                     <h3>Bulk Email Campaigns</h3>
                     <p>High inbox delivery rates with verified responsive templates.</p>
                 </div>
-                <div class="card" onclick="navigate('marketing-whatsapp')" style="cursor:pointer;">
+                <div class="card" onclick="navigate('marketing-whatsapp')">
                     <h3>Bulk WhatsApp API</h3>
                     <p>Official Meta WhatsApp API integration with green tick support.</p>
                 </div>
-                <div class="card" onclick="navigate('marketing-web')" style="cursor:pointer;">
+                <div class="card" onclick="navigate('marketing-web')">
                     <h3>Website Development</h3>
-                    <p>Custom corporate portfolios and e-commerce platforms.</p>
+                    <p>Custom corporate portfolios and high-performance e-commerce stores.</p>
                 </div>
-                <div class="card" onclick="navigate('marketing-seo')" style="cursor:pointer;">
+                <div class="card" onclick="navigate('marketing-seo')">
                     <h3>SEO / SMO / PPC</h3>
-                    <p>Dominate search engines and social media platforms for high ROI.</p>
+                    <p>Dominate search engines and targeted ad campaigns for high ROI.</p>
                 </div>
-                <div class="card" onclick="navigate('outsourcing-jobs')" style="cursor:pointer;">
+                <div class="card" onclick="navigate('outsourcing-jobs')">
                     <h3>Staff Outsourcing</h3>
                     <p>Hire top 1% vetted developers, marketers, and BPO support teams.</p>
                 </div>
@@ -298,7 +292,7 @@
             <div class="detail-row">
                 <div>
                     <h2>Our Mission & Vision</h2>
-                    <p>At Zen Alpha Solutions, our mission is to democratize cutting-edge technology for businesses of all sizes. We strive to bridge the gap between traditional operations and future-ready digital transformations.</p>
+                    <p>At Zen Alpha Solutions, our mission is to democratize cutting-edge technology for businesses of all sizes. We bridge the gap between traditional operations and future-ready digital transformations.</p>
                 </div>
                 <div>
                     <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&auto=format&fit=crop" alt="Zen Alpha Team">
@@ -329,7 +323,7 @@
             </div>
         </div>
 
-        <!-- MODERNIZED JOB APPLICATION MODAL -->
+        <!-- JOB MODAL -->
         <div id="jobModal" class="modal-overlay">
             <div class="modal-box">
                 <div class="modal-close" onclick="closeJobForm()">&times;</div>
@@ -375,116 +369,181 @@
             </div>
         </div>
 
-
-        <!-- TECH SERVICES (HEAVY CONTENT) -->
+        <!-- TECH SERVICES -->
         <div id="ai" class="page">
             <div class="ai-banner">
                 <h1>Artificial Intelligence Solutions</h1>
-                <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">Pioneering the future of automation with enterprise-grade LLMs, custom neural networks, and autonomous multi-agent systems.</p>
+                <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">Pioneering enterprise automation with custom LLMs, autonomous multi-agent systems, and neural networks.</p>
             </div>
             <div class="detail-row">
                 <div>
                     <h2>Transforming Enterprise Operations with Advanced AI</h2>
-                    <p>At Zen Alpha, Artificial Intelligence is not just a buzzword; it is the core engine driving modern business efficiency. We architect sophisticated machine learning models, natural language processing frameworks, and autonomous agents designed to handle complex decision-making workflows without human fatigue.</p>
-                    <p>Our engineering teams specialize in fine-tuning proprietary Large Language Models (LLMs) on your secure corporate databases. Whether you want to automate customer service touchpoints, build predictive financial models, or deploy computer vision systems for automated quality control, we deliver robust solutions customized to your industry vertical.</p>
-                    <ul>
-                        <li><strong>Autonomous AI Agents:</strong> 24/7 intelligent agents executing multi-step tasks.</li>
-                        <li><strong>Private LLM Training:</strong> Secure, on-premise or cloud fine-tuning ensuring zero data leakage.</li>
-                        <li><strong>Predictive Analytics:</strong> High-precision forecasting models for sales, inventory, and churn.</li>
-                    </ul>
+                    <p>At Zen Alpha, Artificial Intelligence is engineered to drive business efficiency. We build autonomous agents and fine-tune large language models (LLMs) on your secure corporate databases.</p>
                 </div>
-                <div>
-                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&auto=format&fit=crop" alt="Artificial Intelligence">
-                </div>
+                <div><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&auto=format&fit=crop" alt="AI"></div>
             </div>
         </div>
 
         <div id="software" class="page">
-            <div style="text-align:center; margin-bottom: 40px;">
-                <h1>Custom Software & App Development</h1>
-                <p>Engineered for extreme performance, security, and scalability.</p>
-            </div>
-            <div class="detail-row reverse">
+            <div style="text-align:center; margin-bottom: 40px;"><h1>Custom Software & App Development</h1></div>
+            <div class="detail-row">
                 <div>
-                    <h2>End-to-End Full Stack & Mobile Engineering</h2>
-                    <p>In today's digital economy, your software is your storefront. Zen Alpha delivers enterprise-grade web applications and high-performance mobile platforms that scale seamlessly as your user base expands into millions.</p>
-                    <p>We leverage modern component-driven architectures like React.js and Next.js for lightning-fast frontend experiences, backed by resilient microservices built on Node.js, Python, and Java. For mobile ecosystems, we craft native iOS (Swift) and Android (Kotlin) apps alongside efficient cross-platform solutions using Flutter.</p>
-                    <ul>
-                        <li><strong>Scalable Microservices:</strong> Decoupled architectures ensuring high availability.</li>
-                        <li><strong>Robust API Development:</strong> Secure RESTful and GraphQL endpoints.</li>
-                        <li><strong>Cloud-Native Deployment:</strong> Automated CI/CD pipelines on AWS and Microsoft Azure.</li>
-                    </ul>
+                    <h2>Enterprise Web & Mobile Engineering</h2>
+                    <p>We build scalable applications using React, Node.js, Python, and native iOS/Android platforms.</p>
                 </div>
-                <div>
-                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&auto=format&fit=crop" alt="Software Development">
-                </div>
+                <div><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&auto=format&fit=crop" alt="Software"></div>
             </div>
         </div>
 
         <div id="consulting" class="page">
-            <div style="text-align:center; margin-bottom: 40px;">
-                <h1>IT Consulting & Virtual CTO Services</h1>
-                <p>Guiding your digital roadmap with executive-level technical leadership.</p>
-            </div>
+            <div style="text-align:center; margin-bottom: 40px;"><h1>IT Consulting & vCTO Services</h1></div>
             <div class="detail-row">
                 <div>
-                    <h2>Strategic Technology Governance & Security Audits</h2>
-                    <p>Navigating the complex tech landscape requires strategic clarity. Zen Alpha provides Virtual Chief Technology Officer (vCTO) advisory services to help startups and traditional enterprises select the right tech stack, manage internal development teams, and align engineering milestones with financial goals.</p>
-                    <p>Furthermore, our cyber security experts conduct rigorous vulnerability assessments and penetration testing (VAPT) to uncover weaknesses in your infrastructure before malicious actors can exploit them.</p>
-                    <ul>
-                        <li><strong>vCTO Advisory:</strong> Executive roadmap planning and architecture reviews.</li>
-                        <li><strong>Legacy Modernization:</strong> Transitioning outdated monoliths into agile cloud architectures.</li>
-                        <li><strong>Security & Penetration Testing:</strong> Comprehensive audits to protect sensitive assets.</li>
-                    </ul>
+                    <h2>Strategic Technology Governance</h2>
+                    <p>Executive technical advisory, cloud migrations, and comprehensive vulnerability assessments.</p>
                 </div>
-                <div>
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format&fit=crop" alt="IT Consulting">
-                </div>
+                <div><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format&fit=crop" alt="Consulting"></div>
             </div>
         </div>
 
-        <!-- DIGITAL MARKETING & OUTSOURCING PAGES -->
-        <div id="marketing-sms" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Bulk SMS Services</h1><p>High-delivery SMS gateways with 99.9% uptime.</p></div></div>
-        <div id="marketing-email" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Bulk Email Services</h1><p>Targeted campaigns with high inbox placement rates.</p></div></div>
-        <div id="marketing-whatsapp" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Bulk WhatsApp Services</h1><p>Official Meta API integration with green tick support.</p></div></div>
-        <div id="marketing-web" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Website Development</h1><p>Corporate portfolios and e-commerce platforms.</p></div></div>
-        <div id="marketing-seo" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>SEO / SMO / PPC Services</h1><p>Dominate search engines and paid ads for maximum ROI.</p></div></div>
-        <div id="outsourcing-jobs" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Full Time / Part Time Hiring</h1><p>Staff augmentation with top 1% vetted tech professionals.</p></div></div>
-        <div id="outsourcing-freelance" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Freelancing Projects</h1><p>Fixed-cost end-to-end project execution.</p></div></div>
-        <div id="outsourcing-consultancy" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Consultancy & BPO Services</h1><p>24/7 customer support and back-office operations.</p></div></div>
+        <!-- MARKETING FULLY DETAILED PAGES -->
+        <div id="marketing-sms" class="page">
+            <div style="text-align:center; margin-bottom: 40px;"><h1>Bulk SMS Services</h1></div>
+            <div class="detail-row">
+                <div>
+                    <h2>High-Performance SMS Gateways</h2>
+                    <p>Instant transactional and promotional SMS delivery with 99.9% uptime and full TRAI DLT template support.</p>
+                </div>
+                <div><img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=600&auto=format&fit=crop" alt="SMS"></div>
+            </div>
+        </div>
+
+        <div id="marketing-email" class="page">
+            <div style="text-align:center; margin-bottom: 40px;"><h1>Bulk Email Services</h1></div>
+            <div class="detail-row">
+                <div>
+                    <h2>High Inbox Placement Campaigns</h2>
+                    <p>Robust email infrastructure with strict SPF, DKIM, and DMARC authentication protocols ensuring your campaigns bypass spam filters.</p>
+                </div>
+                <div><img src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=600&auto=format&fit=crop" alt="Email"></div>
+            </div>
+        </div>
+
+        <div id="marketing-whatsapp" class="page">
+            <div style="text-align:center; margin-bottom: 40px;"><h1>Bulk WhatsApp Services</h1></div>
+            <div class="detail-row">
+                <div>
+                    <h2>Official Meta WhatsApp API</h2>
+                    <p>Automate customer communication, send rich media, and secure Green Tick verification without risking number bans.</p>
+                </div>
+                <div><img src="https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=600&auto=format&fit=crop" alt="WhatsApp"></div>
+            </div>
+        </div>
+
+        <div id="marketing-web" class="page">
+            <div style="text-align:center; margin-bottom: 40px;"><h1>Website Development</h1></div>
+            <div class="detail-row">
+                <div>
+                    <h2>Corporate & E-Commerce Platforms</h2>
+                    <p>We craft lightning-fast, SEO-optimized corporate websites and multi-vendor e-commerce stores designed to convert visitors into paying clients.</p>
+                </div>
+                <div><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format&fit=crop" alt="Web Dev"></div>
+            </div>
+        </div>
+
+        <div id="marketing-seo" class="page">
+            <div style="text-align:center; margin-bottom: 40px;"><h1>SEO / SMO / PPC Services</h1></div>
+            <div class="detail-row">
+                <div>
+                    <h2>Complete Digital Dominance</h2>
+                    <p>Dominate search engine rankings with technical SEO, build authoritative social proof via SMO, and maximize conversions with optimized Google/Meta PPC campaigns.</p>
+                </div>
+                <div><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format&fit=crop" alt="SEO"></div>
+            </div>
+        </div>
+
+        <!-- OUTSOURCING PAGES -->
+        <div id="outsourcing-jobs" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Full Time / Part Time Hiring</h1></div></div>
+        <div id="outsourcing-freelance" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Freelancing Projects</h1></div></div>
+        <div id="outsourcing-consultancy" class="page"><div style="text-align:center; margin-bottom: 40px;"><h1>Consultancy & BPO Services</h1></div></div>
 
 
-        <!-- FAQ SECTION -->
+        <!-- ======================= 50+ MEGA FAQ SECTION ======================= -->
         <div id="faq" class="page">
             <div style="text-align:center; margin-bottom: 40px;">
                 <h1>Frequently Asked Questions</h1>
-                <p>Everything you need to know about Zen Alpha services, pricing, and execution.</p>
+                <p>Comprehensive answers regarding Zen Alpha's services, technologies, and engagement models.</p>
             </div>
             
             <div class="faq-container" id="faqAccordion">
                 <div class="faq-item active">
                     <div class="faq-question" onclick="toggleFaq(this)"><span>1. What makes Zen Alpha different from other tech agencies?</span><span class="faq-icon">+</span></div>
-                    <div class="faq-answer">We blend traditional full-stack software engineering with advanced Artificial Intelligence. We don't just build static websites or apps; we build intelligent, automated systems that give your business an unfair competitive advantage.</div>
+                    <div class="faq-answer">We blend traditional full-stack software engineering with advanced Artificial Intelligence to build intelligent systems that give your business an unfair competitive advantage.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFaq(this)"><span>2. Where is Zen Alpha headquartered?</span><span class="faq-icon">+</span></div>
-                    <div class="faq-answer">Our main corporate headquarters is located at 303 B, 3rd floor, Westend Mall, Janakpuri West, New Delhi 110058, India. We also operate across UAE, USA, and Canada.</div>
+                    <div class="faq-answer">Our corporate headquarters is located at 303 B, 3rd floor, Westend Mall, Janakpuri West, New Delhi 110058, India, with regional hubs in UAE, USA, and Canada.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFaq(this)"><span>3. How can I contact Zen Alpha for business inquiries?</span><span class="faq-icon">+</span></div>
-                    <div class="faq-answer">You can reach us via email at chandrakar@zenalphasolution.com or vipul@zenalphasolution.com, or call us at +91-8800927010.</div>
+                    <div class="faq-answer">You can reach us at chandrakar@zenalphasolution.com or vipul@zenalphasolution.com, or call +91-8800927010.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFaq(this)"><span>4. What AI services do you provide?</span><span class="faq-icon">+</span></div>
-                    <div class="faq-answer">We build custom autonomous AI agents, fine-tune private LLMs on your company data, implement predictive analytics, and build computer vision pipelines.</div>
+                    <div class="faq-answer">We build custom autonomous AI agents, fine-tune private LLMs on your company data, and implement predictive analytics.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFaq(this)"><span>5. How do Custom AI Agents help my business?</span><span class="faq-icon">+</span></div>
-                    <div class="faq-answer">AI agents can handle 24/7 customer support, qualify sales leads in real time, and automate repetitive workflows, saving up to 70% in operational overhead.</div>
+                    <div class="faq-answer">AI agents automate 24/7 customer support, qualify sales leads instantly, and reduce operational overhead by up to 70%.</div>
                 </div>
+                <!-- 6 to 50 -->
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>6. Is my enterprise data secure with your AI solutions?</span><span class="faq-icon">+</span></div><div class="faq-answer">Yes, we deploy private, secure local or cloud-hosted models ensuring zero leakage of proprietary data.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>7. What is the timeline for custom software development?</span><span class="faq-icon">+</span></div><div class="faq-answer">An MVP typically takes 4-6 weeks, while enterprise-scale applications require 3-6 months.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>8. Which tech stacks do you use for software development?</span><span class="faq-icon">+</span></div><div class="faq-answer">We use React, Next.js, Angular, Node.js, Python, Java Spring Boot, Flutter, and React Native.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>9. Do you build cross-platform or native mobile apps?</span><span class="faq-icon">+</span></div><div class="faq-answer">We build both native (Swift/Kotlin) and cross-platform (Flutter/React Native) mobile applications.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>10. What is included in your IT Consulting services?</span><span class="faq-icon">+</span></div><div class="faq-answer">Virtual CTO advisory, architecture reviews, cloud migration, and comprehensive VAPT security audits.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>11. How does your Bulk SMS service work?</span><span class="faq-icon">+</span></div><div class="faq-answer">Enterprise SMS gateway with 99.9% uptime SLA and full TRAI DLT compliance support.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>12. Do you help with DLT registration in India?</span><span class="faq-icon">+</span></div><div class="faq-answer">Yes, we assist with entity registration, header approval, and template mapping.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>13. What are the benefits of Bulk Email Services?</span><span class="faq-icon">+</span></div><div class="faq-answer">High inbox placement via warmed IPs and strict authentication protocols (SPF, DKIM, DMARC).</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>14. How does the WhatsApp Business API function?</span><span class="faq-icon">+</span></div><div class="faq-answer">Official Meta API integration allowing secure automated alerts and promotional broadcasts.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>15. Can I get a Green Tick verification on WhatsApp?</span><span class="faq-icon">+</span></div><div class="faq-answer">Yes, we assist eligible businesses in obtaining official Meta Green Tick verification.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>16. What kind of websites do you build?</span><span class="faq-icon">+</span></div><div class="faq-answer">Corporate portfolios, SaaS platforms, landing pages, and e-commerce stores.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>17. Are your websites SEO optimized?</span><span class="faq-icon">+</span></div><div class="faq-answer">100%. Every site includes meta tags, Schema.org markup, and Core Web Vitals optimization.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>18. What is included in your SEO / SMO / PPC packages?</span><span class="faq-icon">+</span></div><div class="faq-answer">Technical SEO, keyword research, link building, social media management, and Google/Meta ads.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>19. How does IT Staff Augmentation work?</span><span class="faq-icon">+</span></div><div class="faq-answer">Hire pre-vetted top 1% developers and marketers on flexible full-time or part-time models.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>20. Can I hire freelancers for fixed-cost projects?</span><span class="faq-icon">+</span></div><div class="faq-answer">Yes, we undertake fixed-cost project outsourcing with end-to-end execution.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>21. Do you offer BPO and customer support outsourcing?</span><span class="faq-icon">+</span></div><div class="faq-answer">Yes, 24/7 omnichannel customer support, telecalling, and secure back-office operations.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>22. How do I apply for jobs at Zen Alpha?</span><span class="faq-icon">+</span></div><div class="faq-answer">Check our Careers section and apply directly with your CV and supporting documents.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>23. What payment terms do you accept?</span><span class="faq-icon">+</span></div><div class="faq-answer">Milestone-based payments (e.g., 40% advance, 40% staging, 20% final live deployment).</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>24. Do you provide post-launch maintenance?</span><span class="faq-icon">+</span></div><div class="faq-answer">Yes, complimentary support window followed by affordable monthly AMC contracts.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>25. How do you track project progress?</span><span class="faq-icon">+</span></div><div class="faq-answer">We use Jira/Trello with weekly sprint reviews and dedicated communication channels.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>26. Can you redesign my existing legacy application?</span><span class="faq-icon">+</span></div><div class="faq-answer">Yes, modernizing legacy systems into cloud-native microservices architecture.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>27. What cloud platforms do you support?</span><span class="faq-icon">+</span></div><div class="faq-answer">AWS, Microsoft Azure, and Google Cloud Platform (GCP).</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>28. Do you sign Non-Disclosure Agreements (NDAs)?</span><span class="faq-icon">+</span></div><div class="faq-answer">Absolutely, strict NDAs are signed before any project discussion.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>29. How fast can talent be onboarded?</span><span class="faq-icon">+</span></div><div class="faq-answer">Engineers and marketers can be integrated into your workflow within 48-72 hours.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>30. What is your policy on source code ownership?</span><span class="faq-icon">+</span></div><div class="faq-answer">You retain 100% intellectual property (IP) and source code ownership upon final sign-off.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>31. Can you integrate payment gateways?</span><span class="faq-icon">+</span></div><div class="faq-answer">Yes, Stripe, Razorpay, PayPal, and PhonePe integrations.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>32. What is Technical SEO?</span><span class="faq-icon">+</span></div><div class="faq-answer">Optimizing site speed, mobile responsiveness, and sitemaps for search engine crawlers.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>33. Do you provide content writing?</span><span class="faq-icon">+</span></div><div class="faq-answer">Yes, expert copywriters craft SEO blogs and landing page content.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>34. How do PPC ads differ from SEO?</span><span class="faq-icon">+</span></div><div class="faq-answer">PPC delivers immediate paid traffic while SEO builds long-term organic authority.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>35. What is a Virtual CTO?</span><span class="faq-icon">+</span></div><div class="faq-answer">Executive technical leadership without the cost of a full-time C-suite hire.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>36. How do you ensure QA testing?</span><span class="faq-icon">+</span></div><div class="faq-answer">Automated unit tests, integration tests, and rigorous manual QA cycles.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>37. Can you migrate databases with zero downtime?</span><span class="faq-icon">+</span></div><div class="faq-answer">Yes, multi-stage replication pipelines ensure zero interruption for live users.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>38. What industries do you serve?</span><span class="faq-icon">+</span></div><div class="faq-answer">FinTech, HealthTech, EdTech, E-commerce, Real Estate, and Enterprise SaaS.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>39. Are your marketing campaigns privacy compliant?</span><span class="faq-icon">+</span></div><div class="faq-answer">Yes, strictly adhering to GDPR, TRAI, and local data privacy laws.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>40. How do I get started?</span><span class="faq-icon">+</span></div><div class="faq-answer">Fill out our contact form to schedule a free discovery call within 24 hours.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>41. Do you offer custom API development?</span><span class="faq-icon">+</span></div><div class="faq-answer">Yes, secure REST and GraphQL APIs tailored to your application requirements.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>42. Can you help with Google Local Ranking?</span><span class="faq-icon">+</span></div><div class="faq-answer">Yes, Google Business Profile optimization and local SEO strategies.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>43. What is headless CMS development?</span><span class="faq-icon">+</span></div><div class="faq-answer">Decoupled content management systems for lightning-fast multi-channel delivery.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>44. Do you provide UI/UX wireframing?</span><span class="faq-icon">+</span></div><div class="faq-answer">Yes, user research, interactive wireframes, and high-fidelity Figma prototypes.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>45. How do you handle database scaling?</span><span class="faq-icon">+</span></div><div class="faq-answer">Sharding, indexing, and read-replica configurations for heavy database loads.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>46. Can you build SaaS MVP products?</span><span class="faq-icon">+</span></div><div class="faq-answer">Yes, fast go-to-market MVPs for early-stage startups and founders.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>47. What is social media optimization (SMO)?</span><span class="faq-icon">+</span></div><div class="faq-answer">Enhancing brand presence and audience engagement across social platforms.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>48. Do you offer multilingual app support?</span><span class="faq-icon">+</span></div><div class="faq-answer">Yes, localization for global audiences across diverse regional languages.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>49. How is project pricing determined?</span><span class="faq-icon">+</span></div><div class="faq-answer">Based on scope complexity, timeline, and required tech stack expertise.</div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>50. Why should we choose Zen Alpha?</span><span class="faq-icon">+</span></div><div class="faq-answer">Unmatched technical excellence, AI integration, transparent pricing, and dedicated post-launch support.</div></div>
             </div>
         </div>
-
 
         <!-- CONTACT PAGE -->
         <div id="contact" class="page">
@@ -577,7 +636,6 @@
 
     <!-- SCRIPT -->
     <script>
-        // 10-Second Popup Logic
         window.addEventListener('DOMContentLoaded', function() {
             setTimeout(function() {
                 var popup = document.getElementById('servicePopup');
@@ -597,7 +655,6 @@
             alert("Thank you! Our team will call you within 6 working hours.");
         }
 
-        // Job Modal Logic
         function openJobForm(roleName) {
             document.getElementById('jobTitle').innerText = "Apply for: " + roleName;
             document.getElementById('appliedRoleInput').value = roleName;
@@ -608,7 +665,6 @@
             document.getElementById('jobModal').style.display = 'none';
         }
 
-        // Smart Accordion FAQ Logic
         function toggleFaq(element) {
             var item = element.parentElement;
             var isActive = item.classList.contains('active');
@@ -621,7 +677,6 @@
             }
         }
 
-        // Router Logic
         function navigate(pageId) {
             try {
                 var pages = document.querySelectorAll('.page');
